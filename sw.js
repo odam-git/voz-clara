@@ -1,10 +1,10 @@
 // Service worker de Voz Clara: primero la red, y si no hay conexión, la copia guardada.
 // Sube VERSION cuando cambie la lista de archivos.
-const VERSION = "vozclara-v3";
+const VERSION = "vozclara-v4";
 const ARCHIVOS = [
   "./", "./index.html", "./manifest.json", "./icon.svg", "./apple-touch-icon.png", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png",
-  "./js/datos.js", "./js/estado.js", "./js/voz.js", "./js/analisis.js", "./js/flujo.js", "./js/progreso.js", "./js/vistas.js", "./js/inicio.js",
-  "./data/trabalenguas.json", "./data/lecturas.json", "./data/temas.json", "./data/consejos.json"
+  "./js/datos.js", "./js/estado.js", "./js/voz.js", "./js/analisis.js", "./js/flujo.js", "./js/progreso.js", "./js/adaptativo.js", "./js/vistas.js", "./js/modulos.js", "./js/diagnostico.js", "./js/reporte.js", "./js/inicio.js",
+  "./data/trabalenguas.json", "./data/lecturas.json", "./data/temas.json", "./data/consejos.json", "./data/entonacion.json"
 ];
 self.addEventListener("install", e => {
   // Si algún archivo falla, se instala con los que sí estén (no se bloquea la app).

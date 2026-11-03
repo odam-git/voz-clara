@@ -42,9 +42,9 @@ function normalizar(o) {
     if (typeof st.focus === "string") d.settings.focus = ({ R: "RR", D: "DT", P: "PB", C: "KG" })[st.focus] || st.focus;
     if (Array.isArray(st.focusList)) d.settings.focusList = st.focusList.filter(x => typeof x === "string");
   }
-  for (const k of ["baseline", "levels", "lastReport", "volBase"]) if (isObj(o[k])) d[k] = o[k];
+  for (const k of ["baseline", "levels", "volBase"]) if (isObj(o[k])) d[k] = o[k];
   if (Array.isArray(o.diags)) d.diags = o.diags.filter(isObj);
-  for (const k of ["lastFreezeAt", "lastNotif"]) if (typeof o[k] === "string") d[k] = o[k];
+  for (const k of ["lastFreezeAt", "lastNotif", "lastReport"]) if (typeof o[k] === "string") d[k] = o[k];
   if (Number.isFinite(o.bestStreak)) d.bestStreak = o.bestStreak;
   // Quien ya usaba la v1 no debe ver otra vez la bienvenida.
   d.onboarded = o.onboarded === true || d.sessions.length > 0 || !!d.settings.name;

@@ -25,7 +25,11 @@ function greet() {
 }
 const pick = a => a[Math.floor(Math.random() * a.length)];
 
-const STEPS = [["breath", "Respiración diafragmática", "3 min · base de la voz"], ["voc", "Vocalización y resonancia", "2 min · escalas con vocales"], ["art", "Articulación", "3 min · sílabas y trabalenguas"], ["read", "Lectura con ritmo", "2 min · velocidad y pausas"], ["impro", "Improvisación", "1 min · muletillas y fluidez"]];
+const STEPS = [["breath", "Respiración diafragmática", "3 min · base de la voz"], ["voc", "Calentamiento de canto", "2 min · resonancia, sirenas y escalas"], ["art", "Articulación", "3 min · sílabas y trabalenguas"], ["read", "Lectura con ritmo", "2 min · velocidad y claridad"], ["impro", "Improvisación", "1 min · muletillas y fluidez"]];
+// Enfoque del día: rota entre proyección, entonación y pausas.
+const ENFOQUES = [["vol", "Proyección y volumen", "2 min · meta de +6 dB"], ["ento", "Entonación", "2 min · tres intenciones"], ["pausa", "Pausas", "2 min · silencio antes de la idea clave"]];
+const enfoqueHoy = () => { const d = new Date(), n = Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 864e5); return ENFOQUES[n % 3]; };
+const pasosHoy = () => [...STEPS, enfoqueHoy()];
 const filaPaso = (id, t, d, chk) => `<button class="step" onclick="go('${id}')">${chk === undefined ? "" : `<span class="chk ${chk ? "done" : ""}" aria-hidden="true">${chk ? "✓" : ""}</span>`}<span class="t">${t}<small>${d}</small></span><span aria-hidden="true">›</span></button>`;
 
 const VIEWS = {
@@ -49,21 +53,25 @@ const VIEWS = {
     $("#bv-n").onkeydown = e => { if (e.key === "Enter") fin(); };
   },
   hoy() {
-    const r = routineDone(), n = Object.values(r).filter(Boolean).length, st = streak();
+    const r = routineDone(), pasos = pasosHoy(), n = Object.values(r).filter(Boolean).length, st = streak();
     $("#app").innerHTML = `
     <div class="card"><div class="stats">
       <div class="stat"><b>🔥 ${st}</b><span>días de racha</span></div>
-      <div class="stat"><b>${n}/${STEPS.length}</b><span>rutina de hoy</span></div>
+      <div class="stat"><b>${n}/${pasos.length}</b><span>rutina de hoy</span></div>
       <div class="stat"><b>🧊 ${S.freezes}</b><span>comodines</span></div></div></div>
-    <div class="card"><h2>Rutina diaria · ~11 min</h2>
-      ${STEPS.map(([id, t, d]) => filaPaso(id, t, d, r[id])).join("")}
-      ${n === STEPS.length ? `<p style="text-align:center">🎉 <b>Rutina completa.</b> Mañana más.</p>` : `<button class="btn" onclick="go('${STEPS.find(s => !r[s[0]])[0]}')">${n ? "Continuar" : "Empezar"} rutina</button>`}
+    ${!S.baseline ? `<div class="card destacada"><h2>🧭 Empieza con tu diagnóstico</h2><p>Tres minutos para fijar tu línea base y elegir los sonidos que más te conviene trabajar.</p><button class="btn" onclick="go('diag')">Hacer diagnóstico</button></div>` : ""}
+    ${reporteListo() ? `<div class="card destacada"><h2>🔭 Tu reporte semanal está listo</h2><p>Mira cuánto avanzaste frente a tu punto de partida.</p><button class="btn" onclick="go('reporte')">Ver reporte</button></div>` : ""}
+    <div class="card"><h2>Rutina diaria · ~13 min</h2>
+      ${pasos.map(([id, t, d], i) => filaPaso(id, i === pasos.length - 1 ? "✨ " + t : t, i === pasos.length - 1 ? "Enfoque del día · " + d : d, r[id])).join("")}
+      ${n === pasos.length ? `<p style="text-align:center">🎉 <b>Rutina completa.</b> Mañana más.</p>` : `<button class="btn" onclick="go('${pasos.find(s => !r[s[0]])[0]}')">${n ? "Continuar" : "Empezar"} rutina</button>`}
     </div>
     <div class="card"><h3>💡 Consejo del día</h3><p>${TIPS[new Date().getDate() % TIPS.length]}</p></div>`;
   },
   ej() {
     const sr = srEstado();
-    $("#app").innerHTML = `<div class="card"><h2>Ejercicios</h2>${STEPS.map(([id, t, d]) => filaPaso(id, t, d)).join("")}</div>
+    $("#app").innerHTML = `<div class="card"><h2>Rutina base</h2>${STEPS.map(([id, t, d]) => filaPaso(id, t, d)).join("")}</div>
+    <div class="card"><h2>Módulos de enfoque</h2>${ENFOQUES.map(([id, t, d]) => filaPaso(id, t, d)).join("")}</div>
+    <div class="card"><h2>Seguimiento</h2>${filaPaso("diag", "Diagnóstico", "3 min · línea base y sonidos a trabajar")}${filaPaso("reporte", "Reporte semanal", "tu avance contra la línea base")}</div>
     ${sr === "ok" ? "" : `<div class="card aviso"><b>⚠️ La medición automática no está disponible aquí.</b><div>${srAyuda()}</div></div>`}`;
   },
 
@@ -117,47 +125,23 @@ const VIEWS = {
     cleanup = () => { clearInterval(iv); stop && stop(); M && M.stop(); M = null; };
   },
 
-  voc() {
-    const seq = ["Humming “mmm” con labios cerrados (siente vibrar la nariz) — 20 s", "Sirena: “uuuu” de grave a agudo y de regreso — 3 veces", "“Mi-me-ma-mo-mu” subiendo de tono en cada vocal", "Vocales exageradas: A-E-I-O-U abriendo mucho la boca", "Lectura solo de vocales: di “o-a-o-e-o-e-a-o” de una frase", "Bostezo-suspiro: abre la garganta y suelta “aaah” relajado"];
-    $("#app").innerHTML = `<div class="card"><h2>🎵 Vocalización y resonancia</h2><p>Ejercicios tomados del entrenamiento de canto: calientan las cuerdas vocales y proyectan la voz sin forzar la garganta. El medidor solo usa el micrófono.</p>
-    <div class="target" id="v">${seq[0]}</div><div class="timer" id="tm">20</div><div class="meter"><div id="lv"></div></div>
-    <button class="btn" id="go">Iniciar (2 min)</button></div>`;
-    let M = null, stopM = null, stopT = null;
-    $("#go").onclick = async () => {
-      $("#go").disabled = true; let i = 0;
-      M = new Medidor();
-      try { await M.start(); stopM = bucle(() => { $("#lv").style.width = (M.nivel() * 100) + "%"; }); } catch (_) { M = null; }
-      const paso = () => {
-        $("#v").textContent = seq[i];
-        stopT = cuentaRegresiva(20, r => { $("#tm").textContent = r; }, () => {
-          i++;
-          if (i < seq.length) return paso();
-          stopM && stopM(); M && M.stop(); M = null;
-          $("#v").textContent = "¡Voz caliente! 🔥"; $("#tm").textContent = "✓"; logSession("voc", {});
-        });
-      };
-      paso();
-    };
-    cleanup = () => { stopT && stopT(); stopM && stopM(); M && M.stop(); M = null; };
-  },
-
   art(arg) {
-    const f = FONEMAS[S.settings.focus] ? S.settings.focus : ORDEN_FON[0], fon = FONEMAS[f];
-    const done = S.sessions.filter(s => s.type === "art" && s.f === f && (s.acc >= 90 || s.self >= 4)).length; const maxLvl = done < 5 ? 1 : done < 15 ? 2 : 3;
-    const pool = TRABALENGUAS.filter(x => x.f === f && x.n === maxLvl); const tw = arg && arg.t ? arg : pick(pool);
+    const f = arg && arg.f && FONEMAS[arg.f] ? arg.f : focoDeHoy(), fon = FONEMAS[f], lvl = nivelArt(f);
+    const pool = TRABALENGUAS.filter(x => x.f === f);
+    const tw = arg && arg.t ? arg : elegir(pool, lvl, S.sessions.filter(s => s.type === "art" && s.tid).map(s => s.tid));
     $("#app").innerHTML = `<div class="card"><h2>👄 Articulación · ${esc(fon.nombre)}</h2><p>${esc(fon.ayuda)}</p><h3>1. Series silábicas</h3>
     <p>Lee cada serie 3 veces, primero lento y exagerado, luego a velocidad normal. Tip: con un lápiz entre los dientes obligas a la lengua y labios a trabajar más.</p>
     ${fon.silabas.map(s => `<div class="target" style="font-size:18px">${esc(s)}</div>`).join("")}</div>
     <div class="card"><h3>2. Trabalenguas · nivel ${tw.n} <span class="pill">${tw.o === "tradicional" ? "Tradicional" : "Original"}</span></h3>
     <div class="target" id="tg">${esc(tw.t)}</div><div id="flujo"></div>
     <button class="btn sec" id="otro">🔀 Otro trabalenguas</button></div>`;
-    $("#otro").onclick = () => go("art", pick(pool.filter(x => x !== tw)) || tw);
+    $("#otro").onclick = () => go("art", pick(pool.filter(x => x.n === tw.n && x !== tw)) || tw);
     const ctl = medirYEscuchar({
-      el: $("#flujo"), tipo: "art", nivel: tw.n, extra: { f },
+      el: $("#flujo"), tipo: "art", nivel: tw.n, extra: { f, tid: tw.id },
       evaluar: r => {
         const ok = lcsMatch(tw.t, r.text); const acc = Math.round(ok.filter(Boolean).length / ok.length * 100);
         let k = 0; $("#tg").innerHTML = palabrasVisibles(tw.t).map(p => { const bien = ok.slice(k, k + p.k).every(Boolean); k += p.k; return `<span class="${bien ? "w-ok" : "w-bad"}">${esc(p.w)}</span>`; }).join(" ");
-        logSession("art", { acc, level: tw.n, secs: +(r.hablaSecs || r.secs).toFixed(1), modo: "medido", f });
+        ajustarNivel("art", logSession("art", { acc, level: tw.n, secs: +(r.hablaSecs || r.secs).toFixed(1), modo: "medido", f, tid: tw.id }));
         return `<div class="stats" style="margin-top:12px"><div class="stat"><b>${acc}%</b><span>precisión</span></div><div class="stat"><b>${(r.hablaSecs || r.secs).toFixed(1)}s</b><span>tiempo</span></div><div class="stat"><b>N${tw.n}</b><span>nivel</span></div></div>
         <p>${acc >= 90 ? "Excelente. Ahora intenta más rápido sin perder claridad." : "Las palabras en rojo no se entendieron. Repite lento, exagerando cada sílaba."}</p>`;
       }
@@ -166,20 +150,20 @@ const VIEWS = {
   },
 
   read(arg) {
-    const L = arg && arg.texto ? arg : pick(LECTURAS), txt = textoLimpio(L.texto);
+    const L = arg && arg.texto ? arg : elegir(LECTURAS, nivelDe("read"), S.sessions.filter(s => s.lid).map(s => s.lid)), txt = textoLimpio(L.texto);
     $("#app").innerHTML = `<div class="card"><h2>📖 Lectura con ritmo</h2><p>Lee en voz alta como si hablaras ante un auditorio. Haz una pausa breve en cada <b class="pz">‖</b>, antes de las ideas clave. Ritmo ideal de orador: <b>130–160 palabras por minuto</b>.</p>
     <h3>${esc(L.titulo)}</h3><p class="sub">${esc(L.autor)}${L.fuente ? " · " + esc(L.fuente) : ""}</p>
     <div class="target" id="tg">${textoConPausas(L.texto)}</div>${L.nota ? `<p class="sub">ℹ️ ${esc(L.nota)}</p>` : ""}<div id="flujo"></div>
     <button class="btn sec" id="otro">🔀 Otra lectura</button></div>`;
     $("#otro").onclick = () => go("read", pick(LECTURAS.filter(x => x !== L)));
     const ctl = medirYEscuchar({
-      el: $("#flujo"), tipo: "read", extra: { lid: L.id },
+      el: $("#flujo"), tipo: "read", nivel: L.nivel, extra: { lid: L.id },
       evaluar: r => {
         const n = palabras(txt).length, dur = r.hablaSecs;
         let wpm = dur && dur >= 3 ? Math.round(n / (dur / 60)) : null;
         if (wpm != null && (wpm > 320 || wpm < 40)) wpm = null; // tiempo no confiable
         const ok = lcsMatch(txt, r.text); const acc = Math.round(ok.filter(Boolean).length / ok.length * 100);
-        logSession("read", { wpm, acc, secs: dur ? +dur.toFixed(1) : null, modo: "medido", lid: L.id });
+        ajustarNivel("read", logSession("read", { wpm, acc, secs: dur ? +dur.toFixed(1) : null, modo: "medido", lid: L.id, level: L.nivel }));
         const msg = wpm == null ? "No alcancé a medir tu velocidad: lee el texto completo." : wpm > 170 ? "Vas muy rápido: respira en cada pausa y deja que las ideas aterricen." : wpm < 110 ? "Un poco lento: mantén la energía sin perder las pausas." : "¡Ritmo de orador! Así suena la seguridad.";
         return `<div class="stats" style="margin-top:12px"><div class="stat"><b>${wpm ?? "—"}</b><span>palabras/min</span></div><div class="stat"><b>${acc}%</b><span>claridad</span></div><div class="stat"><b>${dur ? dur.toFixed(0) + "s" : "—"}</b><span>al hablar</span></div></div><p>${msg}</p>`;
       }
@@ -188,20 +172,20 @@ const VIEWS = {
   },
 
   impro(arg) {
-    const T = arg && arg.t ? arg : pick(TEMAS), tema = T.t, DUR = T.seg || 60;
+    const T = arg && arg.t ? arg : elegir(TEMAS, nivelDe("impro"), S.sessions.filter(s => s.temaId).map(s => s.temaId)), tema = T.t, DUR = T.seg || 60;
     $("#app").innerHTML = `<div class="card"><h2>💬 Improvisación (${DUR} s)</h2><p>Habla del tema hasta que termine el tiempo. Cuando sientas venir un “este…”, <b>haz silencio</b>: una pausa se escucha más segura que una muletilla.</p>
     <div class="target">${esc(tema)}</div><div class="timer" id="cd">${DUR}</div><div id="flujo"></div>
     <button class="btn sec" id="otro">🔀 Otro tema</button></div>`;
     $("#otro").onclick = () => go("impro", pick(TEMAS.filter(x => x !== T)));
     let parar = null;
     const ctl = medirYEscuchar({
-      el: $("#flujo"), tipo: "impro", etiquetaMedir: "Medir (empieza a hablar)",
+      el: $("#flujo"), tipo: "impro", nivel: T.nivel, extra: { temaId: T.id }, etiquetaMedir: "Medir (empieza a hablar)",
       alIniciar: () => { parar = cuentaRegresiva(DUR, t => { const c = $("#cd"); if (c) c.textContent = t; }, () => ctl.terminar()); },
       alTerminar: () => { parar && parar(); parar = null; },
       evaluar: r => {
         const words = palabras(r.text).length, dur = r.hablaSecs || r.secs;
         const wpm = dur >= 5 ? Math.round(words / (dur / 60)) : null; const m = countMuletillas(r.segs);
-        logSession("impro", { wpm, mul: m.c, words, secs: Math.round(dur), modo: "medido" });
+        ajustarNivel("impro", logSession("impro", { wpm, mul: m.c, words, secs: Math.round(dur), modo: "medido", temaId: T.id, level: T.nivel }));
         const lst = Object.entries(m.found).map(([k, v]) => `<span class="pill">${esc(k)} ×${v}</span>`).join("") || "Ninguna detectada 👏";
         return `<div class="stats" style="margin-top:12px"><div class="stat"><b>${m.c}</b><span>muletillas</span></div><div class="stat"><b>${wpm ?? "—"}</b><span>palabras/min</span></div><div class="stat"><b>${Math.round(dur)}s</b><span>duración</span></div></div><p>${lst}</p>
         <p class="sub">El reconocimiento a veces omite “eh” o “mmm”; toma este conteo como mínimo.</p>`;
@@ -216,12 +200,15 @@ const VIEWS = {
     const self = S.sessions.filter(s => s.self != null);
     const avg = (a, k) => a.length ? Math.round(a.reduce((x, s) => x + (s[k] || 0), 0) / a.length) : "—";
     const last7 = [...Array(7)].map((_, i) => { const d = new Date(); d.setDate(d.getDate() - 6 + i); return S.days[dayStr(d)] ? "🟩" : S.freezeUsed.includes(dayStr(d)) ? "🧊" : "⬜"; }).join(" ");
-    $("#app").innerHTML = `<div class="card"><h2>Últimos 7 días</h2><p style="font-size:22px;text-align:center">${last7}</p>
+    $("#app").innerHTML = `<button class="btn" onclick="go('reporte')">🔭 Ver reporte semanal</button><div class="card"><h2>Últimos 7 días</h2><p style="font-size:22px;text-align:center">${last7}</p>
     <div class="stats"><div class="stat"><b>${S.sessions.length}</b><span>ejercicios</span></div><div class="stat"><b>${Object.keys(S.days).length}</b><span>días practicados</span></div><div class="stat"><b>${improvement() > 0 ? "−" + improvement() + "%" : "—"}</b><span>muletillas vs inicio</span></div></div></div>
     ${chartCard("🎯 Precisión en trabalenguas (%)", art.map(s => s.acc), 0, 100)}
     ${chartCard("💬 Muletillas por minuto", im.map(s => +(s.mul / (s.secs / 60)).toFixed(1)), 0, null)}
     ${chartCard("⏱️ Palabras por minuto (lectura)", read.map(s => s.wpm), 60, 220, [130, 160])}
     ${chartCard("🌬️ Exhalación sostenida (s)", br.map(s => s.hold), 0, null)}
+    ${chartCard("📣 Proyección: mejor tramo en meta (s)", by("vol").map(s => s.mejor || 0), 0, null, [5, 30])}
+    ${chartCard("🎭 Entonación: intenciones claras (de 3)", by("ento").map(s => s.aciertos), 0, 3)}
+    ${chartCard("⏸️ Pausas clave logradas (%)", by("pausa").filter(s => s.total).map(s => Math.round(s.hit / s.total * 100)), 0, 100)}
     ${chartCard("⭐ Autocalificación (1–5)", self.map(s => s.self), 1, 5)}
     <div class="card"><h3>Promedios</h3><p>Precisión: <b>${avg(art, "acc")}%</b> · Ritmo: <b>${avg(read, "wpm")} ppm</b> · Mejor exhalación: <b>${br.length ? Math.max(...br.map(s => s.hold)) : "—"} s</b></p></div>`;
     document.querySelectorAll("canvas[data-v]").forEach(drawChart);

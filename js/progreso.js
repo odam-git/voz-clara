@@ -55,7 +55,15 @@ const BADGES = [
   { id: "clean", e: "🧼", n: "Sin muletillas", d: "Improvisa 60 s con 0 muletillas (medido)", f: () => S.sessions.some(s => s.type === "impro" && s.modo === "medido" && s.secs >= 55 && s.words >= 60 && s.mul === 0) },
   { id: "pace", e: "⏱️", n: "Ritmo de orador", d: "Lectura entre 130 y 160 ppm", f: () => S.sessions.some(s => s.type === "read" && s.wpm >= 130 && s.wpm <= 160) },
   { id: "improve", e: "📈", n: "Mejora real", d: "Reduce 50% tus muletillas por minuto: últimos 7 días vs. tu primera semana", f: () => improvement() >= 50 },
-  { id: "s100", e: "👑", n: "Cien sesiones", d: "Acumula 100 ejercicios", f: () => S.sessions.length >= 100 }
+  { id: "s100", e: "👑", n: "Cien sesiones", d: "Acumula 100 ejercicios", f: () => S.sessions.length >= 100 },
+  // Estos se otorgan desde su módulo:
+  { id: "diag", e: "🧭", n: "Punto de partida", d: "Completa tu diagnóstico inicial", f: () => !!S.badges.diag },
+  { id: "vol", e: "📣", n: "Voz que llega", d: "Sostén 5 s tu voz en la meta de +6 dB", f: () => !!S.badges.vol },
+  { id: "ento", e: "🎭", n: "Tres intenciones", d: "Logra afirmar, preguntar y enfatizar en una misma frase", f: () => !!S.badges.ento },
+  { id: "pausa", e: "⏸️", n: "El poder del silencio", d: "Haz todas las pausas clave de un texto", f: () => !!S.badges.pausa },
+  { id: "canto", e: "🎶", n: "Afinado", d: "Afina 8 de 9 notas de la escala", f: () => !!S.badges.canto },
+  { id: "nivel3", e: "🧗", n: "Nivel experto", d: "Llega al nivel 3 en un ejercicio", f: () => !!S.badges.nivel3 },
+  { id: "reporte", e: "🔭", n: "Mirada al avance", d: "Revisa tu reporte semanal", f: () => !!S.badges.reporte }
 ];
 
 // % de reducción de muletillas/min: primera semana con improvisaciones medidas vs. últimos 7 días.
@@ -82,5 +90,5 @@ function checkBadges() {
 
 function routineDone() {
   const t = S.sessions.filter(s => s.date === today());
-  return Object.fromEntries(STEPS.map(([id]) => [id, t.some(s => s.type === id)]));
+  return Object.fromEntries(pasosHoy().map(([id]) => [id, t.some(s => s.type === id)]));
 }

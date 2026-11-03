@@ -1,0 +1,80 @@
+{
+ "version": 1,
+ "items": [
+  {
+   "id": "E01",
+   "base": "La audiencia empieza a las diez",
+   "enfasis": "diez"
+  },
+  {
+   "id": "E02",
+   "base": "El testigo dijo la verdad",
+   "enfasis": "verdad"
+  },
+  {
+   "id": "E03",
+   "base": "Ya firmaste el contrato",
+   "enfasis": "firmaste"
+  },
+  {
+   "id": "E04",
+   "base": "Mañana entregamos el informe",
+   "enfasis": "mañana"
+  },
+  {
+   "id": "E05",
+   "base": "El juez aceptó la prueba",
+   "enfasis": "aceptó"
+  },
+  {
+   "id": "E06",
+   "base": "Vamos a llegar a tiempo",
+   "enfasis": "tiempo"
+  },
+  {
+   "id": "E07",
+   "base": "Tu propuesta es la mejor",
+   "enfasis": "tu"
+  },
+  {
+   "id": "E08",
+   "base": "El plazo vence el viernes",
+   "enfasis": "viernes"
+  },
+  {
+   "id": "E09",
+   "base": "Ella ganó el caso",
+   "enfasis": "ella"
+  },
+  {
+   "id": "E10",
+   "base": "Hoy practicamos dos veces",
+   "enfasis": "dos"
+  },
+  {
+   "id": "E11",
+   "base": "El equipo terminó el proyecto",
+   "enfasis": "terminó"
+  },
+  {
+   "id": "E12",
+   "base": "Esta es la última oportunidad",
+   "enfasis": "última"
+  },
+  {
+   "id": "E13",
+   "base": "Lo dijiste en la reunión",
+   "enfasis": "reunión"
+  },
+  {
+   "id": "E14",
+   "base": "El público entendió el mensaje",
+   "enfasis": "entendió"
+  },
+  {
+   "id": "E15",
+   "base": "Nos vemos en la sala tres",
+   "enfasis": "tres"
+  }
+ ]
+}

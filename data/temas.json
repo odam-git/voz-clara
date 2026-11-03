@@ -1,0 +1,215 @@
+{
+ "version": 1,
+ "items": [
+  {
+   "id": "T01",
+   "cat": "cotidiano",
+   "nivel": 1,
+   "seg": 45,
+   "t": "Presenta tu trabajo en un minuto a alguien que no conoce tu área."
+  },
+  {
+   "id": "T02",
+   "cat": "cotidiano",
+   "nivel": 1,
+   "seg": 45,
+   "t": "Cuenta qué hiciste el fin de semana y qué fue lo mejor."
+  },
+  {
+   "id": "T03",
+   "cat": "cotidiano",
+   "nivel": 1,
+   "seg": 45,
+   "t": "Describe tu comida mexicana favorita y por qué la recomiendas."
+  },
+  {
+   "id": "T04",
+   "cat": "cotidiano",
+   "nivel": 1,
+   "seg": 45,
+   "t": "Explica cómo llegar de tu casa a tu trabajo."
+  },
+  {
+   "id": "T05",
+   "cat": "cotidiano",
+   "nivel": 1,
+   "seg": 45,
+   "t": "Presenta a un orador antes de su conferencia."
+  },
+  {
+   "id": "T06",
+   "cat": "cotidiano",
+   "nivel": 1,
+   "seg": 45,
+   "t": "Cuenta una anécdota de tu infancia que te haya enseñado algo."
+  },
+  {
+   "id": "T07",
+   "cat": "cotidiano",
+   "nivel": 1,
+   "seg": 45,
+   "t": "Recomienda un libro, una película o una serie."
+  },
+  {
+   "id": "T08",
+   "cat": "cotidiano",
+   "nivel": 1,
+   "seg": 45,
+   "t": "Describe tu ciudad ideal."
+  },
+  {
+   "id": "T09",
+   "cat": "persuasivo",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Convence a alguien de empezar a hacer ejercicio."
+  },
+  {
+   "id": "T10",
+   "cat": "persuasivo",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Defiende por qué los datos ayudan a tomar mejores decisiones."
+  },
+  {
+   "id": "T11",
+   "cat": "persuasivo",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Argumenta a favor y en contra del trabajo en casa."
+  },
+  {
+   "id": "T12",
+   "cat": "persuasivo",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Convence a tu equipo de adoptar una nueva forma de trabajar."
+  },
+  {
+   "id": "T13",
+   "cat": "persuasivo",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Explica por qué vale la pena aprender a hablar en público."
+  },
+  {
+   "id": "T14",
+   "cat": "persuasivo",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Propón una mejora para tu colonia y pide apoyo para lograrla."
+  },
+  {
+   "id": "T15",
+   "cat": "persuasivo",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Da un brindis para la boda de un amigo."
+  },
+  {
+   "id": "T16",
+   "cat": "persuasivo",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Explica un tema complejo de tu trabajo con palabras sencillas."
+  },
+  {
+   "id": "T17",
+   "cat": "laboral",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Presenta un proyecto a tu jefe en 60 segundos y pide una decisión."
+  },
+  {
+   "id": "T18",
+   "cat": "laboral",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Responde con calma a una crítica injusta en una reunión."
+  },
+  {
+   "id": "T19",
+   "cat": "laboral",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Explica un error de tu equipo y cómo se va a corregir."
+  },
+  {
+   "id": "T20",
+   "cat": "laboral",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Informa una mala noticia con empatía y claridad."
+  },
+  {
+   "id": "T21",
+   "cat": "laboral",
+   "nivel": 2,
+   "seg": 60,
+   "t": "Defiende una propuesta ante alguien que está en desacuerdo."
+  },
+  {
+   "id": "T22",
+   "cat": "juridico",
+   "nivel": 3,
+   "seg": 90,
+   "t": "Como abogado, explica a tu cliente qué es una audiencia y qué va a pasar en ella."
+  },
+  {
+   "id": "T23",
+   "cat": "juridico",
+   "nivel": 3,
+   "seg": 90,
+   "t": "Expón un alegato de apertura breve en un caso de despido injustificado."
+  },
+  {
+   "id": "T24",
+   "cat": "juridico",
+   "nivel": 3,
+   "seg": 90,
+   "t": "Explica la presunción de inocencia a un grupo de estudiantes de secundaria."
+  },
+  {
+   "id": "T25",
+   "cat": "juridico",
+   "nivel": 3,
+   "seg": 90,
+   "t": "Argumenta por qué una notificación mal hecha afecta el derecho de defensa."
+  },
+  {
+   "id": "T26",
+   "cat": "juridico",
+   "nivel": 3,
+   "seg": 90,
+   "t": "Explica con palabras sencillas la diferencia entre un juicio civil y uno penal."
+  },
+  {
+   "id": "T27",
+   "cat": "juridico",
+   "nivel": 3,
+   "seg": 90,
+   "t": "Defiende ante un tribunal por qué un plazo debe ampliarse."
+  },
+  {
+   "id": "T28",
+   "cat": "juridico",
+   "nivel": 3,
+   "seg": 90,
+   "t": "Responde a la objeción: «Señoría, la pregunta es sugestiva»."
+  },
+  {
+   "id": "T29",
+   "cat": "juridico",
+   "nivel": 3,
+   "seg": 90,
+   "t": "Cierra un alegato pidiendo una sentencia, en menos de un minuto."
+  },
+  {
+   "id": "T30",
+   "cat": "juridico",
+   "nivel": 3,
+   "seg": 90,
+   "t": "Explica por qué la claridad en una sentencia es un derecho de las personas."
+  }
+ ]
+}

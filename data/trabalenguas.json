@@ -1,0 +1,2519 @@
+{
+ "version": 1,
+ "orden": [
+  "RR",
+  "TR",
+  "PL",
+  "R",
+  "L",
+  "S",
+  "DT",
+  "PB",
+  "KG",
+  "CHY"
+ ],
+ "fonemas": {
+  "RR": {
+   "nombre": "R fuerte (RR)",
+   "ayuda": "La punta de la lengua vibra varias veces detrás de los dientes de arriba. Va al inicio de palabra, con doble r, y después de n, l o s.",
+   "silabas": [
+    "ra re ri ro ru",
+    "rra rre rri rro rru",
+    "arra erre irri orro urru",
+    "enra enre honra alrededor Israel"
+   ]
+  },
+  "TR": {
+   "nombre": "Grupos con R (TR, BR, CR, DR, GR, PR, FR)",
+   "ayuda": "Pronuncia la consonante y la r de un solo golpe, sin meter una vocal en medio: «tres», no «teres».",
+   "silabas": [
+    "tra tre tri tro tru",
+    "bra bre bri bro bru",
+    "cra cre cri cro cru",
+    "dra pra fra gra"
+   ]
+  },
+  "PL": {
+   "nombre": "Grupos con L (PL, CL, BL, FL, GL, TL)",
+   "ayuda": "Une la consonante y la l en un solo impulso. Cuida que la l no se convierta en r: «plato», no «prato».",
+   "silabas": [
+    "pla ple pli plo plu",
+    "cla cle cli clo clu",
+    "bla ble bli blo blu",
+    "fla gla tla atleta"
+   ]
+  },
+  "R": {
+   "nombre": "R suave",
+   "ayuda": "Un solo toque rápido de la punta de la lengua detrás de los dientes. Va entre vocales (pero, caro) y al final de sílaba (mar, puerta).",
+   "silabas": [
+    "ara ere iri oro uru",
+    "ar er ir or ur",
+    "pera cara mira toro",
+    "puerta tarde verde corto"
+   ]
+  },
+  "L": {
+   "nombre": "L",
+   "ayuda": "La punta de la lengua se apoya detrás de los dientes de arriba y el aire sale por los lados. No la arrastres ni la conviertas en r.",
+   "silabas": [
+    "la le li lo lu",
+    "al el il ol ul",
+    "lala lele lili lolo",
+    "alto falda salsa calma"
+   ]
+  },
+  "S": {
+   "nombre": "S (incluye C y Z)",
+   "ayuda": "Sonido limpio y constante con la lengua detrás de los dientes de abajo. Pronuncia las eses finales: «los niños», no «lo niño».",
+   "silabas": [
+    "sa se si so su",
+    "as es is os us",
+    "ces cis zas zos",
+    "esta este costa pasta"
+   ]
+  },
+  "DT": {
+   "nombre": "D y T",
+   "ayuda": "La punta de la lengua toca la cara interna de los dientes de arriba. Pronuncia la d entre vocales y al final: «cansado», no «cansao».",
+   "silabas": [
+    "da de di do du",
+    "ta te ti to tu",
+    "ada ido ado udo",
+    "verdad ciudad usted salud"
+   ]
+  },
+  "PB": {
+   "nombre": "P y B/V",
+   "ayuda": "Labios juntos y firmes; suelta el aire de golpe en la p y con voz en la b. En español la b y la v suenan igual.",
+   "silabas": [
+    "pa pe pi po pu",
+    "ba be bi bo bu",
+    "apa epe ipi opo",
+    "abo ebi uba ave"
+   ]
+  },
+  "KG": {
+   "nombre": "C/K/QU y G",
+   "ayuda": "La parte de atrás de la lengua toca el paladar. La k suelta el aire de golpe; la g lleva voz. No te comas la última sílaba.",
+   "silabas": [
+    "ca que qui co cu",
+    "ga gue gui go gu",
+    "aca eque iqui oco",
+    "aga egue igui ogo"
+   ]
+  },
+  "CHY": {
+   "nombre": "CH, LL y Y",
+   "ayuda": "La ch es un golpe corto de la lengua contra el paladar. La ll y la y suenan igual en México: suaves, sin convertirse en «sh».",
+   "silabas": [
+    "cha che chi cho chu",
+    "lla lle lli llo llu",
+    "ya ye yi yo yu",
+    "hacha calle mayo leche"
+   ]
+  }
+ },
+ "items": [
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "Ramón rema rápido en el río."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "Rita regala rosas rojas."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "El burro rebuzna en el corral."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "Rocío ríe con la radio."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "Un perro corre tras el carro."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "Raúl repara el reloj roto."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "Rafael recorre la torre redonda."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "Ricardo arregla la reja del barrio."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "El ratón roe la rama."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "Rubén rasca la tierra con un rastrillo."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "Enrique sirve arroz con frijoles."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "Israel recorre el barrio en bicicleta."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "Rápido ruedan los carros del ferrocarril."
+  },
+  {
+   "f": "RR",
+   "n": 1,
+   "o": "original",
+   "t": "La perra de Rosa ladra en la terraza."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Erre con erre cigarro, erre con erre barril, rápido ruedan los carros cargados de azúcar del ferrocarril."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "tradicional",
+   "t": "El perro de San Roque no tiene rabo porque Ramón Ramírez se lo ha cortado."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Rosa Rizo un rizo rizó; ¿qué rizo rizó Rosa Rizo?"
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Un burro comía berros y el perro se los robó; el burro lanzó un rebuzno y el perro al barro cayó."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "original",
+   "t": "Rodrigo arrastra un carro de ruedas rotas por la carretera de Monterrey."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "original",
+   "t": "Rosario recorta retazos rojos para remendar el rebozo de su abuela."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "original",
+   "t": "El reloj de la torre retumba y los perros del barrio corren a resguardarse."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "original",
+   "t": "Ramiro regresa de Real del Monte con un racimo de rábanos."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "original",
+   "t": "En la sierra, el arriero arrea a los burros rumbo al arroyo."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "original",
+   "t": "Raquel rasga el retrato y Rebeca recoge los restos."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "original",
+   "t": "Los guerreros rodearon la torre y rompieron la reja del jardín."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "original",
+   "t": "Roberto ruega que el remolque no se atore en el barro."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "original",
+   "t": "Corre, corre, carretero, que el ferrocarril ya ruge en el cerro."
+  },
+  {
+   "f": "RR",
+   "n": 2,
+   "o": "original",
+   "t": "Rufino ríe y refunfuña mientras repara el radiador de su carro."
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "tradicional",
+   "t": "Parra tenía una perra y Guerra tenía una parra; la perra de Parra subió a la parra de Guerra. Guerra le pegó con la porra a la perra de Parra, y Parra le dijo a Guerra: ¿por qué le pegas con la porra a la perra de Parra?"
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "original",
+   "t": "El ratón Ramón roía un rollo de ropa rosa; Rita, la de la risa ronca, rescató la ropa del ratón y la remendó con retazos de terciopelo."
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "original",
+   "t": "Rigoberto, el arriero de la sierra, recorre los cerros con sus burros; cuando el río se revuelve, regresa por la carretera rodeando el barranco."
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "original",
+   "t": "Raúl reúne recibos, revisa registros y redacta el reporte; si el reporte resulta erróneo, Raúl lo rehace hasta que no queda ni un error."
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "original",
+   "t": "En el barrio de la Merced, un carretero arrastra un carro repleto de rábanos, berros y arroz, mientras los perros corren tras las ruedas."
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "original",
+   "t": "Rocío regaña al perro porque rompió el rosal; el perro, arrepentido, se recuesta en la alfombra roja y ronca como un rey."
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "original",
+   "t": "Ruedan, ruedan los barriles por la rampa del cerro; si un barril se descarrila, Rodrigo lo recoge y lo regresa a la carreta."
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "original",
+   "t": "Rápido, rápido, el reloj retumba: Ramona recorre el corredor, rescata el retrato y lo resguarda en el ropero antes de que regrese Rafael."
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "original",
+   "t": "Un burro terco rebuznaba en el corral; el arriero, harto del ruido, le arrimó un racimo de rábanos y el burro, risueño, se rindió."
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "original",
+   "t": "Arre, arre, burrito, que la sierra está cerca: si te rindes en el arroyo, nos alcanzará la tormenta y se arruinarán los arreos."
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "original",
+   "t": "Ricardo Rosas, registrador del juzgado, revisa rigurosamente cada recurso; si encuentra un renglón erróneo, lo resalta en rojo y lo regresa."
+  },
+  {
+   "f": "RR",
+   "n": 3,
+   "o": "original",
+   "t": "Rara vez se rinde Rebeca: si el reto resulta rudo, respira, reacomoda sus ideas y lo resuelve en un rato."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "tradicional",
+   "t": "Tres tristes tigres tragaban trigo en un trigal."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "tradicional",
+   "t": "Un tigre, dos tigres, tres tigres."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "Brenda brinda con Bruno."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "La cabra trepa la cresta."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "Fresas frescas para Francisco."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "Gregorio graba un gran disco."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "Pedro prepara el primer premio."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "El trueno truena tras el trigal."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "Cristina cree en sus sueños."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "Andrés dibuja un dragón."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "Abrí el libro de Gabriel."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "Trece trenes traen trigo."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "Fray Francisco prende la fragua."
+  },
+  {
+   "f": "TR",
+   "n": 1,
+   "o": "original",
+   "t": "Bruno abre la ventana."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Tres tristes tigres tragaban trigo en tres tristes trastos, sentados tras un trigal."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "Brenda brinca la barda y Bruno, bromista, la abraza al bajar."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "Fresas frescas, frijoles fritos y fruta fría: Francisco prefiere la fruta fresca."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "Gregorio gritó de gusto cuando su grupo ganó el gran premio de la granja."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "El trompetista entró al teatro y tocó tres trompetas tras el telón."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "Cristóbal cree que el cráter crece cada vez que cruje la tierra."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "Drago, el dragón, dormía en la madriguera de piedra y madrugaba para desayunar."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "Probé las promesas del profesor y comprobé que eran propuestas prácticas."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "La cabra brava brincó entre las breñas y bebió en el abrevadero."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "Tres trapecistas trepan al trapecio y, tras un trueno, tiemblan de frío."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "Fabricio fabrica frascos de vidrio con fragmentos de cristal."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "Las tres trabajadoras traen trajes típicos para el baile tradicional del pueblo."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "Gabriel grabó un programa de radio sobre grandes premios de pintura."
+  },
+  {
+   "f": "TR",
+   "n": 2,
+   "o": "original",
+   "t": "Primero practica, después presenta: el progreso premia al que prepara."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "tradicional",
+   "t": "El cielo está enladrillado, ¿quién lo desenladrillará? El desenladrillador que lo desenladrille buen desenladrillador será."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "tradicional",
+   "t": "Tres tristes tigres tragaban trigo en un trigal; en tres tristes trastos tragaban trigo tres tristes tigres."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "original",
+   "t": "Trini trajo tres trajes de terciopelo; tras probarse los tres, Trini se quedó con el traje gris, el más práctico para trabajar."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "original",
+   "t": "El brujo Braulio abre el baúl de bronce, saca un libro sobre brebajes y, entre bromas, lo cubre con una manta morada."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "original",
+   "t": "Fresia, la frutera de Fresnillo, ofrece fresas frescas, frambuesas y frutas frías; si alguien le pide fiado, Fresia frunce la frente."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "original",
+   "t": "Gregorio, el granjero, agrupa a sus grullas en la granja; cuando graniza, las grullas graznan y Gregorio grita para tranquilizarlas."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "original",
+   "t": "Andrea, la ladrillera, dibuja dragones en los ladrillos; su padre, don Pedro, los coloca en el patio y forman un cuadro precioso."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "original",
+   "t": "Prometo practicar primero, preparar mis pruebas y presentar el proyecto con precisión: prisa no, pero pereza tampoco."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "original",
+   "t": "Cristina cruza el crucero con cuidado; cree que el criterio crece con la crítica y que la crítica, bien hecha, construye."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "original",
+   "t": "Tras tres truenos, el trigal tembló; tras la tormenta, los trigueros trabajaron toda la tarde para traer el trigo al granero."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "original",
+   "t": "El abogado Gabriel Brambila abrió el expediente, leyó con cuidado las pruebas y, con palabras breves, probó que el contrato era válido."
+  },
+  {
+   "f": "TR",
+   "n": 3,
+   "o": "original",
+   "t": "Abrazado a su sombrero, el hombre del pueblo cruzó el puente; brincó el charco, trepó la barda y encontró, por fin, la entrada al granero."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "tradicional",
+   "t": "Pablito clavó un clavito."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "Clara planta claveles."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "Blanca habla con claridad."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "La flor flota en el lago."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "El globo flota en el cielo."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "Plácido toca la flauta."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "Clemente aplaude en la clase."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "Las nubes blancas cubren la playa."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "Flor plancha la blusa."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "Pablo pliega el plano."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "El clima de Tlaxcala es templado."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "Gloria arregla el reglamento."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "Un claro de luna alumbra el claustro."
+  },
+  {
+   "f": "PL",
+   "n": 1,
+   "o": "original",
+   "t": "Cleto compra clavos y plomo."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Pablito clavó un clavito; un clavito clavó Pablito. ¿Qué clavito clavó Pablito?"
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Pancha plancha con cuatro planchas. ¿Con cuántas planchas plancha Pancha?"
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "Plácido planta plátanos en la playa y Plácida, su prima, platica con las plantas."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "Clemente clava clavos en la clínica mientras Clara clasifica las claves."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "Blanca blanquea la blusa con blanqueador y la cuelga bajo el sol."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "Flora, la florista, ofrece flores frescas y flor de calabaza para las quesadillas."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "Gloria y Glenda inflan globos de colores para la fiesta de Tlacotalpan."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "El atleta de Tlalpan entrena en el claro del bosque cada mañana."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "Clara explica la clase con claridad y los alumnos aplauden su explicación."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "El flaco Floriberto flota en el lago, flojo y feliz, sin ninguna prisa."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "Pablo plantea un plan: plantar plátanos, plantar pinos y plantar flores en la plaza."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "La niebla blanca se pliega sobre el pueblo y el campanario se ve doblado."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "El cliente reclama que el clavo del clóset se aflojó en la primera semana."
+  },
+  {
+   "f": "PL",
+   "n": 2,
+   "o": "original",
+   "t": "Blas habla bajito, pero cuando explica la tabla, habla clarísimo."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "tradicional",
+   "t": "Pablito clavó un clavito en la calva de un calvito; en la calva de un calvito un clavito clavó Pablito."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "original",
+   "t": "Blas, el del bloque de enfrente, habla bajo y se aflige si le aplauden; pero cuando explica la tabla de multiplicar, habla tan claro que el salón entero lo aplaude."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "original",
+   "t": "Flora flota en la flamante flotilla; si una flecha flaquea, Flora la afila con flema y la flecha vuela directo al blanco."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "original",
+   "t": "La plática de Plácido sobre la plata y el plomo fue tan amplia y tan plana que el público, aplastado en la plaza, se quedó dormido."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "original",
+   "t": "Clara, la clarinetista de Tlaxcala, practica claves complicadas; cuando la clase concluye, Clara aplaude, cierra el clarinete y sale a la plaza."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "original",
+   "t": "Gloria glosa el reglamento: la regla obliga a explicar con claridad cada cláusula, y Gloria subraya cada cláusula que no queda clara."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "original",
+   "t": "Ni el atleta de Atlixco ni el de Tlalnepantla aplauden cuando el tlacuache, con flojera, se queda dormido en el claro del bosque."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "original",
+   "t": "Blanca y Blas bloquean la puerta con un bloque de cemento; Pablo, flaco y ágil, se cuela por la ventana y les gana el último plato."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "original",
+   "t": "En el pleito por el plazo del pago, la clienta explicó con claridad que la cláusula aplicable establecía un plazo más amplio y más flexible."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "original",
+   "t": "Si la flor flota en el lago, el flamenco la toma; y cuando el flamenco, flojo y despreocupado, la suelta, la flor flota de nuevo."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "original",
+   "t": "Un globo blanco se infla sobre la plaza; los niños lo aplauden, los abuelos lo comentan y el payaso, implacable, lo explota con un alfiler."
+  },
+  {
+   "f": "PL",
+   "n": 3,
+   "o": "original",
+   "t": "Clemente compró clavos, clavijas y una plancha de plomo; con ellos armó un clavecín tan desafinado que hasta el claxon sonaba más claro."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Clara mira el mar."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Laura ara el terreno."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Mario quiere ver el puerto."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "El loro de Aurora habla claro."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Sara pintó un faro amarillo."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Teresa toma café en la tarde."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Mira, María, qué cara tan seria."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Arturo pintó la puerta de oro."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "El cartero lleva cartas al puerto."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Quiero amar, cantar y bailar."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Pedro dibuja una pera madura."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Las horas pasan claras y serenas."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Doroteo toca el tambor en el portal."
+  },
+  {
+   "f": "R",
+   "n": 1,
+   "o": "original",
+   "t": "Ernesto come tortas en la feria."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "Mariana quiere ir a la feria, pero su hermano prefiere quedarse a mirar el mar."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "El cartero de Querétaro llegó tarde porque perdió el camino entre las veredas."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "Aurora, la de la cara seria, oró tres horas para que parara la lluvia."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "Si el loro de Lorenzo habla claro, Lorenzo lo cuida como un tesoro."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "Teresa era la mejor maestra de la escuela y enseñaba a leer con paciencia."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "Mi tío Arturo arma faroles de papel para la feria del pueblo."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "Dora, la jardinera, cura las flores amarillas con agua clara."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "El marinero mira el horizonte y espera la hora de volver al puerto."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "Para comprar peras maduras hay que madrugar al mercado de Coyoacán."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "Ernesto quiere ser orador; por eso practica cada mañana frente al espejo."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "Clara y Mario miran la luna desde el mirador del puerto."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "Aunque el camino era duro, el viajero siguió adelante hasta ver el faro."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "La señora Moreno cura la tos con té de naranja y miel."
+  },
+  {
+   "f": "R",
+   "n": 2,
+   "o": "original",
+   "t": "Ya era hora de que Héctor dejara la torta y empezara a trabajar."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "tradicional",
+   "t": "El amor es una locura que solo el cura lo cura, pero el cura que lo cura comete una gran locura."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "tradicional",
+   "t": "Mariana Magaña desenmarañará mañana la maraña que enmarañada Mariana Magaña dejó."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "original",
+   "t": "Teresa, la tejedora de Teotihuacán, teje tapetes de colores claros; cuando termina un tapete, lo dobla y lo guarda en el armario de cedro."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "original",
+   "t": "Mario, el marinero, miraba el mar cada mañana; cuando el horizonte se oscurecía, preparaba el faro y esperaba a que pasara la tormenta."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "original",
+   "t": "El orador ordenó sus ideas, aclaró la garganta y, con voz clara y firme, pronunció un discurso sereno que todos quisieron escuchar."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "original",
+   "t": "Si la pera está madura, Laura la pone en la mesa; si la pera está dura, Laura la guarda para mañana y espera."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "original",
+   "t": "Aurora dora el pan, Dora decora la mesa y Lorena prepara el café para que a las ocho todo esté a la hora."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "original",
+   "t": "Por la vereda del puerto pasaba un cartero ligero; cargaba cartas, sobres y un paraguas para cuando el cielo se nublara."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "original",
+   "t": "Quiero que me quieras como quiero yo quererte; si no me quieres como quiero, quiero que me lo digas claramente."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "original",
+   "t": "El juez ordenó que se aclarara la declaración: la parte actora debía precisar la hora, el lugar y la manera en que ocurrieron los hechos."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "original",
+   "t": "Tres veces miró el reloj Arturo antes de entrar al foro; respiró, miró al jurado y comenzó a hablar sin apuro."
+  },
+  {
+   "f": "R",
+   "n": 3,
+   "o": "original",
+   "t": "Cara a cara, el orador mira al auditorio; para que la palabra llegue clara, articula cada sílaba y espera, sereno, la pausa precisa."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "Lola lava la loza."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "Lulú lee un libro azul."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "El lobo lame la lata."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "Lalo lima la lámina."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "La luna luce linda."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "Lili limpia los lentes."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "Leonel lanza la pelota."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "El pelo de Lola es largo."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "Lucía lava las lechugas."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "Al alba, el sol sale lento."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "El ala del águila es leve."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "Lupe lame una paleta de limón."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "Las olas lamen la arena."
+  },
+  {
+   "f": "L",
+   "n": 1,
+   "o": "original",
+   "t": "Lorena lee la lección."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "Lalo lame la paleta de limón mientras Lola lee un libro en la sala."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "La loba y el lobo lamen la leche que Lola dejó en la lata."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "Leonel y Lilia leen leyendas de Lerma a la luz de la lámpara."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "El alcalde del lugar levantó la sesión y salió lento al balcón."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "Lucila lija la lámina del barandal hasta que luce limpia y lisa."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "Las lilas y los laureles lucen lindos en el jardín de Lucía."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "Al final del pasillo, el abogado leyó en voz alta el alegato, lento y legible."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "Lili, la del lunar, lleva limones al local de la esquina."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "Un león leal lame la melena del león más viejo de la selva."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "Lorenzo lamenta la lluvia porque le mojó la lona del puesto de elotes."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "El luchador de lucha libre saluda al público y levanta los brazos."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "Celia y Lalo almuerzan tlacoyos al lado del lago de Pátzcuaro."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "Si la lámpara alumbra lo suficiente, Leticia leerá la lección completa."
+  },
+  {
+   "f": "L",
+   "n": 2,
+   "o": "original",
+   "t": "Al volver del baile, Lola deja las sandalias en el pasillo."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "Lola lava la loza, Lalo limpia los lentes, Lili lee la lección y Leonel, el más listo, se lava las manos y se va a la escuela sin lavar nada."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "El lento caracol de la laguna salió al alba, lamió el lodo del lago y, lentamente, llegó al limonero a la hora del almuerzo."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "Leopoldo, el alfarero de Talavera, labra las lozas con paciencia; las pule, las pinta de azul y las alinea en el anaquel del local."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "La lluvia lava las calles de León; los lustradores de la plaza levantan sus cajones y se refugian bajo el portal, a la espera del sol."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "Lilia lee leyes en la biblioteca: leyes locales, leyes federales y leyes generales; al final, las lee de nuevo para no olvidar ni una línea."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "El elefante Leandro, leal y lento, lleva sobre el lomo a la loba Lola, al león Lalo y a la lechuza Lula, que les lee leyendas."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "Al llegar a la sala, la licenciada saludó, colocó el legajo sobre la mesa y, con voz serena y clara, solicitó la palabra."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "Un lunes de luna llena, Lucio salió a la calle con un balón; lo lanzó tan alto que el balón llegó al balcón del alcalde."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "Las ollas de Lola lucen limpias; las de Lalo, llenas de lodo; y las de Lili, ni limpias ni sucias: las olvidó en la azotea."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "Leal es el que lucha a la luz del día, el que habla con la verdad y el que, aunque le cueste, no deja solo al que lo necesita."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "Lento, lento, el lirio se levanta en la laguna; la libélula lo mira, lo rodea, lo saluda y luego vuela, ligera, hacia la loma."
+  },
+  {
+   "f": "L",
+   "n": 3,
+   "o": "original",
+   "t": "El alumno Leobardo leyó el libro completo, subrayó las palabras difíciles, las buscó en el diccionario y luego las explicó a la clase."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "Susana sirve sopa sabrosa."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "Seis sillas en la sala."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "Sergio saca sus zapatos."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "Las cosas sencillas son sabias."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "Silvia sonríe sin cesar."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "Sus suegros son serios."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "Los peces pasan despacio."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "El sapo salta al estanque."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "Sesenta sacos de sal."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "Celso cose sus calcetines."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "La señora sirve salsa verde."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "Siete sombreros sobre la cesta."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "Sonia siempre saluda sonriendo."
+  },
+  {
+   "f": "S",
+   "n": 1,
+   "o": "original",
+   "t": "El sastre corta seda suave."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Si Sansón no sazona su salsa con sal, le sale sosa; le sale sosa su salsa a Sansón si la sazona sin sal."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Susana sueña con sembrar semillas de cempasúchil para el Día de Muertos."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Sesenta y seis sastres cosen sacos de seda para la fiesta de San Sebastián."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Sergio, el sereno, sale a las seis y se sienta solo en la esquina."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Si el sol sale sereno, sacaremos las sillas y nos sentaremos en el patio."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Los sabios dicen que el silencio, a veces, dice más que cien discursos."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Celestino sirve sopa de fideos, sopes y salsa a sus sobrinos."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Casi siempre, quien sabe escuchar es quien mejor sabe hablar."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "El cisne se desliza en silencio sobre las aguas del estanque."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Sofía pasea por Xochimilco y se sorprende con las trajineras de colores."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Los zapateros de San Mateo cosen suelas sólidas y zapatos sencillos."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Solo sé que nada sé, decía Sócrates, y así se ganó su fama de sabio."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Si sabes lo que dices, se nota en tu voz y en tu silencio."
+  },
+  {
+   "f": "S",
+   "n": 2,
+   "o": "original",
+   "t": "Los sábados, Sixto saca a pasear a sus siete perros salchicha."
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "Seis sastres de Salamanca cosen sesenta sacos; si cada sastre cose diez sacos, ¿cuántos sacos cosen los seis sastres de Salamanca?"
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "Sara, la sazonadora, sazona sus sopas con sal y su salsa con chiles secos; si la salsa le sale sosa, Sara la sazona otra vez."
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "El señor Sánchez se sienta en su silla, saca sus lentes, señala el segundo párrafo y, sin prisa, solicita que se lea la sentencia completa."
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "Silencio, silencio, se escucha el susurro: son las hojas secas que se deslizan sobre las piedras del sendero cuando sopla el viento del sur."
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "Susana sabe que si sube sin saludar, su suegra se siente; por eso, cada sábado, sube sonriendo y saluda a su suegra con un abrazo."
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "Sesenta y seis sacos de sal sacó Saúl del almacén; si Saúl saca sesenta y seis sacos más, se queda sin sal la cocina del asilo."
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "Cecilia cose sus cosas con seda; si la seda se suelta, Cecilia la sujeta, la asegura y sigue cosiendo sin desesperarse."
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "El secretario del juzgado sella los oficios, los asienta en el sistema y los entrega a las partes en sobres sellados y numerados."
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "Sobre el sofá se sienta Sixto; sobre Sixto se sienta su gato; y sobre el gato, sin saberlo, se sienta el sol de la tarde."
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "Si se sabe lo que se dice y se dice lo que se sabe, se sostiene el discurso y se suma la confianza de quienes escuchan."
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "En las fiestas de septiembre, los vecinos de San Ángel sacan sus sillas a la calle, sirven pozole y se sientan a escuchar el son."
+  },
+  {
+   "f": "S",
+   "n": 3,
+   "o": "original",
+   "t": "Desde las seis, los meseros sirven sopes, quesadillas y esquites; a las once, sin descanso, siguen sirviendo a los últimos clientes."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Tomás toca el tambor."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Dina da dos dulces."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Tito tiene tres tortas."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Daniel duerme todo el día."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Tu tía teje tapetes."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Doña Dora dora el pan."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Todo tiene su tiempo."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "David tira el dado dos veces."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Tadeo toma té de durazno."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Diego dibuja dientes de dinosaurio."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Tres tazas de té tibio."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Dame dos duraznos dulces."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Tina come tamales de dulce."
+  },
+  {
+   "f": "DT",
+   "n": 1,
+   "o": "original",
+   "t": "Teodoro tiene tos todo el otoño."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Dime, Diego, ¿dónde dejaste los dados de dominó que te di?"
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Tadeo y Tita tejen tapetes de todos los tonos en Teotitlán del Valle."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "El doctor Domínguez dicta su diagnóstico despacio para que todos lo entiendan."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Tanto tiempo tardó Tomás en tomar el té, que el té tibio terminó totalmente frío."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Dos dedos de distancia dividen la duda de la decisión."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Todas las tardes, Toño toca la trompeta en el tejado de su tío."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Daniela dobla los documentos y los deja en el despacho del director."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Tantas tortillas tostó Tita que tuvo que tirar las que se tostaron de más."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Dulce de tamarindo, dulce de durazno y dulce de tejocote: Dora los vende todos."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "El testigo titubeó, tosió tres veces y terminó diciendo toda la verdad."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Teté toma tiempo para todo: para trabajar, para descansar y para tomar té."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Doce días después de la audiencia, el demandado decidió desistirse de la demanda."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Tito, el tejón, tiene un túnel tan tortuoso que hasta él termina perdiéndose."
+  },
+  {
+   "f": "DT",
+   "n": 2,
+   "o": "original",
+   "t": "Usted dirá la verdad, dijo el juez, y el testigo dijo: la verdad, toda la verdad."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "Te digo y te repito que no te detengas: tú tienes talento, tienes tiempo y tienes todo lo que te toca para terminar tu tarea."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "Doña Dolores dejó dos docenas de donas en el despacho; el director dijo que eran deliciosas y devoró doce en un solo día."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "Tres tontos tejones tomaban té en un tazón; tras tomar tanto té, los tres tontos tejones tuvieron que tumbarse a dormir en el tapete."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "Dado que el dictamen determina la deuda, el deudor deberá depositar dentro de diez días la cantidad debida; de lo contrario, se dictará sentencia."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "Toda tortuga tiene su tiempo y todo tiempo tiene su tortuga: la tortuga de Tadeo tarda tanto que, cuando termina, ya es otro día."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "David dudaba si decir o no decir; después de dudar durante días, decidió decirlo todo, y desde ese día duerme tranquilo."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "Tita, la tamalera de Tacubaya, tiene tamales de todo: de rajas, de dulce, de mole y de verde; a las tres de la tarde, ya no le queda ni uno."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "El defensor detalló cada dato: la fecha, la dirección del domicilio, el tiempo del trayecto y la distancia que dijo haber recorrido el testigo."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "Tic, tac, dice el reloj de la torre; tic, tac, dicen los tacones de Tere; tic, tac, dice el tiempo que, de todos modos, nunca se detiene."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "De día y de tarde, Dante dibuja dragones; de noche, dobla sus dibujos, los deja en el escritorio y duerme soñando con dragones dorados."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "Todo lo que tiene término tiene trámite, y todo trámite tiene su tiempo: quien lo entiende no se desespera ni detiene su trabajo."
+  },
+  {
+   "f": "DT",
+   "n": 3,
+   "o": "original",
+   "t": "Dime de dónde vienes, dime adónde vas y dime qué traes, que de tu decir depende que te dé o no te dé posada en la ciudad."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "tradicional",
+   "t": "Pepe Pecas pica papas con un pico."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Pablo bebe un poco de agua."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Beto busca su balón."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Papá pinta la puerta."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Bárbara baila bien."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Pepa pela una papaya."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Un barco pequeño pasa por el puerto."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Paco pide pan y pozole."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Bibi besa al bebé."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Pocas papas para Pepe."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Benito borda una bolsa."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "La paloma pasea por el patio."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Bea bebe agua de piña."
+  },
+  {
+   "f": "PB",
+   "n": 1,
+   "o": "original",
+   "t": "Pedro pone el plato en la mesa."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Pepe Pecas pica papas con un pico, con un pico pica papas Pepe Pecas."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Pedro Pérez Pita, pintor portugués, pinta paisajes por poca plata para poder pasar por París."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "Beto busca un buen bote para bajar por el río Balsas con su abuelo."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "Paco y Pepa ponen piñatas en el patio para la posada de diciembre."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "Bárbara barre la banqueta y Benito barniza la banca de madera."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "El payaso Pipo pinta pájaros en las paredes del parque público."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "Bebo poco porque, si bebo mucho, después no puedo ni pensar."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "Una pulga pica a un perro y el perro, pobre, pide ayuda a la paloma."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "Para pagar la papelería, Pablo pidió prestado un peso a su papá."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "Bajo el puente, un barco blanco busca puerto antes de la borrasca."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "Pepita pela papas y Paco pone el pollo a la parrilla para la comida."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "Basta de bromas, dijo Bernabé, y bebió su café de olla de un solo trago."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "Por un pelito no pasa el pato por la puerta del palomar."
+  },
+  {
+   "f": "PB",
+   "n": 2,
+   "o": "original",
+   "t": "Vino Vicente a vender veinte velas a la vecina de enfrente."
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "tradicional",
+   "t": "Pepe Pecas pica papas con un pico; con un pico pica papas Pepe Pecas. Si Pepe Pecas pica papas con un pico, ¿dónde está el pico con que Pepe Pecas pica papas?"
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "original",
+   "t": "Pablo Bobadilla, el boticario del barrio, pesa polvos, prepara pomadas y pone pastillas en botes pequeños para el pueblo."
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "original",
+   "t": "Bajo la bóveda de la basílica, el párroco pide a los peregrinos paciencia; los peregrinos, pacientes, platican, pasean y esperan en paz."
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "original",
+   "t": "Pinta, pinta, pintorcito, pinta un pato, pinta un pino y pinta un pez; si pintas un pato, un pino y un pez, ponles a todos un poco de azul."
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "original",
+   "t": "Beatriz busca botones para su blusa de batista; Benjamín le busca botones de bronce, pero a Beatriz le parecen bastante pesados."
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "original",
+   "t": "Probar los puntos petitorios es lo primero: por eso el apoderado presentó pruebas, peritajes y pagarés para probar su pretensión."
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "original",
+   "t": "Bajaba Benito por la barranca con un bulto de botellas; un borrego le bloqueó el paso y Benito, sin perder la paciencia, lo apartó."
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "original",
+   "t": "Pocas palabras bastan para persuadir: pide poco, pide bien y, sobre todo, pide a tiempo, porque pedir tarde es perder la oportunidad."
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "original",
+   "t": "Papá Pancho pone pan en la parrilla, pone papas en la paila y pone pozole para el padrino; a las tres, ya no queda ni un poquito."
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "original",
+   "t": "Un pobre perico parlanchín pedía pan en la plaza; un panadero bondadoso le puso un bolillo y el perico, bien portado, le dio las gracias."
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "original",
+   "t": "Bebe la buena brisa, abre bien los pulmones y, antes de pronunciar la primera palabra, piensa en el público que te va a escuchar."
+  },
+  {
+   "f": "PB",
+   "n": 3,
+   "o": "original",
+   "t": "Si para pintar la pared Pedro pide un pincel, y para pintar el piso pide una brocha, ¿qué pedirá Pedro para pintar el portón del patio?"
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "tradicional",
+   "t": "Como poco coco como, poco coco compro."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "Carlos come queso."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "El gato gordo ganó."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "Quique cuida a su conejo."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "Gabriela guarda su guitarra."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "Coco compra cacahuates."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "Los gansos graznan en el lago."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "Carmen corta calabazas."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "Gustavo toca la guitarra."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "¿Quién quiere queso con café?"
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "La casa de Camila es cálida."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "El gallo canta en la colina."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "Quince caracoles en la cocina."
+  },
+  {
+   "f": "KG",
+   "n": 1,
+   "o": "original",
+   "t": "Gonzalo goza el gol."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Compadre, cómpreme un coco. Compadre, no compro coco, porque como poco coco como, poco coco compro."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Si el caracol tuviera cara como tiene el caracol, fuera cara, fuera col, fuera caracol con cara."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Cuando cuentes cuentos, cuenta cuántos cuentos cuentas."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "original",
+   "t": "Carlos cuenta cuántos cacahuates caben en el costal de su compadre."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "original",
+   "t": "Gonzalo, el goloso, guarda galletas en el gabinete de la cocina."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "original",
+   "t": "Quique quiere que Kika le cante canciones de cuna antes de acostarse."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "original",
+   "t": "El gallo gris de Guadalupe canta cuando el gato gordo gruñe en el corral."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "original",
+   "t": "Camila compra camotes calientes al carrito que cruza la calle cada noche."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "original",
+   "t": "Gustavo golpea el gong y los gansos, asustados, se van a la laguna."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "original",
+   "t": "Con calma y con cuidado, el cocinero corta cebolla, cilantro y chile."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "original",
+   "t": "Guadalupe guarda sus guantes en la gaveta del guardarropa."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "original",
+   "t": "¿Qué querías que quisiera, si lo que quise no lo quisiste?"
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "original",
+   "t": "Kiko colecciona caracoles, conchas y cocos de la costa de Colima."
+  },
+  {
+   "f": "KG",
+   "n": 2,
+   "o": "original",
+   "t": "El cuate de Quico come quesadillas con queso en el mercado de Coyoacán."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "tradicional",
+   "t": "Cuando cuentes cuentos, cuenta cuántos cuentos cuentas, porque si no cuentas cuántos cuentos cuentas, nunca sabrás cuántos cuentos cuentas tú."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "original",
+   "t": "Un gato gordo, gris y glotón se comió un ganso en el granero; el granjero, gruñón, le gritó al gato, pero el gato, ganador, ni lo escuchó."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "original",
+   "t": "Quico come quesadillas con queso; Kika come quesadillas sin queso; y el que come quesadillas con queso y sin queso es el cuate de Quico."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "original",
+   "t": "Coco, el cocodrilo, come cocos en la costa; cuando cae un coco, Coco corre, lo coge con cuidado y se lo come con todo y cáscara."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "original",
+   "t": "Gabino, el guardia del juzgado, guarda las llaves en la gaveta; cuando llega la licenciada García, Gabino le entrega las llaves y le desea buen día."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "original",
+   "t": "Con cuatro cucharas de cacao, cuatro tazas de café y un poco de canela, la cocinera de Cuernavaca cocina el chocolate más cremoso de la comarca."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "original",
+   "t": "Gonzalo y Guadalupe ganaron el juego de canicas; Gonzalo guardó las canicas grandes y Guadalupe, generosa, regaló las chiquitas."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "original",
+   "t": "Quien con cuidado cuenta, cuenta con calma; quien cuenta con calma, cuenta con certeza; y quien cuenta con certeza, cuenta cuentos que convencen."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "original",
+   "t": "El abogado Gómez alegó que la cláusula quinta carecía de causa; la contraparte contestó que la cláusula quedaba clara, completa y congruente."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "original",
+   "t": "Canta, canta, canario, en la casa de Carmela; cuando Carmela cocina, el canario se calla, y cuando Carmela canta, el canario la acompaña."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "original",
+   "t": "Gregorio, el gaitero de Guanajuato, gasta sus ganancias en guayabas; si se acaban las guayabas, Gregorio guarda su gaita y se va a comer gorditas."
+  },
+  {
+   "f": "KG",
+   "n": 3,
+   "o": "original",
+   "t": "Cuando el gallo canta, Catalina se levanta, coge la canasta, cruza el campo y compra quesos, camotes y guayabas en el tianguis del jueves."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "Chucho come chicharrón."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "La llave está en la silla."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "Yolanda ya llegó."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "El chivo chico chilla."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "Llueve en la calle de Chela."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "Yo llevo el yoyo amarillo."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "Chela echa chile al chayote."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "El pollo come maíz en el llano."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "Chencha chifla una canción."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "La yegua bebe en el arroyo."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "Lucha llena la olla de agua."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "Pancho pide churros con chocolate."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "El cachorro chato duerme en la hamaca."
+  },
+  {
+   "f": "CHY",
+   "n": 1,
+   "o": "original",
+   "t": "Ella llama a su ayudante."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Me han dicho que has dicho un dicho que han dicho que he dicho yo."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "tradicional",
+   "t": "Hoy ya es ayer y ayer ya es hoy; ya llegó el día y hoy es hoy."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "Chucho, el chofer, echa chile a sus chilaquiles y luego chifla de gusto."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "La llama de Yolanda llora en el llano porque la lluvia la mojó."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "Concha y Chencha charlan en la chalupa de Xochimilco mientras chilla un chamaco."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "Yo ya llevo mi silla y mi sombrilla a la playa de Chachalacas."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "El chef chiapaneco cocina chipilín con chile y chayote para la cena."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "Mi hermana llama a la yegua, la yegua relincha y mi hermana la lleva al arroyo."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "Chencha chapotea en el charco y Chucho, el chistoso, le echa más chorritos."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "Ya llegó el lechero con la leche y los bolillos calientitos para el desayuno."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "La llave del llavero de Yolanda se cayó en la calle y nadie la ha hallado."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "Chiquita la chiva, chiquito el chivito, chiquita la choza donde duermen juntitos."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "Yo no me callo: si me llaman, yo voy, y si me necesitan, ahí me hallo."
+  },
+  {
+   "f": "CHY",
+   "n": 2,
+   "o": "original",
+   "t": "Ayer en la noche, Chayo echó chocolate caliente en las tazas de la cocina."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "tradicional",
+   "t": "Me han dicho que has dicho un dicho, un dicho que he dicho yo; ese dicho que te han dicho que yo he dicho, no lo he dicho; y si yo lo hubiera dicho, estaría muy bien dicho por haberlo dicho yo."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "original",
+   "t": "Chucho, el chilango chiflado, chifla en el Chopo; chifla tan fuerte que los chavos de la esquina le piden que chifle más quedito."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "original",
+   "t": "Lluvia, llanto y llovizna: cuando llueve en Lerma, Yolanda llena las cubetas, Yuyú lleva las sillas al techo y el llavero de la casa se pierde."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "original",
+   "t": "Chencha, la del changarro de la esquina, vende chicles, chocolates y churros; si se le acaban los churros, Chencha prepara chilaquiles para el desayuno."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "original",
+   "t": "Ya ves, ya ves: ayer el yerno de Yolanda ayudó a la yegua a cruzar el arroyo, y hoy la yegua ya no quiere ayuda de nadie."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "original",
+   "t": "La ardilla chilla en el chopo, el chapulín chilla en la milpa, y el chamaco que los escucha chilla de risa con tanto chillido."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "original",
+   "t": "El chocolatero de Chiapas echa chocolate en la jícara; si el chocolate se enfría, lo echa al cazo, lo bate con el molinillo y lo vuelve a servir."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "original",
+   "t": "Llegó Lalo a la calle, llamó a la puerta de Lulú, le llevó una llave, un llavero y una olla llena de frijoles, y Lulú lloró de la emoción."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "original",
+   "t": "Un chango chimuelo chupaba chirimoyas en Chapultepec; el chango chimuelo, chistoso, echaba las cáscaras a los chamacos."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "original",
+   "t": "Yo no ayudo al que no se deja ayudar, ni apoyo al que no quiere apoyo; pero al que me llama, yo voy, y si me necesita, ahí me hallo."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "original",
+   "t": "La chef Chelo chamusca los chiles en el comal; luego los pela, les saca las semillas y los rellena de queso para la cena de Nochebuena."
+  },
+  {
+   "f": "CHY",
+   "n": 3,
+   "o": "original",
+   "t": "Chino, Chano y Chato, tres chivos chiquitos, chapotean en el charco y chillan en la choza cuando cae la lluvia de la noche."
+  }
+ ]
+}

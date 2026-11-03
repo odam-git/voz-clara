@@ -1,20 +1,46 @@
 # Voz Clara
 
-App personal para entrenar dicción, voz y oratoria: ejercicios diarios, medición de avances, rachas y recordatorios.
+App personal para entrenar dicción, voz y oratoria en español de México con **práctica deliberada**: ejercicios cortos, enfocados en subhabilidades concretas, con retroalimentación inmediata y medición objetiva del avance.
 
-## Rutina diaria (~11 min)
-1. **Respiración diafragmática**: ciclos 4–4–6 y exhalación sostenida “ssss” cronometrada.
-2. **Vocalización y resonancia**: ejercicios de canto (humming, sirenas, escalas con vocales).
-3. **Articulación**: series silábicas por sonido y trabalenguas con nivel progresivo; mide la precisión palabra por palabra.
-4. **Lectura con ritmo**: mide palabras por minuto (meta 130–160) y claridad.
-5. **Improvisación (60 s)**: cuenta muletillas y velocidad.
+PWA sin servidor ni dependencias. Funciona en GitHub Pages y, después de la primera carga, sin conexión.
 
-## Motivación
-- Racha diaria con **comodines** (1 por cada 7 días, máx. 2) para que un día perdido no la rompa.
-- 12 logros basados en mejora real, no solo en constancia.
-- Gráficas de precisión, muletillas/min, ritmo y capacidad pulmonar.
-- Recordatorio diario vía evento de calendario (.ics) y notificación al abrir la app.
+## Cómo se usa
+1. **Bienvenida**: nombre opcional (se cambia en Ajustes). La app no trae datos de nadie.
+2. **Diagnóstico (3 min)**: voz normal, lectura, un trabalenguas por grupo de sonidos e improvisación. Fija tu **línea base** y elige los sonidos a trabajar.
+3. **Rutina diaria (~13 min)**: respiración, calentamiento de canto, articulación, lectura, improvisación y un **enfoque del día** que rota entre proyección, entonación y pausas.
+4. **Reporte semanal**: tu semana contra la línea base, con lo que más avanzó y el siguiente enfoque.
 
-## Uso
-Es una PWA de un solo archivo, sin servidor. Publícala con GitHub Pages (Settings → Pages → rama `main`) y ábrela en Chrome o Safari; luego “Agregar a pantalla de inicio”.
-El reconocimiento de voz usa la Web Speech API (`es-MX`): funciona mejor en Chrome. Los datos se guardan solo en el dispositivo.
+## Medición en dos tiempos
+- **Medir**: solo reconocimiento de voz (precisión, palabras por minuto, muletillas).
+- **Escucharme**: solo grabación, para oírte. Nunca se usan los dos a la vez.
+- Respiración, canto, proyección, entonación y pausas usan **solo el micrófono** (nivel, dB y tono), sin reconocimiento.
+- Si el reconocimiento no está disponible (Brave, Chrome/Firefox en iPhone, app instalada en iPhone que lo bloquea), la app lo detecta, explica cómo lograr que mida y pide **autocalificación de 1 a 5 estrellas**, guardada aparte.
+
+## Módulos
+| Módulo | Qué mide |
+|---|---|
+| Articulación | Precisión palabra por palabra en 400 trabalenguas (10 grupos de sonidos × 3 niveles) |
+| Lectura | Palabras por minuto (meta 130–160) y claridad en 30 textos: discursos de dominio público, juicio oral ficticio y oratoria |
+| Improvisación | Muletillas por minuto (según contexto) y ritmo en 30 temas |
+| Proyección | dB relativos a tu voz normal; meta +6 dB sostenidos 5 s sin pasar +12 dB |
+| Entonación | Curva de tono al afirmar, preguntar y enfatizar la misma frase |
+| Pausas | Silencios detectados y si caen antes de las ideas clave (‖) |
+| Canto | Resonancia guiada, sirenas (rango en semitonos) y escala con afinador |
+
+La dificultad **se adapta**: sube con 3 buenos resultados seguidos y se ajusta con 3 difíciles.
+
+## Motivación sin culpa
+Rachas con **comodines** (1 por cada 7 días, máx. 2, cubren varios días seguidos), 19 logros y recordatorio diario por calendario (.ics) o notificación al abrir la app.
+
+## Datos y privacidad
+- El historial y las grabaciones se quedan **solo en el dispositivo** (localStorage). Exportar e importar respaldo (combinar o reemplazar) en Ajustes.
+- El **reconocimiento de voz** lo hace el navegador: Chrome envía el audio a Google y Safari a Apple. Los medidores y Escucharme no envían nada.
+
+## iPhone
+Instálala desde Safari con **Compartir › Agregar a pantalla de inicio**. Si en la app instalada no mide, activa **Ajustes › General › Teclado › Dictado**; si aún así no mide, úsala en Safari. Safari y la app instalada guardan historiales separados: júntalos con Exportar e Importar › Combinar.
+
+## Estructura
+- `index.html`: estructura y estilos.
+- `js/`: lógica por módulos (estado, voz, análisis, flujo, progreso, adaptativo, vistas, módulos, diagnóstico, reporte, inicio).
+- `data/`: contenido en JSON (trabalenguas, lecturas, temas, entonación, consejos).
+- `sw.js`: funcionamiento sin conexión. Sube `VERSION` si cambias la lista de archivos.

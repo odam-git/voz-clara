@@ -54,7 +54,8 @@ VIEWS.diag = function () {
       } else {
         if (ses) return ses.terminar();
         b.textContent = "⏹️ Terminé"; b.className = "btn rec"; $("#d-m").textContent = "Silencio un instante y lee…";
-        ses = await sesionMic({ maxSeg: 60, silencioFin: 2.5, alFin: r => { ses = null; if (!vivo) return; const v = r.frames.filter(f => f.voz); finLectura(null, v.length ? v[v.length - 1].t - v[0].t : null); } });
+        try { ses = await sesionMic({ maxSeg: 60, silencioFin: 2.5, alFin: r => { ses = null; if (!vivo) return; const v = r.frames.filter(f => f.voz); finLectura(null, v.length ? v[v.length - 1].t - v[0].t : null); } }); }
+        catch (_) { ses = null; b.textContent = "Intentar de nuevo"; b.className = "btn"; $("#d-m").innerHTML = 'Sin micrófono no puedo medir el ritmo. <button class="btn sec" id="d-sk">Omitir esta prueba</button>'; $("#d-sk").onclick = () => finLectura(null, null); }
       }
     };
     function finLectura(r, dur) {

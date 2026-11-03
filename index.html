@@ -67,7 +67,7 @@ button.step:active{opacity:.6}
 .step .t{flex:1}.step small{color:var(--muted);display:block;font-size:var(--t-cap);margin-top:2px}
 /* ===== Barra de pestañas ===== */
 nav{position:fixed;bottom:0;left:0;right:0;z-index:5;display:flex;padding:0 var(--safe-r) var(--safe-b) var(--safe-l);
-  background:color-mix(in srgb,var(--card) 88%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--line)}
+  background:var(--card);background:color-mix(in srgb,var(--card) 88%,transparent);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--line)}
 nav button{flex:1;border:0;background:none;min-height:56px;padding:6px 0 4px;font-size:11px;font-weight:500;color:var(--muted);cursor:pointer}
 nav button.on{color:var(--pri);font-weight:700}nav i{display:block;font-style:normal;font-size:22px;line-height:1.2;margin-bottom:2px}
 /* ===== Logros ===== */
@@ -83,7 +83,7 @@ input[type=time]{display:block}
 #toasts{position:fixed;top:calc(var(--s3) + var(--safe-t));left:50%;transform:translateX(-50%);z-index:9;display:flex;flex-direction:column;gap:var(--s2);width:min(calc(100% - 32px),440px);pointer-events:none}
 .toast{background:var(--btn);color:#fff;padding:var(--s3) var(--s4);border-radius:14px;box-shadow:0 8px 24px #0004;font-size:15px;animation:entra .25s var(--ease)}
 @keyframes entra{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-.aviso{background:color-mix(in srgb,var(--warn) 12%,var(--card));border:1px solid color-mix(in srgb,var(--warn) 40%,transparent);border-radius:12px;padding:var(--s3) var(--s4);margin:var(--s3) 0;line-height:1.5;font-size:15px}
+.aviso{background:#d977061f;background:color-mix(in srgb,var(--warn) 12%,var(--card));border:1px solid color-mix(in srgb,var(--warn) 40%,transparent);border-radius:12px;padding:var(--s3) var(--s4);margin:var(--s3) 0;line-height:1.5;font-size:15px}
 .aviso ol{padding-left:20px;margin:var(--s2) 0}
 .hidden{display:none!important}
 .pz{color:var(--acc);font-weight:700;padding:0 2px}

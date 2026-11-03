@@ -5,17 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0D2B5A">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Voz Clara">
 <title>Voz Clara</title>
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#1A1A1A;--muted:#5d6475;--pri:#0D2B5A;--acc:#2f7de1;--ok:#1f9d55;--warn:#d97706;--bad:#c53030;--r:16px}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#18202f;--ink:#eef1f7;--muted:#9aa3b5;--pri:#8fb4ff}}
+:root{color-scheme:light dark;--bg:#f6f7fb;--card:#fff;--ink:#1A1A1A;--muted:#5d6475;--pri:#0D2B5A;--btn:#0D2B5A;--btn-ink:#fff;--acc:#2f7de1;--ok:#1f9d55;--warn:#d97706;--bad:#c53030;--r:16px}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1420;--card:#18202f;--ink:#eef1f7;--muted:#a3acbe;--pri:#9dbdff;--btn:#3767c9;--btn-ink:#fff;--ok:#3ccf7a;--bad:#e0524f}}
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);padding-bottom:84px}
 header{padding:18px 18px 6px}h1{margin:0;font-size:22px;color:var(--pri)}.sub{color:var(--muted);font-size:14px;margin-top:2px}
 main{padding:8px 14px}.card{background:var(--card);border-radius:var(--r);padding:16px;margin:10px 0;box-shadow:0 1px 3px #0001}
 h2{font-size:17px;margin:0 0 8px}h3{font-size:15px;margin:12px 0 6px}p{line-height:1.45}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:12px;padding:12px 16px;font-size:16px;font-weight:600;background:var(--pri);color:#fff;cursor:pointer;width:100%;margin-top:8px}
-.btn.sec{background:transparent;color:var(--pri);border:2px solid var(--pri)}.btn.rec{background:var(--bad)}.btn:disabled{opacity:.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:12px;padding:12px 16px;font-size:16px;font-weight:600;background:var(--btn);color:var(--btn-ink);cursor:pointer;width:100%;margin-top:8px;min-height:48px}
+.btn.sec{background:transparent;color:var(--pri);border:2px solid var(--pri)}.btn.rec{background:#c53030;color:#fff;border-color:#c53030}.btn:disabled{opacity:.5}
 .row{display:flex;gap:8px}.row>*{flex:1}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}.stat b{display:block;font-size:24px;color:var(--pri)}.stat span{font-size:12px;color:var(--muted)}
 .target{font-size:20px;line-height:1.6;padding:12px;border-radius:12px;background:#2f7de114;margin:8px 0}
@@ -35,13 +40,23 @@ nav button{flex:1;border:0;background:none;padding:10px 0 12px;font-size:11px;co
 canvas{width:100%;height:160px}
 .meter{height:10px;background:#8883;border-radius:6px;overflow:hidden}.meter div{height:100%;background:var(--acc);width:0;transition:width .1s}
 label{display:block;margin:10px 0 4px;font-size:14px;color:var(--muted)}input,select{width:100%;padding:10px;border-radius:10px;border:1px solid #8885;font-size:16px;background:var(--card);color:var(--ink)}
-.toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--pri);color:#fff;padding:12px 18px;border-radius:12px;z-index:9;box-shadow:0 4px 14px #0004;max-width:90%}
+.toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--btn);color:#fff;padding:12px 18px;border-radius:12px;z-index:9;box-shadow:0 4px 14px #0004;max-width:90%}
 .hidden{display:none}
 #toasts{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9;display:flex;flex-direction:column;gap:6px;width:min(92%,440px);pointer-events:none}
 #toasts .toast{position:static;transform:none;max-width:none}
 .aviso{background:#d977061a;border:1px solid #d9770655;border-radius:12px;padding:12px;margin:10px 0;line-height:1.45;font-size:15px}.aviso ol{padding-left:20px;margin:6px 0}
 .stars{display:flex;gap:6px;justify-content:center}.stars button{font-size:34px;background:none;border:0;color:#8886;cursor:pointer;padding:2px 4px;line-height:1}.stars button.on{color:#f5a524}
 .stars-box{text-align:center;margin-top:10px}
+body.intro header,body.intro nav{display:none}body.intro{padding-bottom:0}
+.intro-wrap{max-width:440px;margin:0 auto;padding:calc(32px + env(safe-area-inset-top)) 8px calc(24px + env(safe-area-inset-bottom));display:flex;flex-direction:column}
+.intro-logo{border-radius:18px;margin-bottom:20px}
+.intro-title{font-size:32px;line-height:1.1;margin:0 0 8px;color:var(--pri);letter-spacing:-.01em}
+.intro-lead{font-size:18px;line-height:1.45;margin:0 0 24px}
+.intro-list{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:16px}
+.intro-list li{display:flex;gap:12px;align-items:flex-start}.intro-list span{font-size:22px;line-height:1.2}
+.intro-list b{display:block;font-size:16px}.intro-list small{display:block;color:var(--muted);font-size:14px;line-height:1.4;margin-top:2px}
+.opt{color:var(--muted);font-weight:400}.intro-foot{color:var(--muted);font-size:13px;text-align:center;margin:12px 0 0}
+[tabindex="-1"]:focus{outline:none}
 button.step{width:100%;background:none;border:0;border-bottom:1px solid #8882;color:inherit;font:inherit;text-align:left;cursor:pointer}
 .btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 </style>

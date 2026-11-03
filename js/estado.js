@@ -43,7 +43,7 @@ function normalizar(o) {
   }
   for (const k of ["baseline", "levels", "lastReport", "volBase"]) if (isObj(o[k])) d[k] = o[k];
   if (Array.isArray(o.diags)) d.diags = o.diags.filter(isObj);
-  if (typeof o.lastFreezeAt === "string") d.lastFreezeAt = o.lastFreezeAt;
+  for (const k of ["lastFreezeAt", "lastNotif"]) if (typeof o[k] === "string") d[k] = o[k];
   if (Number.isFinite(o.bestStreak)) d.bestStreak = o.bestStreak;
   // Quien ya usaba la v1 no debe ver otra vez la bienvenida.
   d.onboarded = o.onboarded === true || d.sessions.length > 0 || !!d.settings.name;

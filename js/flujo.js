@@ -92,7 +92,7 @@ function conectarEstrellas(cont, alGuardar) {
     const n = +b.dataset.n;
     bs.forEach(x => { x.classList.toggle("on", +x.dataset.n <= n); x.setAttribute("aria-checked", x === b); });
     if (!hecho) { hecho = true; alGuardar(n); }
-    cont.querySelector('[data-id="st-msg"]').textContent = `Guardado: ${n} de 5. ¡Gracias por ser honesto contigo!`;
+    cont.querySelector('[data-id="st-msg"]').textContent = `Guardado: ${n} de 5. Gracias por calificarte.`;
   });
 }
 

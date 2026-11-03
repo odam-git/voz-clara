@@ -10,7 +10,10 @@ const TABS = [["hoy", "🏠", "Hoy"], ["ej", "🎤", "Ejercicios"], ["prog", "�
 let tab = "hoy", cleanup = null;
 function go(t, arg) {
   if (cleanup) { try { cleanup(); } catch (_) {} cleanup = null; }
-  tab = VIEWS[t] ? t : "hoy"; renderNav(); VIEWS[tab](arg); window.scrollTo(0, 0);
+  tab = VIEWS[t] ? t : "hoy";
+  document.body.classList.toggle("intro", tab === "bienvenida");
+  renderNav(); VIEWS[tab](arg); window.scrollTo(0, 0);
+  const h = $("#app h2"); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
 }
 function renderNav() {
   const main = TABS.map(x => x[0]);
@@ -26,6 +29,25 @@ const STEPS = [["breath", "Respiración diafragmática", "3 min · base de la vo
 const filaPaso = (id, t, d, chk) => `<button class="step" onclick="go('${id}')">${chk === undefined ? "" : `<span class="chk ${chk ? "done" : ""}" aria-hidden="true">${chk ? "✓" : ""}</span>`}<span class="t">${t}<small>${d}</small></span><span aria-hidden="true">›</span></button>`;
 
 const VIEWS = {
+  bienvenida() {
+    $("#app").innerHTML = `<section class="intro-wrap" aria-labelledby="bv-t">
+      <img src="icon.svg" alt="" width="72" height="72" class="intro-logo">
+      <h2 id="bv-t" class="intro-title">Voz Clara</h2>
+      <p class="intro-lead">Entrena tu dicción, tu voz y tu oratoria con ejercicios cortos y medición objetiva.</p>
+      <ul class="intro-list">
+        <li><span aria-hidden="true">🎯</span><div><b>Práctica deliberada</b><small>Unos minutos al día, enfocados en lo que más necesitas.</small></div></li>
+        <li><span aria-hidden="true">📈</span><div><b>Avance medible</b><small>Precisión, ritmo, muletillas y volumen, comparados con tu punto de partida.</small></div></li>
+        <li><span aria-hidden="true">🔒</span><div><b>Tus datos son tuyos</b><small>Todo se guarda solo en este dispositivo. Sin cuentas.</small></div></li>
+      </ul>
+      <label for="bv-n">¿Cómo te llamas? <span class="opt">(opcional)</span></label>
+      <input id="bv-n" maxlength="40" autocomplete="given-name" placeholder="Tu nombre">
+      <button class="btn" id="bv-go">Empezar</button>
+      <p class="intro-foot">Puedes cambiar tu nombre cuando quieras en Ajustes.</p>
+    </section>`;
+    const fin = () => { S.settings.name = $("#bv-n").value.trim().slice(0, 40); S.onboarded = true; save(); greet(); go("hoy"); };
+    $("#bv-go").onclick = fin;
+    $("#bv-n").onkeydown = e => { if (e.key === "Enter") fin(); };
+  },
   hoy() {
     const r = routineDone(), n = Object.values(r).filter(Boolean).length, st = streak();
     $("#app").innerHTML = `
@@ -209,7 +231,8 @@ const VIEWS = {
     <button class="btn" id="sv">Guardar</button></div>
     <div class="card"><h2>⏰ Recordatorio diario</h2><p>La forma más confiable: agrega un evento diario a tu calendario (funciona aunque la app esté cerrada).</p>
     <button class="btn" id="ics">Agregar a mi calendario</button>
-    <button class="btn sec" id="nt">Activar notificaciones de la app</button></div>
+    <button class="btn sec" id="nt">Activar notificaciones de la app</button>
+    <p class="sub">Las notificaciones de la app solo aparecen al abrirla (en iPhone, solo instalada en la pantalla de inicio). Para un aviso diario seguro, usa el calendario.</p></div>
     <div class="card"><h2>🔒 Datos y privacidad</h2>
     <p><b>Tu historial y tus grabaciones se quedan en este dispositivo.</b> No hay servidor de Voz Clara ni cuentas.</p>
     <p><b>Ojo:</b> cuando tocas <b>Medir</b>, el reconocimiento de voz lo hace el propio navegador, que envía el audio a servidores de <b>Google</b> (Chrome) o de <b>Apple</b> (Safari) para convertirlo en texto. <b>Escucharme</b> y los medidores no envían nada: el audio solo se procesa en tu teléfono.</p>
@@ -218,10 +241,15 @@ const VIEWS = {
     $("#sv").onclick = () => { S.settings.name = $("#nm").value.trim().slice(0, 40); S.settings.focus = $("#fc").value; S.settings.hour = $("#hr").value || "07:30"; save(); greet(); toast("Guardado"); };
     $("#ics").onclick = () => {
       const [h, m] = ($("#hr").value || "07:30").split(":"); const d = today().replace(/-/g, "");
-      const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//VozClara//ES", "BEGIN:VEVENT", `UID:vozclara-${Date.now()}`, `DTSTAMP:${d}T000000Z`, `DTSTART;TZID=America/Mexico_City:${d}T${h}${m}00`, "DURATION:PT15M", "RRULE:FREQ=DAILY", "SUMMARY:🎙️ Voz Clara: rutina de dicción", "DESCRIPTION:11 minutos para hablar mejor.", "BEGIN:VALARM", "TRIGGER:PT0M", "ACTION:DISPLAY", "DESCRIPTION:Hora de tu rutina de dicción", "END:VALARM", "END:VEVENT", "END:VCALENDAR"].join("\r\n");
-      dl(new Blob([ics], { type: "text/calendar" }), "voz-clara-recordatorio.ics");
+      descargarICS(h, m);
     };
-    $("#nt").onclick = async () => { if (!("Notification" in window)) return toast("Este navegador no soporta notificaciones"); const p = await Notification.requestPermission(); toast(p === "granted" ? "Te avisaré al abrir la app si no has practicado" : "Permiso denegado"); };
+    $("#nt").onclick = async () => {
+      if (!("Notification" in window)) return toast(IS_IOS && !IS_STANDALONE ? "En iPhone, las notificaciones solo funcionan con la app instalada en la pantalla de inicio." : "Este navegador no soporta notificaciones.");
+      const p = await Notification.requestPermission();
+      if (p !== "granted") return toast("Permiso denegado. Puedes activarlo en los ajustes del sitio.");
+      const ok = await notificar("Voz Clara", "Así se verán tus avisos. Llegan al abrir la app si aún no practicas.");
+      toast(ok ? "Notificaciones activadas" : "Este navegador no pudo mostrar la notificación.");
+    };
     $("#ex").onclick = () => dl(new Blob([JSON.stringify(S, null, 1)], { type: "application/json" }), `voz-clara-respaldo-${today()}.json`);
     $("#im").onclick = () => $("#fi").click();
     $("#fi").onchange = async e => {
@@ -235,6 +263,21 @@ const VIEWS = {
     };
   }
 };
+// Evento diario en hora local "flotante" (válido sin bloque de zona horaria y respeta la hora del teléfono).
+function descargarICS(h, m) {
+  const d = today().replace(/-/g, ""), ahora = new Date().toISOString().replace(/[-:]/g, "").slice(0, 15) + "Z";
+  const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//VozClara//ES", "CALSCALE:GREGORIAN", "BEGIN:VEVENT", `UID:vozclara-diario-${d}@voz-clara`, `DTSTAMP:${ahora}`,
+    `DTSTART:${d}T${h}${m}00`, "DURATION:PT15M", "RRULE:FREQ=DAILY", "SUMMARY:🎙️ Voz Clara: rutina de voz", "DESCRIPTION:Unos minutos para hablar mejor.",
+    "BEGIN:VALARM", "TRIGGER:PT0M", "ACTION:DISPLAY", "DESCRIPTION:Hora de tu rutina de voz", "END:VALARM", "END:VEVENT", "END:VCALENDAR", ""].join("\r\n");
+  const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" }), nombre = "voz-clara-recordatorio.ics";
+  // En la app instalada de iPhone las descargas no funcionan: se usa el menú Compartir.
+  if (IS_IOS && IS_STANDALONE && navigator.canShare) {
+    const f = new File([blob], nombre, { type: "text/calendar" });
+    if (navigator.canShare({ files: [f] })) return navigator.share({ files: [f], title: "Recordatorio Voz Clara" }).catch(() => {});
+  }
+  dl(blob, nombre);
+  if (IS_IOS) toast("Si no se abre el Calendario, abre la app en Safari y vuelve a tocar el botón.");
+}
 function dl(blob, name) {
   const u = URL.createObjectURL(blob), a = document.createElement("a");
   a.href = u; a.download = name; document.body.appendChild(a); a.click(); a.remove();

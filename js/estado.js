@@ -12,7 +12,7 @@ const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": 
 function defaults() {
   return {
     v: 2, sessions: [], days: {}, freezes: 1, freezeUsed: [], badges: {},
-    settings: { name: "", hour: "07:30", focus: "R" },
+    settings: { name: "", hour: "07:30", focus: "RR" },
     onboarded: false, bestStreak: 0
   };
 }
@@ -38,7 +38,8 @@ function normalizar(o) {
     const st = o.settings;
     if (typeof st.name === "string") d.settings.name = st.name.slice(0, 40);
     if (/^\d{2}:\d{2}$/.test(st.hour)) d.settings.hour = st.hour;
-    if (typeof st.focus === "string") d.settings.focus = st.focus;
+    // Claves de la v1 (R, D, P, C) se traducen a los grupos nuevos.
+    if (typeof st.focus === "string") d.settings.focus = ({ R: "RR", D: "DT", P: "PB", C: "KG" })[st.focus] || st.focus;
     if (Array.isArray(st.focusList)) d.settings.focusList = st.focusList.filter(x => typeof x === "string");
   }
   for (const k of ["baseline", "levels", "lastReport", "volBase"]) if (isObj(o[k])) d[k] = o[k];

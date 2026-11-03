@@ -23,4 +23,6 @@ function arrancar() {
     }
   }
 }
-arrancar();
+cargarDatos().then(arrancar).catch(() => {
+  $("#app").innerHTML = `<div class="card aviso"><h2>No se pudo cargar el contenido</h2><p>Abre Voz Clara desde su dirección web (por ejemplo, GitHub Pages) y con conexión la primera vez. Después funciona sin internet.</p><button class="btn" onclick="location.reload()">Reintentar</button></div>`;
+});

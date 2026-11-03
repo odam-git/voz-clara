@@ -198,7 +198,7 @@ const VIEWS = {
   },
   logros() {
     const got = BADGES.filter(b => S.badges[b.id]).length;
-    $("#app").innerHTML = `<div class="card"><h2>Logros · ${got}/${BADGES.length}</h2>${BADGES.map(b => `<div class="badge ${S.badges[b.id] ? "got" : ""}"><div class="e">${b.e}</div><div><b>${b.n}</b><small>${b.d}${S.badges[b.id] ? " · " + S.badges[b.id] : ""}</small></div></div>`).join("")}</div>
+    $("#app").innerHTML = `<div class="card"><h2>Logros · ${got}/${BADGES.length}</h2>${BADGES.map(b => `<div class="badge ${S.badges[b.id] ? "got" : ""}"><div class="e">${b.e}</div><div><b>${b.n}</b><small>${b.d}${S.badges[b.id] ? " · " + esc(S.badges[b.id]) : ""}</small></div></div>`).join("")}</div>
     <div class="card"><h3>🧊 Comodines: ${S.freezes}</h3><p>Ganas uno cada 7 días seguidos (máximo 2). Si un día no practicas, se usa solo y tu racha no se rompe.</p></div>`;
   },
   ajustes() {

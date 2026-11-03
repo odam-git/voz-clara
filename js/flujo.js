@@ -1,7 +1,7 @@
 // ====== Flujo en dos tiempos: "Medir" (solo reconocimiento) y "Escucharme" (solo grabación) ======
 // cfg: { el, tipo, nivel, extra, evaluar(r) -> html, alIniciar(modo), alTerminar(modo), etiquetaMedir }
 function medirYEscuchar(cfg) {
-  let rec = null, med = null, paraMedidor = null, ocupado = false;
+  let rec = null, med = null, paraMedidor = null, ocupado = false, vivo = true;
   const el = cfg.el;
 
   function pintar() {
@@ -28,7 +28,7 @@ function medirYEscuchar(cfg) {
         q("res").innerHTML = ""; q("aud").innerHTML = ""; q("tr").textContent = "Escuchando…";
         try { await p; }
         catch (err) {
-          rec = null; bEsc.disabled = false;
+          rec = null; if (!vivo) return; bEsc.disabled = false;
           if (SR_FATAL.includes(err)) { marcarFallaSR(err); pintar(); toast("No se pudo usar el reconocimiento de voz."); }
           else { toast(MENSAJE_SR[err] || "No se pudo iniciar la medición. Intenta de nuevo."); pintar(); }
           return;
@@ -36,7 +36,7 @@ function medirYEscuchar(cfg) {
         cfg.alIniciar && cfg.alIniciar("medir");
       } else {
         ocupado = true; bMed.disabled = true;
-        const r = await rec.stop(); rec = null; ocupado = false;
+        const r = await rec.stop(); rec = null; ocupado = false; if (!vivo) return;
         cfg.alTerminar && cfg.alTerminar("medir");
         bMed.disabled = false; bMed.textContent = "🔁 Medir otra vez"; bMed.className = "btn"; bEsc.disabled = false;
         if (!r.text) {
@@ -57,6 +57,7 @@ function medirYEscuchar(cfg) {
         med = new Medidor();
         bEsc.disabled = true;
         try { await med.start({ grabar: true }); } catch (_) { med = null; bEsc.disabled = false; return; }
+        if (!vivo) { med.stop(); med = null; return; }
         bEsc.disabled = false; if (bMed) bMed.disabled = true;
         bEsc.textContent = "⏹️ Terminar"; bEsc.className = "btn rec"; q("aud").innerHTML = "";
         const mt = q("mt"); mt.classList.remove("hidden");
@@ -64,7 +65,7 @@ function medirYEscuchar(cfg) {
         cfg.alIniciar && cfg.alIniciar("escuchar");
       } else {
         ocupado = true; paraMedidor && paraMedidor(); q("mt").classList.add("hidden");
-        const r = await med.stop(); med = null; ocupado = false;
+        const r = await med.stop(); med = null; ocupado = false; if (!vivo) return;
         cfg.alTerminar && cfg.alTerminar("escuchar");
         bEsc.textContent = "🎧 Escucharme otra vez"; bEsc.className = "btn sec"; if (bMed) bMed.disabled = false;
         q("aud").innerHTML = (r.audio ? `<h3>Escúchate</h3><audio controls src="${r.audio}" style="width:100%"></audio>` : `<p class="sub">Este navegador no pudo grabar audio.</p>`) +
@@ -77,7 +78,7 @@ function medirYEscuchar(cfg) {
   return {
     // Termina lo que esté activo (por ejemplo, al acabarse el tiempo de improvisación).
     terminar() { const b = el.querySelector(rec ? '[data-id="medir"]' : '[data-id="esc"]'); if ((rec || med) && b) b.click(); },
-    detener() { if (rec) rec.abort(); rec = null; if (med) med.stop(); med = null; paraMedidor && paraMedidor(); }
+    detener() { vivo = false; if (rec) rec.abort(); rec = null; if (med) med.stop(); med = null; paraMedidor && paraMedidor(); }
   };
 }
 

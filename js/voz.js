@@ -98,7 +98,9 @@ class Reconocedor {
         if (!iniciado) { iniciado = true; reject(this.err || "sin-inicio"); }
         if (this._fin) this._fin();
       };
-      try { r.start(); } catch (e) { reject("sin-inicio"); }
+      try { r.start(); } catch (e) { iniciado = true; reject("sin-inicio"); return; }
+      // Algunos navegadores no disparan onstart: si no hubo error en 4 s, se da por iniciado.
+      setTimeout(() => { if (!iniciado && this.activo) { iniciado = true; resolve(); } }, 4000);
     });
   }
   _consolidar() {

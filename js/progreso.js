@@ -17,6 +17,16 @@ function streak() {
   return n;
 }
 
+// Mejor racha calculada con todo el historial (para quien viene de la v1 sin este dato).
+function mejorRacha() {
+  const ks = Object.keys(S.days).concat(S.freezeUsed).sort(); let best = 0, run = 0, prev = null;
+  for (const k of [...new Set(ks)]) {
+    const t = parseDay(k).getTime();
+    run = prev != null && Math.round((t - prev) / 864e5) === 1 ? run + 1 : 1; prev = t; best = Math.max(best, run);
+  }
+  return best;
+}
+
 // Al abrir: cubre con comodines TODOS los días faltantes desde la última práctica, si alcanzan.
 // Si no alcanzan, no se gasta ninguno y se avisa sin culpas.
 function applyFreezes() {
@@ -28,6 +38,7 @@ function applyFreezes() {
     S.freezes -= faltan.length; S.freezeUsed.push(...faltan); save();
     toast(faltan.length === 1 ? "🧊 Usé un comodín por el día que faltó: tu racha sigue." : `🧊 Usé ${faltan.length} comodines por los días que faltaron: tu racha sigue.`);
   } else {
+    S.bestStreak = Math.max(S.bestStreak || 0, mejorRacha()); save();
     toast(`Hoy empieza una racha nueva. Tu mejor racha: ${S.bestStreak || 0} días. ¡Qué gusto verte de nuevo!`);
   }
 }

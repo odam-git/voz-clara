@@ -12,9 +12,9 @@ async function notificar(titulo, cuerpo) {
 
 function arrancar() {
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+  if (avisoInicio) setTimeout(() => toast(avisoInicio), 0);
   if (!S.onboarded) { go("bienvenida"); return; }
   applyFreezes(); greet(); go("hoy");
-  if (avisoInicio) toast(avisoInicio);
   if ("Notification" in window && Notification.permission === "granted" && !S.days[today()]) {
     const [h, m] = S.settings.hour.split(":").map(Number), n = new Date();
     if (n.getHours() * 60 + n.getMinutes() >= h * 60 + m && S.lastNotif !== today()) {

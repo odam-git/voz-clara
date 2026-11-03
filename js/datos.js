@@ -43,7 +43,6 @@ const TEMAS = [
   "Argumenta a favor y en contra del trabajo en casa.",
   "Presenta a un orador antes de su conferencia."
 ];
-const MULETILLAS = ["este","eh","em","mmm","o sea","bueno","entonces","digamos","verdad","pues","tipo","básicamente","literal","osea","ehh","¿no?","no?"];
 const TIPS=[
  "Graba y escucha. Tu voz grabada es la que oyen los demás; la que oyes por dentro te engaña.",
  "Las vocales llevan la claridad; las consonantes, la precisión. Abre la boca más de lo que crees necesario.",

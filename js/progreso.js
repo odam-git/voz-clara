@@ -24,13 +24,13 @@ const BADGES=[
   {id:"acc90",e:"🎯",n:"Precisión",d:"90% o más en un trabalenguas nivel 2+",f:()=>S.sessions.some(s=>s.type==="art"&&s.level>=2&&s.acc>=90)},
   {id:"acc100",e:"💎",n:"Dicción perfecta",d:"100% en un trabalenguas nivel 3",f:()=>S.sessions.some(s=>s.type==="art"&&s.level>=3&&s.acc>=100)},
   {id:"breath",e:"🌬️",n:"Pulmón de acero",d:"Exhalación sostenida de 25 s",f:()=>S.sessions.some(s=>s.type==="breath"&&s.hold>=25)},
-  {id:"clean",e:"🧼",n:"Sin muletillas",d:"Improvisa 60 s con 0 muletillas",f:()=>S.sessions.some(s=>s.type==="impro"&&s.secs>=55&&s.mul===0)},
+  {id:"clean",e:"🧼",n:"Sin muletillas",d:"Improvisa 60 s con 0 muletillas (medido)",f:()=>S.sessions.some(s=>s.type==="impro"&&s.modo==="medido"&&s.secs>=55&&s.words>=60&&s.mul===0)},
   {id:"pace",e:"⏱️",n:"Ritmo de orador",d:"Lectura entre 130 y 160 ppm",f:()=>S.sessions.some(s=>s.type==="read"&&s.wpm>=130&&s.wpm<=160)},
   {id:"improve",e:"📈",n:"Mejora real",d:"Reduce 50% tus muletillas vs. tu primera semana",f:()=>improvement()>=50},
   {id:"s100",e:"👑",n:"Cien sesiones",d:"Acumula 100 ejercicios",f:()=>S.sessions.length>=100}
 ];
 function improvement(){
-  const im=S.sessions.filter(s=>s.type==="impro"&&s.secs>20);if(im.length<6)return 0;
+  const im=S.sessions.filter(s=>s.type==="impro"&&s.mul!=null&&s.secs>20);if(im.length<6)return 0;
   const rate=a=>a.reduce((x,s)=>x+s.mul/(s.secs/60),0)/a.length;
   const first=rate(im.slice(0,3)),last=rate(im.slice(-3));if(!first)return 0;return Math.round((1-last/first)*100);
 }

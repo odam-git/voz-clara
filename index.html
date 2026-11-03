@@ -37,6 +37,13 @@ canvas{width:100%;height:160px}
 label{display:block;margin:10px 0 4px;font-size:14px;color:var(--muted)}input,select{width:100%;padding:10px;border-radius:10px;border:1px solid #8885;font-size:16px;background:var(--card);color:var(--ink)}
 .toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:var(--pri);color:#fff;padding:12px 18px;border-radius:12px;z-index:9;box-shadow:0 4px 14px #0004;max-width:90%}
 .hidden{display:none}
+#toasts{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9;display:flex;flex-direction:column;gap:6px;width:min(92%,440px);pointer-events:none}
+#toasts .toast{position:static;transform:none;max-width:none}
+.aviso{background:#d977061a;border:1px solid #d9770655;border-radius:12px;padding:12px;margin:10px 0;line-height:1.45;font-size:15px}.aviso ol{padding-left:20px;margin:6px 0}
+.stars{display:flex;gap:6px;justify-content:center}.stars button{font-size:34px;background:none;border:0;color:#8886;cursor:pointer;padding:2px 4px;line-height:1}.stars button.on{color:#f5a524}
+.stars-box{text-align:center;margin-top:10px}
+button.step{width:100%;background:none;border:0;border-bottom:1px solid #8882;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 </style>
 </head>
 <body>
@@ -46,6 +53,8 @@ label{display:block;margin:10px 0 4px;font-size:14px;color:var(--muted)}input,se
 <script src="js/datos.js"></script>
 <script src="js/estado.js"></script>
 <script src="js/voz.js"></script>
+<script src="js/analisis.js"></script>
+<script src="js/flujo.js"></script>
 <script src="js/progreso.js"></script>
 <script src="js/vistas.js"></script>
 <script src="js/inicio.js"></script>

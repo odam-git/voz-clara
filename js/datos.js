@@ -1,11 +1,11 @@
 // ====== Contenido (archivos JSON en data/) ======
-let FONEMAS = {}, ORDEN_FON = [], TRABALENGUAS = [], LECTURAS = [], TEMAS = [], TIPS = [];
+let FONEMAS = {}, ORDEN_FON = [], TRABALENGUAS = [], LECTURAS = [], TEMAS = [], TIPS = [], ENTONACION = [];
 
 async function cargarDatos() {
   const get = f => fetch("data/" + f).then(r => { if (!r.ok) throw new Error(f); return r.json(); });
-  const [t, l, m, c] = await Promise.all(["trabalenguas.json", "lecturas.json", "temas.json", "consejos.json"].map(get));
-  FONEMAS = t.fonemas; ORDEN_FON = t.orden; TRABALENGUAS = t.items;
-  LECTURAS = l.items; TEMAS = m.items; TIPS = c.items;
+  const [t, l, m, c, e] = await Promise.all(["trabalenguas.json", "lecturas.json", "temas.json", "consejos.json", "entonacion.json"].map(get));
+  FONEMAS = t.fonemas; ORDEN_FON = t.orden; TRABALENGUAS = t.items.map((x, i) => ({ ...x, id: "W" + i }));
+  LECTURAS = l.items; TEMAS = m.items; TIPS = c.items; ENTONACION = e.items;
 }
 
 // Texto para leer: quita las marcas de pausa "/" (se muestran aparte).

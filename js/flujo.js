@@ -70,7 +70,10 @@ function medirYEscuchar(cfg) {
         bEsc.textContent = "🎧 Escucharme otra vez"; bEsc.className = "btn sec"; if (bMed) bMed.disabled = false;
         q("aud").innerHTML = (r.audio ? `<h3>Escúchate</h3><audio controls src="${r.audio}" style="width:100%"></audio>` : `<p class="sub">Este navegador no pudo grabar audio.</p>`) +
           estrellasHTML(srEstado() !== "ok");
-        conectarEstrellas(q("aud"), n => logSession(cfg.tipo, { self: n, modo: "auto", level: cfg.nivel, secs: Math.round(r.secs), ...(cfg.extra || {}) }));
+        conectarEstrellas(q("aud"), n => {
+          const ses = logSession(cfg.tipo, { self: n, modo: "auto", level: cfg.nivel, secs: Math.round(r.secs), ...(cfg.extra || {}) });
+          if (["art", "read", "impro"].includes(cfg.tipo) && typeof ajustarNivel === "function") ajustarNivel(cfg.tipo, ses);
+        });
       }
     };
   }

@@ -13,6 +13,7 @@ async function sesionMic(op) {
   const M = new Medidor();
   await M.start({ grabar: !!op.grabar });
   const frames = [], piso = []; let umbral = null, empezo = false, ultimaVoz = 0, parar = null, terminado = false;
+  M.alCancelar = () => { terminado = true; parar && parar(); };
   const fin = async () => {
     if (terminado) return; terminado = true; parar && parar();
     const r = await M.stop();
@@ -237,7 +238,7 @@ Object.assign(VIEWS, {
     const sec = arg || "res";
     const tabs = [["res", "Resonancia"], ["sir", "Sirenas"], ["esc", "Escalas"]];
     $("#app").innerHTML = `<div class="card"><h2>🎵 Calentamiento de canto</h2><p>Calienta las cuerdas vocales y la resonancia antes de hablar. Solo uso el micrófono; nada sale del teléfono. Con audífonos oyes mejor las notas de referencia.</p>
-      <div class="seg" role="tablist">${tabs.map(([id, n]) => `<button role="tab" aria-selected="${id === sec}" class="${id === sec ? "on" : ""}" onclick="go('voc','${id}')">${n}</button>`).join("")}</div></div><div id="vsec"></div>`;
+      <div class="seg" role="tablist">${tabs.map(([id, n]) => `<button role="tab" aria-selected="${id === sec}" class="${id === sec ? "on" : ""}" data-go="voc" data-arg="${id}">${n}</button>`).join("")}</div></div><div id="vsec"></div>`;
     ({ res: canto_resonancia, sir: canto_sirenas, esc: canto_escalas })[sec]($("#vsec"));
   }
 });

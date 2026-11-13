@@ -12,7 +12,8 @@ function diagMarco(paso, titulo, cuerpo) {
 }
 
 VIEWS.diag = function () {
-  const D = { fon: {}, modo: srEstado() === "ok" ? "medido" : "auto" };
+  // fon = precisión MEDIDA (0–100); fonSelf = autocalificación (1–5). Nunca se mezclan.
+  const D = { fon: {}, fonSelf: {}, modo: srEstado() === "ok" ? "medido" : "auto" };
   let ses = null, rec = null, vivo = true, parar = null;
   cleanup = () => { vivo = false; ses && ses.cancelar(); rec && rec.abort(); parar && parar(); };
   const app = $("#app");
@@ -32,7 +33,11 @@ VIEWS.diag = function () {
       $("#d-b").disabled = true;
       ses = await correrCalibracion($("#cal"), ref => {
         ses = null; if (!vivo) return;
-        if (!ref) { $("#d-b").disabled = false; $("#d-b").textContent = "Intentar de nuevo"; return; }
+        if (!ref) {
+          $("#d-b").disabled = false; $("#d-b").textContent = "Intentar de nuevo";
+          if (!$("#d-sk")) { $("#d-b").insertAdjacentHTML("afterend", '<button class="btn sec" id="d-sk">Omitir esta prueba</button>'); $("#d-sk").onclick = paso2; }
+          return;
+        }
         D.db = ref.db; D.f0 = ref.f0; setTimeout(() => vivo && paso2(), 900);
       });
     };
@@ -59,9 +64,9 @@ VIEWS.diag = function () {
       }
     };
     function finLectura(r, dur) {
-      if (r) { const ok = lcsMatch(txt, r.text); D.acc = Math.round(ok.filter(Boolean).length / ok.length * 100); dur = r.hablaSecs; }
-      let wpm = dur && dur >= 3 ? Math.round(N / (dur / 60)) : null; if (wpm != null && (wpm > 320 || wpm < 40)) wpm = null;
-      D.wpm = wpm; paso3();
+      let leidas = N;
+      if (r) { const ok = lcsMatch(txt, r.text); D.acc = porcentaje(ok); leidas = palabrasLeidas(ok); dur = r.hablaSecs; }
+      D.wpm = calcularWpm(leidas, dur); paso3();
     }
   }
 
@@ -75,8 +80,8 @@ VIEWS.diag = function () {
         <p class="diag-cont">${i + 1} de ${lista.length} · <b>${esc(FONEMAS[tw.f].nombre)}</b></p><div class="target" id="tg">${esc(tw.t)}</div>
         <div class="trans" id="tr" aria-live="polite"></div>
         ${D.modo === "medido" ? `<button class="btn" id="d-b">🎯 Leer</button>` : `<p><b>¿Qué tan claro te salió?</b></p><div class="escala5" role="group" aria-label="Claridad del 1 al 5">${[1, 2, 3, 4, 5].map(n => `<button data-n="${n}">${n}</button>`).join("")}</div><div class="escala5-ley"><span>Me trabé</span><span>Perfecto</span></div>`}`)}</div>`;
-      const sig = v => { D.fon[tw.f] = v; i++; if (i < lista.length) pinta(); else paso4(); };
-      if (D.modo !== "medido") { document.querySelectorAll(".escala5 button").forEach(x => x.onclick = () => sig((+x.dataset.n - 1) * 25)); return; }
+      const sig = (v, propia) => { (propia ? D.fonSelf : D.fon)[tw.f] = v; i++; if (i < lista.length) pinta(); else paso4(); };
+      if (D.modo !== "medido") { document.querySelectorAll(".escala5 button").forEach(x => x.onclick = () => sig(+x.dataset.n, true)); return; }
       const b = $("#d-b");
       b.onclick = async () => {
         if (rec) { b.disabled = true; const r = await rec.stop(); rec = null; parar && parar(); if (!vivo) return;
@@ -123,26 +128,33 @@ VIEWS.diag = function () {
 
   // --- Resultado
   function resultado() {
-    const orden = ORDEN_FON.filter(f => D.fon[f] != null);
-    const focos = orden.slice().sort((a, b) => D.fon[a] - D.fon[b] || orden.indexOf(a) - orden.indexOf(b)).slice(0, 2);
-    const base = { fecha: today(), ts: Date.now(), modo: D.modo, db: D.db ?? null, f0: D.f0 ?? null, wpm: D.wpm ?? null, acc: D.acc ?? null, mulMin: D.mulMin ?? null, imWpm: D.imWpm ?? null, fluidez: D.fluidez ?? null, fon: D.fon, focos };
+    // Para ELEGIR sonidos se usa una escala común; para GUARDAR, cada medida va por separado.
+    const punt = f => D.fon[f] != null ? D.fon[f] : D.fonSelf[f] != null ? (D.fonSelf[f] - 1) * 25 : null;
+    const orden = ORDEN_FON.filter(f => punt(f) != null);
+    const focos = orden.slice().sort((a, b) => punt(a) - punt(b) || orden.indexOf(a) - orden.indexOf(b)).slice(0, 2);
+    const hayMed = Object.keys(D.fon).length > 0, hayAuto = Object.keys(D.fonSelf).length > 0;
+    const modo = hayMed && hayAuto ? "mixto" : hayMed ? "medido" : "auto";
+    const etiqueta = f => D.fon[f] != null ? D.fon[f] + "%" : D.fonSelf[f] + " de 5";
+    const base = { fecha: today(), ts: Date.now(), modo, db: D.db ?? null, f0: D.f0 ?? null, wpm: D.wpm ?? null, acc: D.acc ?? null, mulMin: D.mulMin ?? null, imWpm: D.imWpm ?? null, fluidez: D.fluidez ?? null, fon: D.fon, fonSelf: D.fonSelf, focos };
     S.diags = S.diags || []; S.diags.push(base);
     const primera = !S.baseline; if (primera) S.baseline = base;
     S.settings.focusList = focos; S.settings.focus = focos[0] || S.settings.focus;
-    const lv = niveles(); focos.forEach(f => { lv.art[f] = D.fon[f] >= 90 ? 2 : 1; });
-    if (D.wpm != null && D.acc != null) lv.read = D.acc >= 90 && D.wpm >= 120 && D.wpm <= 170 ? 2 : 1;
-    if (D.mulMin != null) lv.impro = D.mulMin <= 2 ? 2 : 1;
-    logSession("diag", { modo: D.modo });
+    // Repetir el diagnóstico nunca baja un nivel ya ganado.
+    const lv = niveles(); focos.forEach(f => { lv.art[f] = Math.max(lv.art[f] || 1, D.fon[f] >= 90 ? 2 : 1); });
+    if (D.wpm != null && D.acc != null) lv.read = Math.max(lv.read || 1, D.acc >= 90 && D.wpm >= 120 && D.wpm <= 170 ? 2 : 1);
+    if (D.mulMin != null) lv.impro = Math.max(lv.impro || 1, D.mulMin <= 2 ? 2 : 1);
+    logSession("diag", { modo });
     if (!S.badges.diag) { S.badges.diag = today(); toast("🧭 ¡Logro desbloqueado! Punto de partida"); }
     save();
     const fila = (n, v, u = "") => `<div class="dg-fila"><span>${n}</span><b>${v == null ? "—" : v + u}</b></div>`;
     app.innerHTML = `<div class="card">${diagMarco(5, primera ? "Tu línea base está lista" : "Diagnóstico registrado", `
       <p class="diag-lead">${primera ? "Con estos datos compararé tu avance cada semana." : "Tu línea base original se conserva para comparar. Si quieres, puedes usar este diagnóstico como nueva línea base."}</p>
       <h3>Te propongo trabajar</h3>
-      <div class="dg-focos">${focos.map(f => `<div class="dg-foco"><b>${esc(FONEMAS[f].nombre)}</b><small>${D.modo === "medido" ? D.fon[f] + "% de precisión" : "tu calificación más baja"}</small></div>`).join("")}</div>
+      <div class="dg-focos">${focos.map(f => `<div class="dg-foco"><b>${esc(FONEMAS[f].nombre)}</b><small>${D.fon[f] != null ? D.fon[f] + "% de precisión medida" : "tu calificación: " + D.fonSelf[f] + " de 5"}</small></div>`).join("")}</div>
       <h3>Tus números de hoy</h3>
       ${fila("Ritmo de lectura", D.wpm, " ppm")}${fila("Claridad al leer", D.acc, "%")}${fila("Muletillas por minuto", D.mulMin)}${D.fluidez ? fila("Fluidez (autoevaluación)", D.fluidez, " de 5") : ""}${fila("Tono de voz", D.f0 ? nombreNota(D.f0) : null)}
-      <h3>Precisión por sonido</h3><div class="dg-barras">${orden.map(f => `<div class="dg-barra"><span>${esc(FONEMAS[f].nombre)}</span><div class="meter"><div style="width:${D.fon[f]}%"></div></div><b>${D.fon[f]}</b></div>`).join("")}</div>
+      <h3>${hayMed ? "Resultado por sonido" : "Tu calificación por sonido"}</h3><div class="dg-barras">${orden.map(f => `<div class="dg-barra"><span>${esc(FONEMAS[f].nombre)}</span><div class="meter"><div style="width:${punt(f)}%"></div></div><b>${etiqueta(f)}</b></div>`).join("")}</div>
+      ${hayAuto ? `<p class="sub">Los valores «de 5» son tu autocalificación; no se comparan con la precisión medida.</p>` : ""}
       <button class="btn" id="d-fin">Ir a mi rutina</button>${primera ? "" : `<button class="btn sec" id="d-nb">Usar como nueva línea base</button>`}`)}</div>`;
     $("#d-fin").onclick = () => go("hoy");
     if ($("#d-nb")) $("#d-nb").onclick = () => { S.baseline = base; save(); toast("Nueva línea base guardada"); go("hoy"); };

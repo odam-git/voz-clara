@@ -10,6 +10,17 @@ async function notificar(titulo, cuerpo) {
   try { new Notification(titulo, { body: cuerpo }); return true; } catch (_) { return false; }
 }
 
+// Al volver a la app: si cambió el día se aplican comodines y se refresca "Hoy";
+// si se cortó el audio por salir, se reinicia la pantalla actual para que no quede a medias.
+let diaVisto = today();
+function alVolver(porAudio) {
+  if (!S.onboarded) return;
+  const cambioDia = diaVisto !== today(); diaVisto = today();
+  if (cambioDia) applyFreezes();
+  if (porAudio || (cambioDia && tab === "hoy")) go(tab === "diag" ? "hoy" : tab);
+}
+document.addEventListener("visibilitychange", () => { if (!document.hidden) alVolver(false); });
+
 function arrancar() {
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
   if (avisoInicio) setTimeout(() => toast(avisoInicio), 0);
@@ -24,5 +35,6 @@ function arrancar() {
   }
 }
 cargarDatos().then(arrancar).catch(() => {
-  $("#app").innerHTML = `<div class="card aviso"><h2>No se pudo cargar el contenido</h2><p>Abre Voz Clara desde su dirección web (por ejemplo, GitHub Pages) y con conexión la primera vez. Después funciona sin internet.</p><button class="btn" onclick="location.reload()">Reintentar</button></div>`;
+  $("#app").innerHTML = `<div class="card aviso"><h2>No se pudo cargar el contenido</h2><p>Abre Voz Clara desde su dirección web (por ejemplo, GitHub Pages) y con conexión la primera vez. Después funciona sin internet.</p><button class="btn" id="recargar">Reintentar</button></div>`;
+  $("#recargar").onclick = () => location.reload();
 });

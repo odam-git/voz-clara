@@ -2,6 +2,8 @@
 <html lang="es-MX">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self' blob:; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f5f6fa" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f1420" media="(prefers-color-scheme: dark)">
@@ -139,7 +141,7 @@ body.intro header,body.intro nav{display:none}body.intro{padding-bottom:0}
 .dg-foco{padding:var(--s3);border-radius:12px;background:var(--tint)}.dg-foco b{display:block}.dg-foco small{color:var(--muted)}
 .dg-fila,.rep-fila{display:grid;grid-template-columns:1fr auto;gap:var(--s3);padding:var(--s2) 0;border-bottom:1px solid var(--line);align-items:center}
 .dg-barras{display:flex;flex-direction:column;gap:var(--s2)}
-.dg-barra{display:grid;grid-template-columns:minmax(0,1.4fr) 1fr 32px;gap:var(--s2);align-items:center;font-size:14px}.dg-barra .meter{margin:0}.dg-barra b{text-align:right;font-variant-numeric:tabular-nums}
+.dg-barra{display:grid;grid-template-columns:minmax(0,1.4fr) 1fr 52px;gap:var(--s2);align-items:center;font-size:14px}.dg-barra .meter{margin:0}.dg-barra b{text-align:right;font-variant-numeric:tabular-nums}
 .rep-fila{grid-template-columns:minmax(0,1fr) 72px 64px;font-size:15px}.rep-fila b,.rep-fila>span:last-child{text-align:right;font-variant-numeric:tabular-nums}
 .rep-head{font-size:var(--t-cap);color:var(--muted);font-weight:600}
 .chip{display:inline-block;margin-left:var(--s2);padding:1px 8px;border-radius:99px;font-size:12px;font-weight:600;background:var(--line);color:var(--ink);vertical-align:1px}

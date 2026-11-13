@@ -30,6 +30,17 @@ function lcsMatch(target, said) {
   while (i < m && j < n) { if (a[i] === b[j]) { ok[i] = true; i++; j++; } else if (dp[i + 1][j] >= dp[i][j + 1]) i++; else j++; }
   return ok;
 }
+// Palabras del texto que sí se alcanzaron a leer (hasta la última reconocida). Evita inflar la
+// velocidad cuando solo se lee una parte.
+function palabrasLeidas(ok) { let u = -1; ok.forEach((v, i) => { if (v) u = i; }); return u + 1; }
+// Palabras por minuto con tope de cordura; null si no es confiable.
+function calcularWpm(nPalabras, segs) {
+  if (!segs || segs < 3 || nPalabras < 5) return null;
+  const w = Math.round(nPalabras / (segs / 60));
+  return w > 320 || w < 40 ? null : w;
+}
+const porcentaje = ok => ok.length ? Math.round(ok.filter(Boolean).length / ok.length * 100) : 0;
+
 // Para resaltar: separa el texto visible en palabras con la misma cuenta que palabras().
 function palabrasVisibles(texto) {
   const out = [];
@@ -63,7 +74,7 @@ function countMuletillas(segs) {
       if (MUL_CLARAS.includes(x)) { suma(x === "osea" ? "o sea" : x); continue; }
       if (x === "este" && (fin || FUNC.has(sig))) { suma("este"); continue; }
       if (x === "bueno" && (ini || RELLENO.has(sig))) { suma("bueno"); continue; }
-      if (x === "pues" && (ini || RELLENO.has(sig) || ant === "pues")) { suma("pues"); continue; }
+      if (x === "pues" && (ini || RELLENO.has(sig) || RELLENO.has(ant))) { suma("pues"); continue; }
       if (x === "entonces" && (RELLENO.has(sig) || ant === "entonces")) { suma("entonces"); continue; }
       if (x === "no" && fin && w.length > 2 && !ANTES_NO_LEGIT.has(ant)) { suma("¿no?"); continue; }
       if (x === "verdad" && fin && w.length > 2 && !ANTES_VERDAD_LEGIT.has(ant)) { suma("¿verdad?"); continue; }

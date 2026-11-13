@@ -61,7 +61,7 @@ VIEWS.reporte = function () {
     <p class="diag-paso">Reporte semanal</p><h2 class="diag-titulo">Semana del ${f(R.ini)} al ${f(R.fin - DIA_MS)}</h2>
     <div class="rep-dias" aria-label="Días practicados">${dias.map(d => `<div class="${d.on ? "on" : d.frz ? "frz" : ""}"><span>${d.on ? "✓" : d.frz ? "🧊" : ""}</span><small>${d.l}</small></div>`).join("")}</div>
     <p class="diag-lead"><b>${R.sem.dias} de 7 días</b> con práctica y <b>${R.sem.n} ejercicios</b>. ${R.sem.dias >= 5 ? "Constancia de orador." : R.sem.dias ? "Cada día cuenta; lo importante es volver." : "Esta semana fue de descanso: tu voz te espera."}</p>
-    ${!S.baseline ? `<div class="aviso">Aún no tienes línea base: comparo con la semana anterior. <button class="btn sec" onclick="go('diag')">Hacer diagnóstico (3 min)</button></div>` : ""}
+    ${!S.baseline ? `<div class="aviso">Aún no tienes línea base: comparo con la semana anterior. <button class="btn sec" data-go="diag">Hacer diagnóstico (3 min)</button></div>` : ""}
     ${R.mejoras.length ? `<h3>Lo que más avanzó</h3><p>${R.mejoras.map(x => `<span class="chip ok">${esc(x.n)}</span>`).join(" ")}</p>` : ""}
     <h3>Tus números</h3>
     <div class="rep-tabla" role="table">
@@ -69,7 +69,7 @@ VIEWS.reporte = function () {
       ${R.filas.map(x => `<div class="rep-fila" role="row"><span role="cell">${esc(x.n)}${chip(x.est)}</span><b role="cell">${v(x.ahora, x.u)}</b><span role="cell" class="sub" title="${x.fuente}">${v(x.ref, x.u)}</span></div>`).join("") || `<p class="sub">Aún no hay suficientes ejercicios medidos esta semana.</p>`}
     </div>
     <p class="sub">«Antes» es tu línea base cuando existe; si no, la semana anterior.</p>
-    ${sig ? `<h3>Siguiente enfoque</h3><p>${esc(sig.n)}: ${sig.est === "abajo" ? "bajó un poco frente a antes; unos días de práctica enfocada lo regresan." : "es tu área con más margen de crecimiento."}</p><button class="btn" onclick="go('${ir[sig.k]}')">Practicar ahora</button>` : ""}
+    ${sig ? `<h3>Siguiente enfoque</h3><p>${esc(sig.n)}: ${sig.est === "abajo" ? "bajó un poco frente a antes; unos días de práctica enfocada lo regresan." : "es tu área con más margen de crecimiento."}</p><button class="btn" data-go="${ir[sig.k]}">Practicar ahora</button>` : ""}
     <button class="btn sec" id="rp-sh">Compartir resumen</button></div>`;
   $("#rp-sh").onclick = async () => {
     try { if (navigator.share) return await navigator.share({ title: "Mi semana en Voz Clara", text: texto }); } catch (_) { return; }

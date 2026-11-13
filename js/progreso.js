@@ -1,5 +1,6 @@
 // ====== Registro, rachas y logros ======
 function logSession(type, data) {
+  applyFreezes(); // por si la app llevaba días abierta en segundo plano
   const s = { type, date: today(), ts: Date.now(), ...data };
   S.sessions.push(s);
   S.days[s.date] = (S.days[s.date] || 0) + 1;
@@ -37,7 +38,8 @@ function applyFreezes() {
   if (faltan.length <= S.freezes) {
     S.freezes -= faltan.length; S.freezeUsed.push(...faltan); save();
     toast(faltan.length === 1 ? "🧊 Usé un comodín por el día que faltó: tu racha sigue." : `🧊 Usé ${faltan.length} comodines por los días que faltaron: tu racha sigue.`);
-  } else {
+  } else if (S.avisoRacha !== today()) {
+    S.avisoRacha = today(); // este aviso se muestra una sola vez al día
     S.bestStreak = Math.max(S.bestStreak || 0, mejorRacha()); save();
     toast(`Hoy empieza una racha nueva. Tu mejor racha: ${S.bestStreak || 0} días. ¡Qué gusto verte de nuevo!`);
   }

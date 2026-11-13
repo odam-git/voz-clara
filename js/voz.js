@@ -53,7 +53,27 @@ function srAyuda() {
   return "El reconocimiento de voz no funcionó en este dispositivo. Toca <b>Reintentar medir</b> o usa <b>Escucharme</b>.";
 }
 
+// ===== Registro central de audio =====
+// Todo lo que usa micrófono o reconocimiento se anota aquí. Sirve para tres cosas:
+//  1) garantizar que nunca haya dos a la vez, 2) apagar todo al cambiar de pantalla o al
+//  mandar la app a segundo plano, y 3) mantener la pantalla encendida mientras se practica.
+const AUDIO_ACTIVO = new Set();
+const NUNCA = () => new Promise(() => {}); // promesa que no termina: el flujo que la espera queda abandonado sin errores
+function apagarAudio() { for (const x of [...AUDIO_ACTIVO]) { try { x.cancelar(); } catch (_) {} } AUDIO_ACTIVO.clear(); pantallaActiva(false, true); }
+let candado = null, quieren = 0;
+async function pantallaActiva(on, forzar) {
+  quieren = forzar ? 0 : Math.max(0, quieren + (on ? 1 : -1));
+  try {
+    if (quieren > 0 && !candado && navigator.wakeLock) { candado = await navigator.wakeLock.request("screen"); candado.addEventListener("release", () => { candado = null; }); }
+    else if (quieren === 0 && candado) { const c = candado; candado = null; await c.release(); }
+  } catch (_) { candado = null; }
+}
+// Al salir de la app o bloquear el teléfono se apaga el micrófono.
+document.addEventListener("visibilitychange", () => { if (document.hidden && AUDIO_ACTIVO.size) { apagarAudio(); if (typeof alVolver === "function") alVolver(true); } });
+window.addEventListener("pagehide", apagarAudio);
+
 const MENSAJE_SR = {
+  "ocupado": "Espera a que termine la grabación.",
   "no-speech": "No te escuché. Acércate al micrófono e intenta de nuevo.",
   "network": "El reconocimiento de voz necesita internet. Revisa tu conexión.",
   "aborted": "Se interrumpió la medición.",
@@ -64,6 +84,8 @@ class Reconocedor {
   // Debe llamarse directo desde el toque del botón (iOS exige el gesto).
   start() {
     return new Promise((resolve, reject) => {
+      if (AUDIO_ACTIVO.size) return reject("ocupado"); // nunca junto con el micrófono
+      AUDIO_ACTIVO.add(this); pantallaActiva(true);
       const r = new SR();
       r.lang = "es-MX"; r.continuous = true; r.interimResults = true; r.maxAlternatives = 1;
       this.rec = r; this.segs = []; this.ses = []; this.interim = ""; this.err = null;
@@ -94,15 +116,17 @@ class Reconocedor {
           this.reinicios++;
           try { r.start(); return; } catch (_) {}
         }
-        this.activo = false;
+        this.activo = false; this._soltar();
         if (!iniciado) { iniciado = true; reject(this.err || "sin-inicio"); }
         if (this._fin) this._fin();
       };
-      try { r.start(); } catch (e) { iniciado = true; reject("sin-inicio"); return; }
+      try { r.start(); } catch (e) { iniciado = true; this.activo = false; this._soltar(); reject("sin-inicio"); return; }
       // Algunos navegadores no disparan onstart: si no hubo error en 4 s, se da por iniciado.
       setTimeout(() => { if (!iniciado && this.activo) { iniciado = true; resolve(); } }, 4000);
     });
   }
+  _soltar() { if (AUDIO_ACTIVO.delete(this)) pantallaActiva(false); }
+  cancelar() { this.abort(); }
   _consolidar() {
     const nuevos = this.ses.length ? this.ses : (this.interim ? [this.interim] : []);
     for (const s of nuevos) {
@@ -125,14 +149,14 @@ class Reconocedor {
   stop() {
     return new Promise(res => {
       let listo = false;
-      const fin = () => { if (!listo) { listo = true; res(this.resultado()); } };
+      const fin = () => { if (!listo) { listo = true; this._soltar(); res(this.resultado()); } };
       if (!this.activo) { this._consolidar(); return fin(); }
       this._fin = fin; this.activo = false;
       try { this.rec.stop(); } catch (_) { this._consolidar(); fin(); }
       setTimeout(() => { this._consolidar(); fin(); }, 2500); // por si el navegador nunca avisa el final
     });
   }
-  abort() { this.activo = false; try { this.rec && this.rec.abort(); } catch (_) {} }
+  abort() { this.activo = false; this._soltar(); try { this.rec && this.rec.abort(); } catch (_) {} }
 }
 
 // Detección de tono (YIN simplificado). Devuelve Hz o null si no hay voz.
@@ -167,12 +191,19 @@ let urlsAudio = [];
 class Medidor {
   // opciones: { grabar: bool }
   async start(op = {}) {
+    // Si ya hay audio en uso (doble toque, o reconocimiento activo), este intento se abandona sin efecto.
+    if (AUDIO_ACTIVO.size) return NUNCA();
+    AUDIO_ACTIVO.add(this); pantallaActiva(true);
     // El contexto de audio se crea durante el toque (iOS lo deja pausado si se crea después).
     const AC = window.AudioContext || window.webkitAudioContext;
     this.ctx = AC ? new AC() : null;
     try { this.ctx && this.ctx.resume && this.ctx.resume(); } catch (_) {}
-    try { this.stream = await getUM(); }
-    catch (e) { this._cerrarCtx(); toast("No pude usar el micrófono. Revisa los permisos del sitio."); throw e; }
+    let stream;
+    try { stream = await getUM(); }
+    catch (e) { this._cerrarCtx(); this._soltar(); if (this.cancelado) return NUNCA(); toast("No pude usar el micrófono. Revisa los permisos del sitio."); throw e; }
+    // Si el usuario salió de la pantalla mientras se abría el micrófono, se apaga de inmediato.
+    if (this.cancelado) { stream.getTracks().forEach(t => t.stop()); this._cerrarCtx(); return NUNCA(); }
+    this.stream = stream;
     if (this.ctx) {
       try { await this.ctx.resume(); } catch (_) {}
       const src = this.ctx.createMediaStreamSource(this.stream);
@@ -186,7 +217,7 @@ class Medidor {
       const tipos = ["audio/mp4", "audio/webm;codecs=opus", "audio/webm"];
       const tipo = tipos.find(t => MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(t));
       this.mr = new MediaRecorder(this.stream, tipo ? { mimeType: tipo } : undefined);
-      this.chunks = []; this.mr.ondataavailable = e => e.data && e.data.size && this.chunks.push(e.data);
+      this.chunks = []; this.mr.ondataavailable = e => { if (this.chunks && e.data && e.data.size) this.chunks.push(e.data); };
       this.mr.start(250);
     }
   }
@@ -207,12 +238,16 @@ class Medidor {
   tono() { const b = this._leer(); return b ? detectarTono(b, this.sr) : null; }
   segundos() { return (performance.now() - this.t0) / 1000; }
   _cerrarCtx() { try { this.ctx && this.ctx.state !== "closed" && this.ctx.close(); } catch (_) {} }
+  _soltar() { if (AUDIO_ACTIVO.delete(this)) pantallaActiva(false); }
+  // Corte inmediato (cambio de pantalla, app en segundo plano).
+  cancelar() { this.cancelado = true; if (this.alCancelar) { try { this.alCancelar(); } catch (_) {} } this.stop(); }
   stop() {
+    if (this._parada) return this._parada; // detener dos veces devuelve el mismo resultado
     const secs = this.t0 ? this.segundos() : 0;
-    return new Promise(res => {
+    return this._parada = new Promise(res => {
       const fin = () => {
         if (this.stream) this.stream.getTracks().forEach(t => t.stop());
-        this._cerrarCtx();
+        this._cerrarCtx(); this._soltar();
         let audio = null;
         if (this.chunks && this.chunks.length) {
           const blob = new Blob(this.chunks, { type: this.chunks[0].type || "audio/mp4" });
@@ -231,7 +266,8 @@ class Medidor {
 // Bucle de animación con cancelación sencilla.
 function bucle(fn) {
   let id = 0, vivo = true;
-  const paso = () => { if (!vivo) return; fn(); id = requestAnimationFrame(paso); };
+  // Si la función falla (por ejemplo, la pantalla ya no existe), el bucle se detiene solo.
+  const paso = () => { if (!vivo) return; try { fn(); } catch (_) { vivo = false; return; } id = requestAnimationFrame(paso); };
   id = requestAnimationFrame(paso);
   return () => { vivo = false; cancelAnimationFrame(id); };
 }

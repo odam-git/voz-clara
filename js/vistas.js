@@ -10,14 +10,20 @@ const TABS = [["hoy", "🏠", "Hoy"], ["ej", "🎤", "Ejercicios"], ["prog", "�
 let tab = "hoy", cleanup = null;
 function go(t, arg) {
   if (cleanup) { try { cleanup(); } catch (_) {} cleanup = null; }
+  apagarAudio(); // por si algo seguía abriéndose: ningún micrófono sobrevive a un cambio de pantalla
   tab = VIEWS[t] ? t : "hoy";
   document.body.classList.toggle("intro", tab === "bienvenida");
   renderNav(); VIEWS[tab](arg); window.scrollTo(0, 0);
   const h = $("#app h2"); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
 }
+// Navegación sin código en línea (permite una política de seguridad estricta).
+document.addEventListener("click", e => {
+  const b = e.target.closest && e.target.closest("[data-go]");
+  if (b && !b.disabled) go(b.dataset.go, b.dataset.arg);
+});
 function renderNav() {
   const main = TABS.map(x => x[0]);
-  $("#nav").innerHTML = TABS.map(([id, i, l]) => `<button class="${(tab === id || (!main.includes(tab) && id === "ej")) ? "on" : ""}" onclick="go('${id}')" aria-label="${l}"><i aria-hidden="true">${i}</i>${l}</button>`).join("");
+  $("#nav").innerHTML = TABS.map(([id, i, l]) => `<button class="${(tab === id || (!main.includes(tab) && id === "ej")) ? "on" : ""}" data-go="${id}" aria-label="${l}"><i aria-hidden="true">${i}</i>${l}</button>`).join("");
 }
 function greet() {
   const h = new Date().getHours(), s = h < 12 ? "Buenos días" : h < 19 ? "Buenas tardes" : "Buenas noches";
@@ -30,7 +36,7 @@ const STEPS = [["breath", "Respiración diafragmática", "3 min · base de la vo
 const ENFOQUES = [["vol", "Proyección y volumen", "2 min · meta de +6 dB"], ["ento", "Entonación", "2 min · tres intenciones"], ["pausa", "Pausas", "2 min · silencio antes de la idea clave"]];
 const enfoqueHoy = () => { const d = new Date(), n = Math.floor((d - new Date(d.getFullYear(), 0, 0)) / 864e5); return ENFOQUES[n % 3]; };
 const pasosHoy = () => [...STEPS, enfoqueHoy()];
-const filaPaso = (id, t, d, chk) => `<button class="step" onclick="go('${id}')">${chk === undefined ? "" : `<span class="chk ${chk ? "done" : ""}" aria-hidden="true">${chk ? "✓" : ""}</span>`}<span class="t">${t}<small>${d}</small></span><span aria-hidden="true">›</span></button>`;
+const filaPaso = (id, t, d, chk) => `<button class="step" data-go="${id}">${chk === undefined ? "" : `<span class="chk ${chk ? "done" : ""}" aria-hidden="true">${chk ? "✓" : ""}</span>`}<span class="t">${t}<small>${d}</small></span><span aria-hidden="true">›</span></button>`;
 
 const VIEWS = {
   bienvenida() {
@@ -59,11 +65,11 @@ const VIEWS = {
       <div class="stat"><b>🔥 ${st}</b><span>días de racha</span></div>
       <div class="stat"><b>${n}/${pasos.length}</b><span>rutina de hoy</span></div>
       <div class="stat"><b>🧊 ${S.freezes}</b><span>comodines</span></div></div></div>
-    ${!S.baseline ? `<div class="card destacada"><h2>🧭 Empieza con tu diagnóstico</h2><p>Tres minutos para fijar tu línea base y elegir los sonidos que más te conviene trabajar.</p><button class="btn" onclick="go('diag')">Hacer diagnóstico</button></div>` : ""}
-    ${reporteListo() ? `<div class="card destacada"><h2>🔭 Tu reporte semanal está listo</h2><p>Mira cuánto avanzaste frente a tu punto de partida.</p><button class="btn" onclick="go('reporte')">Ver reporte</button></div>` : ""}
+    ${!S.baseline ? `<div class="card destacada"><h2>🧭 Empieza con tu diagnóstico</h2><p>Tres minutos para fijar tu línea base y elegir los sonidos que más te conviene trabajar.</p><button class="btn" data-go="diag">Hacer diagnóstico</button></div>` : ""}
+    ${reporteListo() ? `<div class="card destacada"><h2>🔭 Tu reporte semanal está listo</h2><p>Mira cuánto avanzaste frente a tu punto de partida.</p><button class="btn" data-go="reporte">Ver reporte</button></div>` : ""}
     <div class="card"><h2>Rutina diaria · ~13 min</h2>
       ${pasos.map(([id, t, d], i) => filaPaso(id, i === pasos.length - 1 ? "✨ " + t : t, i === pasos.length - 1 ? "Enfoque del día · " + d : d, r[id])).join("")}
-      ${n === pasos.length ? `<p style="text-align:center">🎉 <b>Rutina completa.</b> Mañana más.</p>` : `<button class="btn" onclick="go('${pasos.find(s => !r[s[0]])[0]}')">${n ? "Continuar" : "Empezar"} rutina</button>`}
+      ${n === pasos.length ? `<p style="text-align:center">🎉 <b>Rutina completa.</b> Mañana más.</p>` : `<button class="btn" data-go="${pasos.find(s => !r[s[0]])[0]}">${n ? "Continuar" : "Empezar"} rutina</button>`}
     </div>
     <div class="card"><h3>💡 Consejo del día</h3><p>${TIPS[new Date().getDate() % TIPS.length]}</p></div>`;
   },
@@ -84,16 +90,18 @@ const VIEWS = {
     <div class="card"><h2>Exhalación sostenida “ssss”</h2><p>Toca empezar, guarda silencio un instante y luego suelta el aire con una “s” suave y constante. El cronómetro corre solo mientras se escucha tu “s” (meta: 25 s).</p>
     <div class="meter"><div id="lv"></div></div><div class="timer" id="hold">0.0 s</div><div class="sub" id="hst" style="text-align:center"></div>
     <button class="btn sec" id="hs">Empezar exhalación</button></div>`;
-    let iv = null, M = null, stop = null;
+    let iv = null, M = null, stop = null, despierto = false;
+    const soltarPantalla = () => { if (despierto) { despierto = false; pantallaActiva(false); } };
     $("#go").onclick = () => {
       $("#go").disabled = true; let fase = 0, ciclos = 0, finFase = Date.now() + P[0][1] * 1000;
+      pantallaActiva(true); despierto = true;
       const pinta = () => { $("#ph").textContent = P[fase][0]; $("#c").style.transitionDuration = P[fase][1] + "s"; $("#c").style.transform = `scale(${P[fase][2]})`; };
       pinta();
       iv = setInterval(() => {
         let rest = Math.ceil((finFase - Date.now()) / 1000);
         if (rest <= 0) {
           fase = (fase + 1) % 3; if (fase === 0) ciclos++;
-          if (ciclos >= 6) { clearInterval(iv); $("#ph").textContent = "¡Bien hecho!"; $("#tm").textContent = "✓"; $("#go").disabled = false; logSession("breath", { cycles: 6 }); return; }
+          if (ciclos >= 6) { clearInterval(iv); soltarPantalla(); $("#ph").textContent = "¡Bien hecho!"; $("#tm").textContent = "✓"; $("#go").disabled = false; logSession("breath", { cycles: 6 }); return; }
           finFase = Date.now() + P[fase][1] * 1000; rest = P[fase][1]; pinta();
         }
         $("#tm").textContent = rest;
@@ -122,11 +130,11 @@ const VIEWS = {
         $("#hold").textContent = acum.toFixed(1) + " s";
       });
     };
-    cleanup = () => { clearInterval(iv); stop && stop(); M && M.stop(); M = null; };
+    cleanup = () => { clearInterval(iv); soltarPantalla(); stop && stop(); M && M.cancelar(); M = null; };
   },
 
   art(arg) {
-    const f = arg && arg.f && FONEMAS[arg.f] ? arg.f : focoDeHoy(), fon = FONEMAS[f], lvl = nivelArt(f);
+    const f = arg && esFonema(arg.f) ? arg.f : focoDeHoy(), fon = FONEMAS[f], lvl = nivelArt(f);
     const pool = TRABALENGUAS.filter(x => x.f === f);
     const tw = arg && arg.t ? arg : elegir(pool, lvl, S.sessions.filter(s => s.type === "art" && s.tid).map(s => s.tid));
     $("#app").innerHTML = `<div class="card"><h2>👄 Articulación · ${esc(fon.nombre)}</h2><p>${esc(fon.ayuda)}</p><h3>1. Series silábicas</h3>
@@ -159,12 +167,11 @@ const VIEWS = {
     const ctl = medirYEscuchar({
       el: $("#flujo"), tipo: "read", nivel: L.nivel, extra: { lid: L.id },
       evaluar: r => {
-        const n = palabras(txt).length, dur = r.hablaSecs;
-        let wpm = dur && dur >= 3 ? Math.round(n / (dur / 60)) : null;
-        if (wpm != null && (wpm > 320 || wpm < 40)) wpm = null; // tiempo no confiable
-        const ok = lcsMatch(txt, r.text); const acc = Math.round(ok.filter(Boolean).length / ok.length * 100);
+        const dur = r.hablaSecs, ok = lcsMatch(txt, r.text), acc = porcentaje(ok);
+        const leidas = palabrasLeidas(ok), parcial = leidas < ok.length * 0.8;
+        const wpm = calcularWpm(leidas, dur); // solo cuenta lo que sí se leyó
         ajustarNivel("read", logSession("read", { wpm, acc, secs: dur ? +dur.toFixed(1) : null, modo: "medido", lid: L.id, level: L.nivel }));
-        const msg = wpm == null ? "No alcancé a medir tu velocidad: lee el texto completo." : wpm > 170 ? "Vas muy rápido: respira en cada pausa y deja que las ideas aterricen." : wpm < 110 ? "Un poco lento: mantén la energía sin perder las pausas." : "¡Ritmo de orador! Así suena la seguridad.";
+        const msg = wpm == null ? "No alcancé a medir tu velocidad: lee el texto completo." : parcial ? "Medí tu ritmo solo en la parte que leíste. Para la claridad, lee el texto completo." : wpm > 170 ? "Vas muy rápido: respira en cada pausa y deja que las ideas aterricen." : wpm < 110 ? "Un poco lento: mantén la energía sin perder las pausas." : "¡Ritmo de orador! Así suena la seguridad.";
         return `<div class="stats" style="margin-top:12px"><div class="stat"><b>${wpm ?? "—"}</b><span>palabras/min</span></div><div class="stat"><b>${acc}%</b><span>claridad</span></div><div class="stat"><b>${dur ? dur.toFixed(0) + "s" : "—"}</b><span>al hablar</span></div></div><p>${msg}</p>`;
       }
     });
@@ -200,7 +207,7 @@ const VIEWS = {
     const self = S.sessions.filter(s => s.self != null);
     const avg = (a, k) => a.length ? Math.round(a.reduce((x, s) => x + (s[k] || 0), 0) / a.length) : "—";
     const last7 = [...Array(7)].map((_, i) => { const d = new Date(); d.setDate(d.getDate() - 6 + i); return S.days[dayStr(d)] ? "🟩" : S.freezeUsed.includes(dayStr(d)) ? "🧊" : "⬜"; }).join(" ");
-    $("#app").innerHTML = `<button class="btn" onclick="go('reporte')">🔭 Ver reporte semanal</button><div class="card"><h2>Últimos 7 días</h2><p style="font-size:22px;text-align:center">${last7}</p>
+    $("#app").innerHTML = `<button class="btn" data-go="reporte">🔭 Ver reporte semanal</button><div class="card"><h2>Últimos 7 días</h2><p style="font-size:22px;text-align:center">${last7}</p>
     <div class="stats"><div class="stat"><b>${S.sessions.length}</b><span>ejercicios</span></div><div class="stat"><b>${Object.keys(S.days).length}</b><span>días practicados</span></div><div class="stat"><b>${improvement() > 0 ? "−" + improvement() + "%" : "—"}</b><span>muletillas vs inicio</span></div></div></div>
     ${chartCard("🎯 Precisión en trabalenguas (%)", art.map(s => s.acc), 0, 100)}
     ${chartCard("💬 Muletillas por minuto", im.map(s => +(s.mul / (s.secs / 60)).toFixed(1)), 0, null)}
@@ -235,7 +242,7 @@ const VIEWS = {
     <div id="imp"></div></div>`;
     $("#sv").onclick = () => { S.settings.name = $("#nm").value.trim().slice(0, 40); S.settings.focus = $("#fc").value; S.settings.hour = $("#hr").value || "07:30"; save(); greet(); toast("Guardado"); };
     $("#ics").onclick = () => {
-      const [h, m] = ($("#hr").value || "07:30").split(":"); const d = today().replace(/-/g, "");
+      const [h, m] = ($("#hr").value || "07:30").split(":");
       descargarICS(h, m);
     };
     $("#nt").onclick = async () => {
@@ -245,12 +252,12 @@ const VIEWS = {
       const ok = await notificar("Voz Clara", "Así se verán tus avisos. Llegan al abrir la app si aún no practicas.");
       toast(ok ? "Notificaciones activadas" : "Este navegador no pudo mostrar la notificación.");
     };
-    $("#ex").onclick = () => dl(new Blob([JSON.stringify(S, null, 1)], { type: "application/json" }), `voz-clara-respaldo-${today()}.json`);
+    $("#ex").onclick = () => entregarArchivo(new Blob([JSON.stringify(S, null, 1)], { type: "application/json" }), `voz-clara-respaldo-${today()}.json`, "application/json", "Respaldo de Voz Clara");
     $("#im").onclick = () => $("#fi").click();
     $("#fi").onchange = async e => {
       const f = e.target.files[0]; e.target.value = ""; if (!f) return;
       let obj; try { obj = JSON.parse(await f.text()); normalizar(obj); } catch (_) { return toast("Ese archivo no es un respaldo de Voz Clara."); }
-      $("#imp").innerHTML = `<div class="aviso"><b>Respaldo con ${obj.sessions.length} ejercicios.</b> ¿Qué hago con él?
+      $("#imp").innerHTML = `<div class="aviso"><b>Respaldo con ${normalizar(obj).sessions.length} ejercicios válidos.</b> ¿Qué hago con él?
         <button class="btn" id="imc">Combinar con lo que ya tengo</button><button class="btn sec" id="imr">Reemplazar todo</button><button class="btn sec" id="imx">Cancelar</button></div>`;
       $("#imc").onclick = () => { if (importarRespaldo(obj, "combinar")) { toast("Respaldo combinado"); greet(); go("hoy"); } };
       $("#imr").onclick = () => { if (confirm("Se borrará tu historial actual y se usará el del respaldo. ¿Continuar?") && importarRespaldo(obj, "reemplazar")) { toast("Respaldo importado"); greet(); go("hoy"); } };
@@ -261,24 +268,31 @@ const VIEWS = {
 // Evento diario en hora local "flotante" (válido sin bloque de zona horaria y respeta la hora del teléfono).
 function descargarICS(h, m) {
   const d = today().replace(/-/g, ""), ahora = new Date().toISOString().replace(/[-:]/g, "").slice(0, 15) + "Z";
-  const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//VozClara//ES", "CALSCALE:GREGORIAN", "BEGIN:VEVENT", `UID:vozclara-diario-${d}@voz-clara`, `DTSTAMP:${ahora}`,
+  const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//VozClara//ES", "CALSCALE:GREGORIAN", "BEGIN:VEVENT", "UID:vozclara-recordatorio-diario@voz-clara", `DTSTAMP:${ahora}`,
     `DTSTART:${d}T${h}${m}00`, "DURATION:PT15M", "RRULE:FREQ=DAILY", "SUMMARY:🎙️ Voz Clara: rutina de voz", "DESCRIPTION:Unos minutos para hablar mejor.",
     "BEGIN:VALARM", "TRIGGER:PT0M", "ACTION:DISPLAY", "DESCRIPTION:Hora de tu rutina de voz", "END:VALARM", "END:VEVENT", "END:VCALENDAR", ""].join("\r\n");
-  const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" }), nombre = "voz-clara-recordatorio.ics";
-  // En la app instalada de iPhone las descargas no funcionan: se usa el menú Compartir.
+  entregarArchivo(new Blob([ics], { type: "text/calendar;charset=utf-8" }), "voz-clara-recordatorio.ics", "text/calendar", "Recordatorio Voz Clara");
+  if (IS_IOS && !IS_STANDALONE) toast("Si no se abre el Calendario, toca el archivo descargado.");
+}
+// Entrega un archivo al usuario. En la app instalada de iPhone las descargas no funcionan:
+// ahí se usa el menú Compartir (Guardar en Archivos, AirDrop, Calendario…).
+function entregarArchivo(blob, nombre, tipo, titulo) {
   if (IS_IOS && IS_STANDALONE && navigator.canShare) {
-    const f = new File([blob], nombre, { type: "text/calendar" });
-    if (navigator.canShare({ files: [f] })) return navigator.share({ files: [f], title: "Recordatorio Voz Clara" }).catch(() => {});
+    try {
+      const f = new File([blob], nombre, { type: tipo });
+      if (navigator.canShare({ files: [f] })) return navigator.share({ files: [f], title: titulo }).catch(() => {});
+    } catch (_) {}
   }
   dl(blob, nombre);
-  if (IS_IOS) toast("Si no se abre el Calendario, abre la app en Safari y vuelve a tocar el botón.");
 }
 function dl(blob, name) {
   const u = URL.createObjectURL(blob), a = document.createElement("a");
   a.href = u; a.download = name; document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(u), 60000);
 }
-function chartCard(title, vals, min, max, band) { return `<div class="card"><h3>${title}</h3>${vals.length < 2 ? `<p class="sub">Necesitas al menos 2 sesiones para ver la gráfica.</p>` : `<canvas data-v="${vals.slice(-30).join(",")}" data-min="${min}" data-max="${max ?? ""}" data-band="${band ? band.join(",") : ""}" role="img" aria-label="${title}"></canvas>`}</div>`; }
+function chartCard(title, vals, min, max, band) {
+  vals = vals.map(Number).filter(Number.isFinite); // solo números: nada del historial llega como HTML
+  return `<div class="card"><h3>${title}</h3>${vals.length < 2 ? `<p class="sub">Necesitas al menos 2 sesiones para ver la gráfica.</p>` : `<canvas data-v="${vals.slice(-30).join(",")}" data-min="${min}" data-max="${max ?? ""}" data-band="${band ? band.join(",") : ""}" role="img" aria-label="${title}"></canvas>`}</div>`; }
 function drawChart(c) {
   const v = c.dataset.v.split(",").map(Number), dpr = devicePixelRatio || 1, W = c.clientWidth, H = 160; c.width = W * dpr; c.height = H * dpr; const x = c.getContext("2d"); x.scale(dpr, dpr);
   const mn = +c.dataset.min; let mx = c.dataset.max ? +c.dataset.max : Math.max(...v) * 1.2 || 1; if (mx <= mn) mx = mn + 1; const P = 24;

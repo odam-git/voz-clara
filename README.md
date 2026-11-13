@@ -39,8 +39,18 @@ Rachas con **comodines** (1 por cada 7 días, máx. 2, cubren varios días segui
 ## iPhone
 Instálala desde Safari con **Compartir › Agregar a pantalla de inicio**. Si en la app instalada no mide, activa **Ajustes › General › Teclado › Dictado**; si aún así no mide, úsala en Safari. Safari y la app instalada guardan historiales separados: júntalos con Exportar e Importar › Combinar.
 
+## Seguridad
+- Los respaldos importados se validan campo por campo: solo se aceptan datos conocidos y con el tipo esperado.
+- Política de seguridad de contenido (CSP) estricta: sin código en línea y sin conexiones a otros sitios.
+- El micrófono se apaga al cambiar de pantalla y al mandar la app a segundo plano.
+
+## Pruebas
+- `node --test tests/pruebas.test.js`: lógica (respaldos, rachas, comodines, precisión, muletillas, tono, pausas, niveles, reporte). No requiere instalar nada.
+- `node tests/humo.js`: abre todas las pantallas en un navegador (opcional; requiere Playwright).
+
 ## Estructura
 - `index.html`: estructura y estilos.
 - `js/`: lógica por módulos (estado, voz, análisis, flujo, progreso, adaptativo, vistas, módulos, diagnóstico, reporte, inicio).
 - `data/`: contenido en JSON (trabalenguas, lecturas, temas, entonación, consejos).
+- `tests/`: pruebas automáticas.
 - `sw.js`: funcionamiento sin conexión. Sube `VERSION` si cambias la lista de archivos.

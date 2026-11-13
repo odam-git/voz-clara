@@ -8,6 +8,9 @@ async function cargarDatos() {
   LECTURAS = l.items; TEMAS = m.items; TIPS = c.items; ENTONACION = e.items;
 }
 
+// ¿Es un grupo de sonidos real? (evita claves heredadas como "constructor")
+const esFonema = f => typeof f === "string" && Object.prototype.hasOwnProperty.call(FONEMAS, f);
+
 // Texto para leer: quita las marcas de pausa "/" (se muestran aparte).
 const textoLimpio = t => t.replace(/\s\/\s/g, " ").replace(/\s+/g, " ").trim();
 // HTML con marcas de pausa visibles (‖) antes de las ideas clave.

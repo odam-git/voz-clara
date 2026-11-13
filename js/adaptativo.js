@@ -41,7 +41,7 @@ function ajustarNivel(area, s) {
   if (nuevo === actual) return null;
   if (area === "art") lv.art[s.f] = nuevo; else lv[area] = nuevo;
   lv.desde[clave] = Date.now(); save();
-  const nombre = { art: "Articulación" + (FONEMAS[s.f] ? " · " + FONEMAS[s.f].nombre : ""), read: "Lectura", impro: "Improvisación" }[area];
+  const nombre = { art: "Articulación" + (esFonema(s.f) ? " · " + FONEMAS[s.f].nombre : ""), read: "Lectura", impro: "Improvisación" }[area];
   toast(nuevo > actual ? `⬆️ ${nombre}: subes a nivel ${nuevo}. ¡Bien ganado!` : `${nombre}: ajusté el reto a nivel ${nuevo} para consolidar. Es parte del método.`);
   if (nuevo === 3 && !S.badges.nivel3) { S.badges.nivel3 = today(); toast("🧗 ¡Logro desbloqueado! Nivel experto"); save(); }
   return nuevo;
@@ -49,7 +49,7 @@ function ajustarNivel(area, s) {
 
 // Sonido a trabajar hoy: rota entre los focos elegidos por el diagnóstico (o el de Ajustes).
 function focoDeHoy() {
-  const lista = (S.settings.focusList && S.settings.focusList.length ? S.settings.focusList : [S.settings.focus]).filter(f => FONEMAS[f]);
+  const lista = (S.settings.focusList && S.settings.focusList.length ? S.settings.focusList : [S.settings.focus]).filter(esFonema);
   if (!lista.length) return ORDEN_FON[0];
   const hoy = S.sessions.filter(s => s.type === "art" && s.date === today());
   return lista.slice().sort((a, b) => hoy.filter(s => s.f === a).length - hoy.filter(s => s.f === b).length)[0];

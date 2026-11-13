@@ -19,33 +19,60 @@ function defaults() {
 
 const isObj = o => o && typeof o === "object" && !Array.isArray(o);
 
+// ===== Validación estricta de datos guardados o importados =====
+// Un respaldo es un archivo ajeno: solo se aceptan campos conocidos, con el tipo esperado.
+const esFecha = k => { if (typeof k !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(k)) return false; const [y, m, d] = k.split("-").map(Number); const x = new Date(y, m - 1, d); return y >= 2000 && y < 2200 && x.getMonth() === m - 1 && x.getDate() === d; };
+const esId = s => typeof s === "string" && /^[A-Za-z0-9_:.-]{1,40}$/.test(s) && !(s in Object.prototype);
+const num = (v, min = -1e9, max = 1e13) => typeof v === "number" && Number.isFinite(v) && v >= min && v <= max ? v : undefined;
+const SES_NUM = ["acc", "wpm", "mul", "words", "secs", "hold", "cycles", "self", "level", "mejor", "rel", "sobre", "aciertos", "total", "hit", "pausas", "rango"];
+const SES_ID = ["modo", "f", "tid", "lid", "temaId", "fid"];
+
+function limpiarSesion(s) {
+  if (!isObj(s) || !esId(s.type) || !esFecha(s.date) || num(s.ts, 0) === undefined) return null;
+  const c = { type: s.type, date: s.date, ts: s.ts };
+  for (const k of SES_NUM) { const v = num(s[k]); if (v !== undefined) c[k] = v; else if (s[k] === null) c[k] = null; }
+  for (const k of SES_ID) if (esId(s[k])) c[k] = s[k];
+  if (typeof s.meta === "boolean") c.meta = s.meta;
+  return c;
+}
+function mapaNum(o, min, max) {
+  const r = {}; if (!isObj(o)) return r;
+  for (const [k, v] of Object.entries(o)) if (esId(k) && num(v, min, max) !== undefined) r[k] = v;
+  return r;
+}
+function limpiarLineaBase(b) {
+  if (!isObj(b)) return null;
+  const c = { fecha: esFecha(b.fecha) ? b.fecha : null, ts: num(b.ts, 0) ?? 0, modo: esId(b.modo) ? b.modo : "medido" };
+  for (const k of ["db", "f0", "wpm", "acc", "mulMin", "imWpm", "fluidez"]) c[k] = num(b[k]) ?? null;
+  c.fon = mapaNum(b.fon, 0, 100); c.fonSelf = mapaNum(b.fonSelf, 1, 5);
+  // Líneas base antiguas sin reconocimiento guardaban estrellas como si fueran precisión: se separan.
+  if (c.modo === "auto" && Object.keys(c.fon).length && !Object.keys(c.fonSelf).length) { for (const [k, v] of Object.entries(c.fon)) c.fonSelf[k] = Math.round(v / 25) + 1; c.fon = {}; }
+  c.focos = Array.isArray(b.focos) ? b.focos.filter(esId).slice(0, 4) : [];
+  return c;
+}
+
 // Valida y limpia cualquier objeto (guardado o importado). Lanza error si no es un respaldo de Voz Clara.
 function normalizar(o) {
   if (!isObj(o) || !Array.isArray(o.sessions)) throw new Error("formato");
   const d = defaults();
-  d.sessions = o.sessions
-    .filter(s => isObj(s) && typeof s.type === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s.date) && Number.isFinite(s.ts))
-    .map(s => {
-      const c = {};
-      for (const [k, v] of Object.entries(s)) if (typeof v === "number" ? Number.isFinite(v) : ["string", "boolean"].includes(typeof v) || v === null || isObj(v)) c[k] = v;
-      return c;
-    })
-    .sort((a, b) => a.ts - b.ts);
+  d.sessions = o.sessions.map(limpiarSesion).filter(Boolean).sort((a, b) => a.ts - b.ts);
   d.freezes = Math.max(0, Math.min(2, Number.isFinite(o.freezes) ? Math.floor(o.freezes) : 1));
-  d.freezeUsed = Array.isArray(o.freezeUsed) ? o.freezeUsed.filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k)) : [];
-  if (isObj(o.badges)) for (const [k, v] of Object.entries(o.badges)) if (typeof v === "string") d.badges[k] = v;
+  d.freezeUsed = Array.isArray(o.freezeUsed) ? [...new Set(o.freezeUsed.filter(esFecha))] : [];
+  if (isObj(o.badges)) for (const [k, v] of Object.entries(o.badges)) if (esId(k) && esFecha(v)) d.badges[k] = v;
   if (isObj(o.settings)) {
     const st = o.settings;
     if (typeof st.name === "string") d.settings.name = st.name.slice(0, 40);
-    if (/^\d{2}:\d{2}$/.test(st.hour)) d.settings.hour = st.hour;
+    if (typeof st.hour === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(st.hour)) d.settings.hour = st.hour;
     // Claves de la v1 (R, D, P, C) se traducen a los grupos nuevos.
-    if (typeof st.focus === "string") d.settings.focus = ({ R: "RR", D: "DT", P: "PB", C: "KG" })[st.focus] || st.focus;
-    if (Array.isArray(st.focusList)) d.settings.focusList = st.focusList.filter(x => typeof x === "string");
+    if (esId(st.focus)) d.settings.focus = ({ R: "RR", D: "DT", P: "PB", C: "KG" })[st.focus] || st.focus;
+    if (Array.isArray(st.focusList)) d.settings.focusList = st.focusList.filter(esId).slice(0, 4);
   }
-  for (const k of ["baseline", "levels", "volBase"]) if (isObj(o[k])) d[k] = o[k];
-  if (Array.isArray(o.diags)) d.diags = o.diags.filter(isObj);
-  for (const k of ["lastFreezeAt", "lastNotif", "lastReport"]) if (typeof o[k] === "string") d[k] = o[k];
-  if (Number.isFinite(o.bestStreak)) d.bestStreak = o.bestStreak;
+  const lb = limpiarLineaBase(o.baseline); if (lb) d.baseline = lb;
+  if (Array.isArray(o.diags)) d.diags = o.diags.map(limpiarLineaBase).filter(Boolean).slice(-50);
+  if (isObj(o.levels)) d.levels = { art: mapaNum(o.levels.art, 1, 3), read: num(o.levels.read, 1, 3) ?? 1, impro: num(o.levels.impro, 1, 3) ?? 1, desde: mapaNum(o.levels.desde, 0) };
+  if (isObj(o.volBase) && num(o.volBase.db, -100, 0) !== undefined) d.volBase = { db: o.volBase.db, f0: num(o.volBase.f0, 50, 1000) ?? null, fecha: esFecha(o.volBase.fecha) ? o.volBase.fecha : null };
+  for (const k of ["lastFreezeAt", "lastNotif", "lastReport", "avisoRacha"]) if (esFecha(o[k])) d[k] = o[k];
+  const bs = num(o.bestStreak, 0, 100000); if (bs !== undefined) d.bestStreak = Math.floor(bs);
   // Quien ya usaba la v1 no debe ver otra vez la bienvenida.
   d.onboarded = o.onboarded === true || d.sessions.length > 0 || !!d.settings.name;
   recalcDays(d);

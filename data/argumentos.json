@@ -1,0 +1,293 @@
+{
+ "version": 1,
+ "nota": "Resumen didáctico para practicar. Coteja con la obra original antes de citar al autor.",
+ "metodos": [
+  {
+   "id": "toulmin",
+   "autor": "Stephen Toulmin",
+   "obra": "Los usos de la argumentación (1958)",
+   "lema": "Un argumento es una estructura: de los datos a la conclusión, por medio de una garantía.",
+   "idea": "Toulmin propone ver el argumento como un organismo con partes. No basta afirmar algo: hay que mostrar los datos, la regla que permite pasar de ellos a la conclusión, el respaldo de esa regla y las excepciones posibles.",
+   "sirve": "Armar rápido un argumento completo y detectar qué pieza le falta. Es el más práctico para hablar.",
+   "pasos": [
+    {
+     "id": "pret",
+     "n": "Pretensión",
+     "q": "¿Qué quieres que el tribunal concluya?",
+     "a": "Una sola frase, afirmativa y concreta.",
+     "seg": 20
+    },
+    {
+     "id": "datos",
+     "n": "Datos",
+     "q": "¿En qué hechos probados te apoyas?",
+     "a": "Hechos, no opiniones. Menciona la prueba.",
+     "seg": 45
+    },
+    {
+     "id": "gar",
+     "n": "Garantía",
+     "q": "¿Qué regla permite pasar de esos datos a tu conclusión?",
+     "a": "Suele ser una norma o una máxima de experiencia.",
+     "seg": 45
+    },
+    {
+     "id": "resp",
+     "n": "Respaldo",
+     "q": "¿Qué sostiene esa regla?",
+     "a": "El artículo, el precedente o el principio que la respalda.",
+     "seg": 45
+    },
+    {
+     "id": "cual",
+     "n": "Cualificador",
+     "q": "¿Con qué fuerza afirmas tu conclusión?",
+     "a": "«Necesariamente», «con alta probabilidad», «razonablemente».",
+     "seg": 20
+    },
+    {
+     "id": "ref",
+     "n": "Refutación",
+     "q": "¿En qué caso no valdría tu conclusión, y por qué aquí no ocurre?",
+     "a": "Adelántate a la objeción más fuerte.",
+     "seg": 45
+    }
+   ]
+  },
+  {
+   "id": "perelman",
+   "autor": "Chaïm Perelman",
+   "obra": "Tratado de la argumentación. La nueva retórica (1958, con L. Olbrechts-Tyteca)",
+   "lema": "Argumentar es buscar la adhesión de un auditorio.",
+   "idea": "Para Perelman no se argumenta en el vacío: se argumenta ante alguien. Todo empieza por conocer al auditorio y partir de lo que este ya acepta (hechos, presunciones, valores). Desde ahí se eligen las técnicas: argumentos cuasi lógicos, basados en la estructura de lo real, por el ejemplo o la analogía, y la disociación de nociones.",
+   "sirve": "Persuadir: adaptar el mismo caso a quien te escucha (tribunal, contraparte, jurado, opinión pública).",
+   "pasos": [
+    {
+     "id": "aud",
+     "n": "Auditorio",
+     "q": "¿A quién debes convencer y qué valora?",
+     "a": "Un tribunal valora legalidad, coherencia y consecuencias de su fallo.",
+     "seg": 45
+    },
+    {
+     "id": "acu",
+     "n": "Acuerdos de partida",
+     "q": "¿Qué hechos y valores acepta ya ese auditorio?",
+     "a": "Empieza por lo que nadie discute.",
+     "seg": 45
+    },
+    {
+     "id": "tec",
+     "n": "Técnica argumentativa",
+     "q": "¿Qué tipo de argumento usarás?",
+     "a": "Regla de justicia (tratar igual lo igual), argumento pragmático (consecuencias), autoridad, ejemplo o analogía.",
+     "seg": 60
+    },
+    {
+     "id": "dis",
+     "n": "Disociación",
+     "q": "¿Qué distinción deshace el argumento contrario?",
+     "a": "Separa apariencia y realidad: «una cosa es… y otra muy distinta…».",
+     "seg": 45
+    },
+    {
+     "id": "adh",
+     "n": "Cierre para la adhesión",
+     "q": "¿Con qué frase quieres que se queden?",
+     "a": "Liga tu petición con un valor que el auditorio comparte.",
+     "seg": 30
+    }
+   ]
+  },
+  {
+   "id": "maccormick",
+   "autor": "Neil MacCormick",
+   "obra": "Legal Reasoning and Legal Theory (1978)",
+   "lema": "Una decisión se justifica si es deductivamente correcta y, en los casos difíciles, universalizable, coherente y aceptable en sus consecuencias.",
+   "idea": "MacCormick distingue casos fáciles y difíciles. En los fáciles basta el silogismo: norma, hechos, conclusión. En los difíciles hay problemas de interpretación, de relevancia, de prueba o de calificación, y entonces la premisa necesita una justificación de segundo nivel: universalidad, consistencia y coherencia con el sistema, y consecuencias aceptables.",
+   "sirve": "Justificar una decisión judicial o pedirla: mostrar que tu solución sirve como regla para todos los casos iguales.",
+   "pasos": [
+    {
+     "id": "sil",
+     "n": "Silogismo",
+     "q": "¿Cuál es la norma, cuáles los hechos y cuál la conclusión?",
+     "a": "Dilo en tres frases.",
+     "seg": 45
+    },
+    {
+     "id": "prob",
+     "n": "Tipo de problema",
+     "q": "¿Dónde está la dificultad: interpretación, relevancia, prueba o calificación?",
+     "a": "Nómbralo con precisión.",
+     "seg": 30
+    },
+    {
+     "id": "univ",
+     "n": "Universalidad",
+     "q": "¿Qué regla general estás proponiendo para todos los casos iguales?",
+     "a": "«Siempre que… entonces…».",
+     "seg": 45
+    },
+    {
+     "id": "coh",
+     "n": "Consistencia y coherencia",
+     "q": "¿Tu solución contradice alguna norma? ¿Encaja con los principios del sistema?",
+     "a": "Consistencia: no choca con normas válidas. Coherencia: se apoya en principios.",
+     "seg": 45
+    },
+    {
+     "id": "cons",
+     "n": "Consecuencias",
+     "q": "¿Qué pasaría si tu regla se aplicara en adelante?",
+     "a": "Consecuencias jurídicas para casos futuros, no solo para las partes.",
+     "seg": 45
+    }
+   ]
+  },
+  {
+   "id": "atienza",
+   "autor": "Manuel Atienza",
+   "obra": "Las razones del derecho (1991) y Curso de argumentación jurídica (2013)",
+   "lema": "Argumentar bien exige atender a la forma, a las razones y a la persuasión.",
+   "idea": "Atienza integra tres concepciones de la argumentación: la formal (que la conclusión se siga de las premisas), la material (que las premisas sean verdaderas o correctas) y la pragmática (que el argumento persuada en un debate real). Propone un método: identificar el problema, determinar si falta o sobra información, construir hipótesis de solución y justificarlas.",
+   "sirve": "Analizar un caso complejo con orden y revisar tu argumento desde tres ángulos antes de exponerlo.",
+   "pasos": [
+    {
+     "id": "pro",
+     "n": "Problema",
+     "q": "¿Cuál es exactamente la cuestión a resolver?",
+     "a": "Formúlala como pregunta.",
+     "seg": 30
+    },
+    {
+     "id": "tip",
+     "n": "Tipo de problema",
+     "q": "¿Falta información o sobra y se contradice? ¿Es de relevancia, interpretación, prueba o calificación?",
+     "a": "Clasifícalo antes de resolverlo.",
+     "seg": 30
+    },
+    {
+     "id": "hip",
+     "n": "Hipótesis de solución",
+     "q": "¿Qué premisa nueva resuelve el problema?",
+     "a": "Propón tu respuesta a la pregunta.",
+     "seg": 45
+    },
+    {
+     "id": "jus",
+     "n": "Justificación",
+     "q": "¿Por qué esa hipótesis es correcta?",
+     "a": "Formal: ¿se sigue la conclusión? Material: ¿las premisas son ciertas y correctas? Pragmática: ¿convence a este auditorio?",
+     "seg": 75
+    },
+    {
+     "id": "con",
+     "n": "Conclusión",
+     "q": "¿Qué pides, en una frase?",
+     "a": "Regresa de tus premisas a la petición concreta.",
+     "seg": 20
+    }
+   ]
+  }
+ ],
+ "diferencias": {
+  "cols": [
+   "Autor",
+   "Pregunta central",
+   "Punto de partida",
+   "Te sirve para"
+  ],
+  "filas": [
+   [
+    "Toulmin",
+    "¿Qué partes tiene un buen argumento?",
+    "La estructura: datos, garantía, respaldo",
+    "Armar y revisar un argumento en un minuto"
+   ],
+   [
+    "Perelman",
+    "¿Cómo logro que me den la razón?",
+    "El auditorio y lo que ya acepta",
+    "Persuadir y adaptar el discurso a quien escucha"
+   ],
+   [
+    "MacCormick",
+    "¿Cuándo está justificada una decisión?",
+    "El silogismo y sus límites en casos difíciles",
+    "Pedir o fundar una resolución que valga como regla general"
+   ],
+   [
+    "Atienza",
+    "¿El argumento es válido, correcto y persuasivo?",
+    "El problema y el tipo de dificultad",
+    "Analizar casos complejos desde tres ángulos"
+   ]
+  ]
+ },
+ "modelos": {
+  "ej-penal": {
+   "postura": "Defensa: debe dictarse sentencia absolutoria.",
+   "toulmin": {
+    "pret": "Luis N. debe ser absuelto.",
+    "datos": "La única testigo vio a una persona de espaldas y a oscuras; el video no muestra ningún rostro; y a Luis no se le encontró mercancía.",
+    "gar": "Si la prueba no permite identificar al autor más allá de toda duda razonable, procede absolver.",
+    "resp": "La presunción de inocencia y el estándar de prueba para condenar que establecen la Constitución y el Código Nacional de Procedimientos Penales.",
+    "cual": "Por ello, la absolución es la única decisión jurídicamente posible.",
+    "ref": "Solo cabría condenar si otra prueba lo identificara; pero estar a dos calles, veinte minutos después, no identifica a nadie."
+   },
+   "perelman": {
+    "aud": "Me dirijo a un tribunal de enjuiciamiento, que valora la legalidad, la prueba y que su fallo resista una apelación.",
+    "acu": "Nadie discute que hubo un robo, que era de noche, que la testigo vio a alguien de espaldas y que el video no muestra un rostro.",
+    "tec": "Regla de justicia: a todo acusado se le exige el mismo estándar de prueba. Si con una testigo que no vio el rostro se condena a Luis, con la misma prueba se podría condenar a cualquier vecino de esa calle.",
+    "dis": "Una cosa es que se haya cometido un robo, y otra muy distinta es que lo haya cometido Luis. La Fiscalía probó lo primero, no lo segundo.",
+    "adh": "Un tribunal que absuelve ante la duda no deja impune un delito: protege a todos de una condena sin pruebas."
+   },
+   "maccormick": {
+    "sil": "La ley exige prueba más allá de duda razonable para condenar. Aquí la prueba no identifica al autor. Por tanto, procede absolver.",
+    "prob": "Es un problema de prueba: no se discute la norma, sino si los hechos quedaron acreditados.",
+    "univ": "Siempre que la única identificación provenga de quien no vio el rostro, y no haya otro dato que la corrobore, no puede tenerse por probada la autoría.",
+    "coh": "Esta regla no contradice ninguna norma y se apoya en la presunción de inocencia y en la carga de la prueba para quien acusa.",
+    "cons": "Si se aceptara lo contrario, bastaría la cercanía a un lugar para condenar; con esta regla, las fiscalías deberán corroborar las identificaciones."
+   },
+   "atienza": {
+    "pro": "¿Está probado que Luis N. fue quien cometió el robo?",
+    "tip": "Falta información: es un problema de prueba sobre la autoría.",
+    "hip": "La identificación no es confiable y ningún otro dato la corrobora; por tanto, la autoría no está probada.",
+    "jus": "Formalmente, si no hay prueba de autoría, no hay condena posible. Materialmente, las premisas son ciertas: la testigo reconoció la oscuridad y el video no muestra rostro. Y pragmáticamente, la propia Fiscalía no pudo explicar por qué no se halló la mercancía.",
+    "con": "Solicito que se dicte sentencia absolutoria."
+   }
+  },
+  "ej-civil": {
+   "postura": "Parte actora: procede la rescisión del contrato.",
+   "toulmin": {
+    "pret": "Debe declararse la rescisión del contrato y la devolución del anticipo.",
+    "datos": "El contrato fijó treinta días para la entrega; el anticipo se pagó completo; seis meses después no se ha entregado ningún equipo.",
+    "gar": "Quien incumple una obligación recíproca da derecho a la otra parte a pedir la rescisión con daños y perjuicios.",
+    "resp": "La regla de la legislación civil sobre el incumplimiento de las obligaciones recíprocas y la fuerza obligatoria de los contratos.",
+    "cual": "Por ello, la rescisión procede con toda claridad.",
+    "ref": "No procedería si el retraso estuviera justificado; pero la demandada confirmó por correo que mantenía la fecha después del cambio."
+   },
+   "perelman": {
+    "aud": "Me dirijo a un juez civil, que valora la palabra dada, la buena fe y la seguridad de los contratos.",
+    "acu": "Ambas partes aceptan que hubo contrato, que se pagó el anticipo y que no se ha entregado nada.",
+    "tec": "Argumento pragmático: si se permite incumplir alegando un cambio que uno mismo aceptó, ningún contrato daría seguridad a quien paga por adelantado.",
+    "dis": "Una cosa es que la actora haya pedido un cambio, y otra muy distinta es que ese cambio haya liberado a la demandada, que respondió: «sin problema, mantenemos la fecha».",
+    "adh": "Los contratos se cumplen. Y quien confirma una fecha, queda obligado por su propia palabra."
+   },
+   "maccormick": {
+    "sil": "La ley permite rescindir cuando una parte incumple. La demandada no entregó en el plazo. Por tanto, procede la rescisión.",
+    "prob": "Es un problema de calificación: si el cambio de especificaciones convierte el retraso en un incumplimiento justificado.",
+    "univ": "Siempre que una parte acepte una modificación y confirme el plazo original, no podrá invocar esa modificación para justificar su retraso.",
+    "coh": "La regla es consistente con las normas sobre incumplimiento y coherente con los principios de buena fe y de no ir contra los propios actos.",
+    "cons": "Con esta regla, quien acepte cambios deberá renegociar el plazo en ese momento; lo contrario premiaría a quien calla y después incumple."
+   },
+   "atienza": {
+    "pro": "¿El cambio de especificaciones justifica que la demandada no haya entregado en el plazo?",
+    "tip": "Es un problema de calificación jurídica de un hecho que nadie discute.",
+    "hip": "No lo justifica, porque la demandada aceptó el cambio y confirmó expresamente la fecha de entrega.",
+    "jus": "Formalmente, si el plazo se mantuvo y no se cumplió, hay incumplimiento. Materialmente, el correo que dice «mantenemos la fecha» está admitido y no fue objetado. Y pragmáticamente, es la respuesta que cualquier comerciante de buena fe esperaría.",
+    "con": "Solicito que se declare procedente la rescisión, con devolución del anticipo y pago de daños y perjuicios."
+   }
+  }
+ }
+}

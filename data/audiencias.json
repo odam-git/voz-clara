@@ -1,0 +1,1076 @@
+{
+ "version": 1,
+ "materias": {
+  "penal": {
+   "nombre": "Penal",
+   "roles": {
+    "mp": "Ministerio Público",
+    "def": "Defensa"
+   },
+   "campos": [
+    {
+     "k": "imputado",
+     "n": "Persona imputada",
+     "a": "Usa iniciales o un nombre ficticio.",
+     "corto": true
+    },
+    {
+     "k": "victima",
+     "n": "Víctima u ofendido",
+     "a": "Iniciales o nombre ficticio.",
+     "corto": true
+    },
+    {
+     "k": "delito",
+     "n": "Delito",
+     "a": "Ej.: robo a casa habitación.",
+     "corto": true
+    },
+    {
+     "k": "hechos",
+     "n": "Hechos (qué, cuándo, dónde y cómo)",
+     "a": "Tres o cuatro líneas bastan."
+    },
+    {
+     "k": "detencion",
+     "n": "Cómo fue la detención",
+     "a": "Flagrancia, caso urgente u orden; hora de detención y de puesta a disposición."
+    },
+    {
+     "k": "pruebas",
+     "n": "Datos o medios de prueba principales",
+     "a": "Sepáralos con punto y coma."
+    },
+    {
+     "k": "medida",
+     "n": "Medida cautelar que se pide",
+     "a": "Ej.: presentación periódica.",
+     "corto": true
+    },
+    {
+     "k": "defensa",
+     "n": "Postura de la defensa",
+     "a": "La idea central con la que la defensa responde."
+    }
+   ]
+  },
+  "civil": {
+   "nombre": "Civil",
+   "roles": {
+    "actor": "Parte actora",
+    "dem": "Parte demandada"
+   },
+   "campos": [
+    {
+     "k": "actor",
+     "n": "Parte actora",
+     "a": "Iniciales o nombre ficticio.",
+     "corto": true
+    },
+    {
+     "k": "demandado",
+     "n": "Parte demandada",
+     "a": "Iniciales o nombre ficticio.",
+     "corto": true
+    },
+    {
+     "k": "accion",
+     "n": "Acción y prestaciones reclamadas",
+     "a": "Ej.: rescisión del contrato y devolución del anticipo."
+    },
+    {
+     "k": "hechos",
+     "n": "Hechos (qué, cuándo, dónde y cómo)",
+     "a": "Tres o cuatro líneas bastan."
+    },
+    {
+     "k": "pruebas",
+     "n": "Pruebas principales",
+     "a": "Sepáralas con punto y coma."
+    },
+    {
+     "k": "excepciones",
+     "n": "Defensa de la demandada (excepciones)",
+     "a": "La idea central con la que responde la demandada."
+    },
+    {
+     "k": "conciliacion",
+     "n": "Propuesta de arreglo",
+     "a": "Lo que tu parte aceptaría para terminar el juicio."
+    }
+   ]
+  }
+ },
+ "casos": [
+  {
+   "id": "ej-penal",
+   "materia": "penal",
+   "titulo": "Ejemplo penal · Robo a local comercial",
+   "ejemplo": true,
+   "campos": {
+    "imputado": "Luis N.",
+    "victima": "la negociación Comercial Hidalgo",
+    "delito": "robo a lugar cerrado",
+    "hechos": "la noche del 12 de marzo, alrededor de las 23:00 horas, una persona forzó la cerradura del local ubicado en la calle Hidalgo y sustrajo mercancía con valor de cuarenta mil pesos",
+    "detencion": "fue detenido en flagrancia a dos calles del lugar, a las 23:20 horas, por policías municipales que atendieron el reporte de una vecina, y fue puesto a disposición del Ministerio Público a las 00:40 horas",
+    "pruebas": "entrevista de la vecina que presenció los hechos; video de la cámara de vigilancia; informe policial homologado; dictamen sobre la cerradura forzada; inventario de la mercancía asegurada",
+    "medida": "presentación periódica cada quince días y prohibición de acercarse al local",
+    "defensa": "la testigo vio a una persona de espaldas y a oscuras, el video no muestra el rostro y la mercancía no se encontró en poder de Luis N."
+   }
+  },
+  {
+   "id": "ej-civil",
+   "materia": "civil",
+   "titulo": "Ejemplo civil · Incumplimiento de contrato",
+   "ejemplo": true,
+   "campos": {
+    "actor": "Servicios Administrativos del Bajío",
+    "demandado": "Tecnología Integral del Centro",
+    "accion": "la rescisión del contrato de compraventa, la devolución del anticipo de trescientos mil pesos y el pago de daños y perjuicios",
+    "hechos": "en enero la demandada se obligó por escrito a entregar cincuenta equipos de cómputo en treinta días; la actora pagó el anticipo completo; seis meses después no se ha entregado ningún equipo",
+    "pruebas": "contrato firmado; comprobante de transferencia del anticipo; correos electrónicos entre las partes; testimonio del encargado de compras",
+    "excepciones": "la propia actora cambió por correo las especificaciones de los equipos en febrero, lo que hizo imposible cumplir el plazo original",
+    "conciliacion": "entrega de los equipos en treinta días con una pena convencional por el retraso, o devolución inmediata del anticipo"
+   }
+  }
+ ],
+ "audiencias": [
+  {
+   "id": "penal-inicial",
+   "materia": "penal",
+   "n": "Audiencia inicial",
+   "caso": "ej-penal",
+   "fund": "Código Nacional de Procedimientos Penales, arts. 307 a 333 (control de detención, imputación, vinculación, medidas cautelares y plazo de investigación).",
+   "nota": "Guion didáctico. Coteja etapas y artículos con el texto vigente antes de usarlo en un asunto real.",
+   "etapas": [
+    {
+     "id": "ind",
+     "n": "Individualización de las partes",
+     "obj": "Presentarte con claridad y seguridad: es tu primera impresión ante el tribunal.",
+     "juez": "Se declara abierta la audiencia inicial. Solicito a las partes que se individualicen, comenzando por el Ministerio Público.",
+     "seg": 30,
+     "guia": {
+      "mp": [
+       "Saluda al juez o jueza.",
+       "Di tu nombre completo y tu cargo.",
+       "Señala que comparece por la víctima: {victima}."
+      ],
+      "def": [
+       "Saluda al juez o jueza.",
+       "Di tu nombre completo y que eres defensor o defensora.",
+       "Indica que asistes a {imputado} y que ya se entrevistó contigo en privado."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Saludé y me dirigí al tribunal",
+       "Dije nombre y cargo sin titubear",
+       "Hablé con volumen suficiente"
+      ],
+      "def": [
+       "Saludé y me dirigí al tribunal",
+       "Dije nombre y calidad de defensa",
+       "Mencioné a mi representado"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa se identifica y señala que asiste a {imputado}.",
+      "def": "El Ministerio Público se identifica y señala que comparece por {victima}."
+     },
+     "modelo": {
+      "mp": "Buenos días, Su Señoría. Licenciada Ana Torres, agente del Ministerio Público, en representación de la sociedad y de la víctima, la negociación Comercial Hidalgo.",
+      "def": "Buenos días, Su Señoría. Licenciado Carlos Medina, defensor particular de Luis N., quien se encuentra presente y con quien me entrevisté previamente en privado."
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    },
+    {
+     "id": "det",
+     "n": "Control de la detención",
+     "obj": "Justificar (o cuestionar) que la detención fue legal: supuesto, tiempos y respeto de derechos.",
+     "juez": "Ministerio Público, exponga las circunstancias de la detención de {imputado} para calificar su legalidad. Después escucharé a la defensa.",
+     "seg": 90,
+     "guia": {
+      "mp": [
+       "Indica el supuesto: flagrancia, caso urgente u orden.",
+       "Narra cómo ocurrió: {detencion}.",
+       "Precisa las horas de detención y de puesta a disposición.",
+       "Afirma que se le leyeron sus derechos.",
+       "Pide que se califique de legal la detención."
+      ],
+      "def": [
+       "Señala si se cumple o no el supuesto invocado.",
+       "Revisa los tiempos entre la detención y la puesta a disposición.",
+       "Menciona cualquier violación de derechos.",
+       "Haz tu petición: que se califique de ilegal, o manifiesta que no hay debate."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Nombré el supuesto de detención",
+       "Di horas precisas",
+       "Mencioné lectura de derechos",
+       "Terminé con una petición concreta"
+      ],
+      "def": [
+       "Identifiqué el punto débil de la detención",
+       "Argumenté con hechos, no con adjetivos",
+       "Terminé con una petición concreta"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa cuestionará la detención o dirá que no tiene debate. Su postura general: {defensa}.",
+      "def": "El Ministerio Público sostiene que la detención fue legal porque {detencion}."
+     },
+     "modelo": {
+      "mp": "Su Señoría, la detención de Luis N. se realizó en flagrancia. Fue detenido a las 23:20 horas, a dos calles del local, inmediatamente después de los hechos, por policías municipales que atendieron el reporte de una vecina. Se le informaron sus derechos y fue puesto a disposición a las 00:40 horas, sin demora. Solicito que se califique de legal la detención.",
+      "def": "Su Señoría, la defensa debate la legalidad. No hubo persecución material ni señalamiento directo: los policías detuvieron a mi representado a dos calles, sin objetos del delito y solo por su cercanía al lugar. Eso no actualiza la flagrancia. Solicito que la detención se califique de ilegal y se ordene su libertad."
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    },
+    {
+     "id": "imp",
+     "n": "Formulación de imputación",
+     "obj": "Comunicar el hecho con precisión: qué, cuándo, dónde, cómo, clasificación jurídica y forma de intervención.",
+     "juez": "Calificada la detención, Ministerio Público, formule imputación a {imputado}.",
+     "seg": 90,
+     "guia": {
+      "mp": [
+       "Dirígete al imputado por su nombre.",
+       "Narra el hecho: {hechos}.",
+       "Da la clasificación jurídica preliminar: {delito}.",
+       "Indica la forma de intervención (autor, coautor…).",
+       "Menciona quién lo acusa o denuncia."
+      ],
+      "def": [
+       "Escucha y anota: ¿quedó claro tiempo, lugar y modo?",
+       "Si algo es vago, pide una aclaración o precisión.",
+       "Si no hay dudas, dilo en una frase."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Dije tiempo, lugar y modo",
+       "Di la clasificación jurídica",
+       "Señalé la forma de intervención",
+       "Hablé despacio y sin leer"
+      ],
+      "def": [
+       "Pedí una precisión concreta o dije que no había aclaraciones",
+       "Fui breve"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa puede pedir aclaraciones sobre la imputación.",
+      "def": "El Ministerio Público imputa a {imputado} el delito de {delito}, porque {hechos}."
+     },
+     "modelo": {
+      "mp": "Luis N., el Ministerio Público le imputa que la noche del 12 de marzo, alrededor de las 23:00 horas, usted forzó la cerradura del local comercial ubicado en la calle Hidalgo y se apoderó de mercancía con valor de cuarenta mil pesos, sin derecho y sin consentimiento de quien podía disponer de ella. Estos hechos se clasifican como robo a lugar cerrado, cometido a título de autor material y de forma dolosa. Lo acusa la representante de Comercial Hidalgo.",
+      "def": "Su Señoría, solicito que el Ministerio Público precise qué mercancía en concreto se atribuye a mi representado haber sustraído. Fuera de ello, no hay más aclaraciones."
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    },
+    {
+     "id": "dec",
+     "n": "Oportunidad de declarar",
+     "obj": "Ejercer con serenidad el derecho a declarar o a guardar silencio.",
+     "juez": "{imputado}, tiene derecho a declarar o a guardar silencio; su silencio no puede usarse en su contra. Defensa, ¿qué decisión tomó su representado?",
+     "seg": 30,
+     "guia": {
+      "def": [
+       "Informa la decisión que tomaron en la entrevista previa.",
+       "Si guarda silencio, dilo sin justificarte de más."
+      ]
+     },
+     "cotejo": {
+      "def": [
+       "Fui claro y breve",
+       "No di explicaciones innecesarias"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa informa si su representado declara o se reserva su derecho."
+     },
+     "modelo": {
+      "def": "Su Señoría, después de consultarlo conmigo, mi representado ha decidido reservarse su derecho a declarar en este momento."
+     },
+     "orden": [
+      "def"
+     ]
+    },
+    {
+     "id": "vin",
+     "n": "Vinculación a proceso",
+     "obj": "Sostener (o debatir) que hay datos de prueba de un hecho que la ley señala como delito y de la probable participación.",
+     "juez": "Ministerio Público, exponga los datos de prueba con los que solicita la vinculación a proceso. Defensa, después tendrá la palabra.",
+     "seg": 120,
+     "guia": {
+      "mp": [
+       "Solicita la vinculación a proceso por {delito}.",
+       "Expón los datos de prueba: {pruebas}.",
+       "Explica qué acredita cada dato: el hecho y la probable participación.",
+       "Cierra con tu petición."
+      ],
+      "def": [
+       "Decide: resolver ahora, o pedir el plazo constitucional de 72 horas o su duplicidad.",
+       "Si debates: ataca la suficiencia de los datos. Tu postura: {defensa}.",
+       "Recuerda el estándar: datos de prueba, no prueba plena, pero deben ser razonables.",
+       "Pide que no se vincule a proceso."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Enumeré los datos de prueba con orden",
+       "Relacioné cada dato con el hecho o con la participación",
+       "Terminé con una petición concreta"
+      ],
+      "def": [
+       "Elegí una estrategia clara",
+       "Ataqué datos concretos",
+       "Terminé con una petición concreta"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa responderá que los datos son insuficientes: {defensa}.",
+      "def": "El Ministerio Público pide la vinculación con estos datos: {pruebas}."
+     },
+     "modelo": {
+      "mp": "Su Señoría, solicito se vincule a proceso a Luis N. por el hecho que la ley señala como robo a lugar cerrado. Cuento con la entrevista de la vecina, que vio a una persona forzar la cerradura y salir con cajas; el video de vigilancia, que confirma la hora y la mecánica; el informe policial, que ubica al imputado a dos calles, veinte minutos después; y el dictamen de la cerradura forzada. En conjunto, estos datos establecen razonablemente el hecho y la probable participación del imputado.",
+      "def": "Su Señoría, los datos no alcanzan. La única testigo vio a una persona de espaldas y a oscuras; el video no muestra ningún rostro; y a mi representado no se le encontró mercancía alguna. Estar a dos calles no es participar en un robo. Solicito que se dicte auto de no vinculación a proceso."
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    },
+    {
+     "id": "med",
+     "n": "Medidas cautelares",
+     "obj": "Justificar la necesidad de cautela y su proporcionalidad, o pedir la menos gravosa.",
+     "juez": "Ministerio Público, ¿solicita alguna medida cautelar? Justifique su necesidad. Defensa, después tendrá la palabra.",
+     "seg": 90,
+     "guia": {
+      "mp": [
+       "Di qué medida pides: {medida}.",
+       "Justifica la necesidad: riesgo de fuga, para la víctima o para la investigación.",
+       "Explica por qué es proporcional e idónea.",
+       "Señala la duración."
+      ],
+      "def": [
+       "Responde a cada riesgo invocado.",
+       "Aporta arraigo: domicilio, trabajo, familia.",
+       "Propón la medida menos gravosa o que no se imponga ninguna."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Nombré la medida concreta",
+       "Justifiqué un riesgo específico",
+       "Hablé de proporcionalidad"
+      ],
+      "def": [
+       "Rebatí el riesgo con datos de arraigo",
+       "Propuse una alternativa concreta"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa pedirá una medida menos gravosa o ninguna.",
+      "def": "El Ministerio Público solicita: {medida}."
+     },
+     "modelo": {
+      "mp": "Su Señoría, solicito la presentación periódica cada quince días y la prohibición de acercarse al local. No pido prisión preventiva porque el imputado tiene domicilio fijo; pero el local se encuentra a pocas calles de su casa y es necesario proteger a la víctima y asegurar su presencia en el proceso. Son medidas idóneas, proporcionales y de mínima intervención, por el tiempo que dure la investigación.",
+      "def": "Su Señoría, mi representado tiene domicilio fijo desde hace diez años, empleo comprobable y familia que depende de él. No hay dato alguno de riesgo para la víctima. La defensa no se opone a la presentación periódica, pero solicita que sea mensual, para no afectar su trabajo."
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    },
+    {
+     "id": "pla",
+     "n": "Plazo de investigación complementaria",
+     "obj": "Proponer y justificar un plazo razonable para cerrar la investigación.",
+     "juez": "Finalmente, escucharé a las partes sobre el plazo para el cierre de la investigación complementaria.",
+     "seg": 45,
+     "guia": {
+      "mp": [
+       "Propón un plazo concreto.",
+       "Di qué diligencias faltan y por qué necesitas ese tiempo."
+      ],
+      "def": [
+       "Acepta o propón un plazo distinto.",
+       "Si necesitas tiempo para tus propias pruebas, dilo."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Propuse un plazo concreto",
+       "Justifiqué con diligencias pendientes"
+      ],
+      "def": [
+       "Fijé postura clara sobre el plazo"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa opina sobre el plazo.",
+      "def": "El Ministerio Público propone un plazo y lo justifica con las diligencias pendientes."
+     },
+     "modelo": {
+      "mp": "Su Señoría, solicito dos meses para el cierre de la investigación. Están pendientes la ampliación del dictamen pericial y la entrevista de dos empleados del local.",
+      "def": "Su Señoría, la defensa está de acuerdo con dos meses; en ese plazo ofreceremos nuestro propio peritaje de video."
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "penal-juicio",
+   "materia": "penal",
+   "n": "Audiencia de juicio",
+   "caso": "ej-penal",
+   "fund": "Código Nacional de Procedimientos Penales, arts. 391 a 399 (apertura, alegatos, desahogo de pruebas, clausura) y 372 a 374 (interrogatorio, contrainterrogatorio y objeciones).",
+   "nota": "Guion didáctico. Coteja etapas y artículos con el texto vigente antes de usarlo en un asunto real.",
+   "etapas": [
+    {
+     "id": "ape",
+     "n": "Alegato de apertura",
+     "obj": "Presentar tu teoría del caso: una historia breve, clara y que puedas probar.",
+     "juez": "Se declara abierta la audiencia de juicio. Ministerio Público, exponga su alegato de apertura. Enseguida, la defensa.",
+     "seg": 120,
+     "guia": {
+      "mp": [
+       "Abre con una frase que resuma el caso.",
+       "Cuenta los hechos: {hechos}.",
+       "Anuncia qué probarás y con qué: {pruebas}.",
+       "Cierra diciendo qué sentencia pedirás."
+      ],
+      "def": [
+       "Abre con tu idea central: {defensa}.",
+       "No prometas lo que no vas a probar.",
+       "Recuerda la presunción de inocencia y quién tiene la carga de la prueba.",
+       "Cierra diciendo qué pedirás."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Tuve una frase inicial clara",
+       "Conté una historia, no una lista",
+       "Anuncié mis pruebas",
+       "No argumenté de más (eso va en la clausura)"
+      ],
+      "def": [
+       "Planteé una idea central",
+       "Mencioné la carga de la prueba",
+       "No prometí de más"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa presentará su teoría del caso: {defensa}.",
+      "def": "El Ministerio Público presentará su teoría del caso: {hechos}."
+     },
+     "modelo": {
+      "mp": "Señoría: este juicio trata de una cerradura forzada y de quien la forzó. La Fiscalía demostrará que la noche del 12 de marzo el acusado ingresó sin autorización al local de la calle Hidalgo y sustrajo mercancía por cuarenta mil pesos. Escucharán a la vecina que lo vio, verán el video de vigilancia y conocerán el dictamen sobre la cerradura. Al final, pediremos una sentencia de condena.",
+      "def": "Señoría: la Fiscalía les promete certeza, pero traerá dudas. Una testigo que vio a alguien de espaldas y a oscuras. Un video sin rostro. Y ninguna mercancía en poder de mi representado. La presunción de inocencia no es un tecnicismo: es la regla de este juicio. Al final, pediremos su absolución."
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    },
+    {
+     "id": "int",
+     "n": "Interrogatorio a tu testigo",
+     "obj": "Que el testigo cuente la historia con preguntas abiertas: qué, quién, cuándo, dónde, cómo.",
+     "juez": "Se llama a declarar al primer testigo. Tiene la palabra la parte que lo ofreció para el interrogatorio.",
+     "seg": 120,
+     "guia": {
+      "mp": [
+       "Acredita al testigo: quién es y por qué sabe.",
+       "Usa preguntas abiertas, una idea por pregunta.",
+       "Sigue el orden de los hechos.",
+       "No sugieras la respuesta."
+      ],
+      "def": [
+       "Acredita a tu testigo.",
+       "Usa preguntas abiertas, una idea por pregunta.",
+       "Lleva al testigo al punto que sostiene tu postura: {defensa}."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Hice preguntas abiertas",
+       "Una sola idea por pregunta",
+       "Seguí un orden cronológico",
+       "No sugerí respuestas"
+      ],
+      "def": [
+       "Hice preguntas abiertas",
+       "Una sola idea por pregunta",
+       "Llegué al punto que me interesaba"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa escucha y puede objetar preguntas sugestivas.",
+      "def": "El Ministerio Público escucha y puede objetar preguntas sugestivas."
+     },
+     "modelo": {
+      "mp": "Señora Morales, ¿a qué se dedica? ¿Dónde vive? ¿Dónde se encontraba la noche del 12 de marzo, alrededor de las once? ¿Qué fue lo que vio desde su ventana? ¿Qué hizo esa persona? ¿Qué llevaba al salir? ¿Qué hizo usted entonces?",
+      "def": "Señor Ramírez, ¿de dónde conoce a Luis? ¿Dónde estuvo usted la noche del 12 de marzo? ¿Con quién estaba? ¿A qué hora se retiró Luis de su casa? ¿Qué llevaba consigo al salir?"
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    },
+    {
+     "id": "con",
+     "n": "Contrainterrogatorio",
+     "obj": "Controlar al testigo contrario con preguntas cerradas que solo admitan «sí» o «no».",
+     "juez": "Terminado el interrogatorio, la contraparte puede contrainterrogar al testigo.",
+     "seg": 90,
+     "guia": {
+      "mp": [
+       "Preguntas cerradas y afirmativas.",
+       "Un solo hecho por pregunta.",
+       "No pidas explicaciones ni preguntes «por qué».",
+       "Termina cuando logres tu punto."
+      ],
+      "def": [
+       "Preguntas cerradas y afirmativas.",
+       "Un solo hecho por pregunta.",
+       "Apunta a la debilidad: {defensa}.",
+       "No pidas explicaciones ni preguntes «por qué»."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Todas mis preguntas fueron cerradas",
+       "No pregunté «por qué»",
+       "Supe cuándo parar"
+      ],
+      "def": [
+       "Todas mis preguntas fueron cerradas",
+       "No pregunté «por qué»",
+       "Evidencié la debilidad del testigo",
+       "Supe cuándo parar"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa escucha y puede objetar.",
+      "def": "El Ministerio Público escucha y puede objetar."
+     },
+     "modelo": {
+      "mp": "Señor Ramírez, usted es amigo de Luis desde hace años, ¿cierto? Esa noche usted no miró el reloj cuando él se fue, ¿verdad? Y después de que salió de su casa, usted ya no supo a dónde fue, ¿correcto?",
+      "def": "Señora Morales, eran las once de la noche, ¿cierto? El alumbrado de su calle no funcionaba, ¿verdad? Usted vio a esa persona desde un segundo piso, ¿correcto? Y la vio de espaldas, ¿cierto? Usted nunca le vio el rostro, ¿verdad?"
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    },
+    {
+     "id": "obj",
+     "n": "Objeción",
+     "obj": "Objetar a tiempo, en una frase, diciendo el motivo.",
+     "juez": "La contraparte pregunta a su testigo: «¿Verdad que usted vio claramente al acusado salir con las cajas?». ¿Alguna objeción?",
+     "seg": 20,
+     "guia": {
+      "mp": [
+       "Di «Objeción» de inmediato y con voz firme.",
+       "Menciona el motivo en pocas palabras.",
+       "Espera la resolución del juez."
+      ],
+      "def": [
+       "Di «Objeción» de inmediato y con voz firme.",
+       "Menciona el motivo en pocas palabras: aquí, pregunta sugestiva en interrogatorio.",
+       "Espera la resolución del juez."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Objeté sin dudar",
+       "Di el motivo en una frase"
+      ],
+      "def": [
+       "Objeté sin dudar",
+       "Di el motivo en una frase"
+      ]
+     },
+     "contra": {
+      "mp": "La contraparte reformula su pregunta si el juez admite la objeción.",
+      "def": "La contraparte reformula su pregunta si el juez admite la objeción."
+     },
+     "modelo": {
+      "mp": "Objeción, Señoría: la pregunta es sugestiva y se formula en interrogatorio directo.",
+      "def": "Objeción, Señoría: pregunta sugestiva. Contiene la respuesta y la formula quien ofreció al testigo."
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    },
+    {
+     "id": "cla",
+     "n": "Alegato de clausura",
+     "obj": "Argumentar: qué quedó probado, por qué y qué debe resolver el tribunal.",
+     "juez": "Desahogadas las pruebas, Ministerio Público, exponga su alegato de clausura. Enseguida, la defensa.",
+     "seg": 150,
+     "guia": {
+      "mp": [
+       "Retoma la frase de tu apertura.",
+       "Di qué hecho quedó probado y con qué prueba.",
+       "Responde al argumento más fuerte de la defensa.",
+       "Pide la sentencia de condena."
+      ],
+      "def": [
+       "Señala lo que la Fiscalía prometió y no probó.",
+       "Desarrolla tu punto: {defensa}.",
+       "Invoca la duda razonable.",
+       "Pide la absolución."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Relacioné cada hecho con una prueba",
+       "Respondí a la contraparte",
+       "Usé pausas antes de las ideas clave",
+       "Terminé con una petición concreta"
+      ],
+      "def": [
+       "Mostré lo que no se probó",
+       "Hablé de duda razonable",
+       "Usé pausas antes de las ideas clave",
+       "Terminé con una petición concreta"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa sostendrá que hay duda razonable: {defensa}.",
+      "def": "El Ministerio Público sostendrá que el hecho quedó probado con: {pruebas}."
+     },
+     "modelo": {
+      "mp": "Señoría: al inicio dijimos que este juicio trataba de una cerradura forzada y de quien la forzó. Hoy lo sabemos. La señora Morales vio a una persona forzar la puerta y salir con cajas; el video confirma la hora y la mecánica; el dictamen prueba que la cerradura fue forzada esa noche; y los policías encontraron al acusado a dos calles, veinte minutos después. La defensa habla de oscuridad, pero no explica esa coincidencia. Solicitamos una sentencia de condena.",
+      "def": "Señoría: la Fiscalía prometió certeza y nos entregó dudas. Su única testigo admitió que la calle estaba a oscuras y que vio a la persona de espaldas. El video no muestra el rostro de nadie. Y a mi representado no se le encontró ni una sola caja. Cuando la prueba no alcanza, la duda favorece al acusado. Por eso, solicitamos que se dicte sentencia absolutoria."
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    },
+    {
+     "id": "rep",
+     "n": "Réplica y dúplica",
+     "obj": "Responder en un minuto solo a lo que dijo la contraparte, sin repetir tu alegato.",
+     "juez": "Ministerio Público, ¿desea replicar? Después, la defensa podrá duplicar.",
+     "seg": 60,
+     "guia": {
+      "mp": [
+       "Responde solo a lo dicho por la defensa.",
+       "Elige un punto, el más importante.",
+       "Cierra con tu petición."
+      ],
+      "def": [
+       "Responde solo a la réplica.",
+       "Elige un punto, el más importante.",
+       "Cierra con tu petición."
+      ]
+     },
+     "cotejo": {
+      "mp": [
+       "Respondí a un punto concreto",
+       "No repetí mi clausura",
+       "Fui breve"
+      ],
+      "def": [
+       "Respondí a un punto concreto",
+       "No repetí mi clausura",
+       "Fui breve"
+      ]
+     },
+     "contra": {
+      "mp": "La defensa duplica brevemente.",
+      "def": "El Ministerio Público replica brevemente."
+     },
+     "modelo": {
+      "mp": "Señoría, solo un punto: la defensa dice que no se encontró mercancía. Veinte minutos son suficientes para ocultarla, y el video muestra que las cajas se subieron a un vehículo. Reitero la petición de condena.",
+      "def": "Señoría, la Fiscalía ahora habla de un vehículo que ningún testigo identificó y de una ocultación que nadie vio. Eso es conjetura, no prueba. Reitero la petición de absolución."
+     },
+     "orden": [
+      "mp",
+      "def"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "civil-preliminar",
+   "materia": "civil",
+   "n": "Audiencia preliminar",
+   "caso": "ej-civil",
+   "fund": "Juicio oral civil: Código Nacional de Procedimientos Civiles y Familiares o el código local aplicable (depuración, conciliación, hechos no controvertidos, acuerdos probatorios y admisión de pruebas).",
+   "nota": "Guion didáctico. Coteja etapas y artículos con el texto vigente antes de usarlo en un asunto real.",
+   "etapas": [
+    {
+     "id": "ind",
+     "n": "Individualización de las partes",
+     "obj": "Presentarte con claridad y seguridad.",
+     "juez": "Se declara abierta la audiencia preliminar. Solicito a las partes que se identifiquen, comenzando por la actora.",
+     "seg": 30,
+     "guia": {
+      "actor": [
+       "Saluda.",
+       "Di tu nombre y que representas a la parte actora: {actor}."
+      ],
+      "dem": [
+       "Saluda.",
+       "Di tu nombre y que representas a la parte demandada: {demandado}."
+      ]
+     },
+     "cotejo": {
+      "actor": [
+       "Saludé y me dirigí al tribunal",
+       "Dije nombre y a quién represento"
+      ],
+      "dem": [
+       "Saludé y me dirigí al tribunal",
+       "Dije nombre y a quién represento"
+      ]
+     },
+     "contra": {
+      "actor": "La demandada se identifica.",
+      "dem": "La actora se identifica."
+     },
+     "modelo": {
+      "actor": "Buenos días, Su Señoría. Licenciada Elena Ruiz, apoderada de la parte actora, Servicios Administrativos del Bajío.",
+      "dem": "Buenos días, Su Señoría. Licenciado Jorge Lara, apoderado de la parte demandada, Tecnología Integral del Centro."
+     },
+     "orden": [
+      "actor",
+      "dem"
+     ]
+    },
+    {
+     "id": "dep",
+     "n": "Depuración del procedimiento",
+     "obj": "Resolver cuestiones procesales (personalidad, competencia, excepciones procesales) antes de entrar al fondo.",
+     "juez": "Pasamos a la depuración del procedimiento. ¿Las partes tienen alguna excepción procesal o cuestión que deba resolverse antes de continuar?",
+     "seg": 60,
+     "guia": {
+      "actor": [
+       "Di si hay o no cuestiones procesales pendientes.",
+       "Si la demandada opone una excepción procesal, responde por qué es infundada.",
+       "Pide que se declare depurado el procedimiento."
+      ],
+      "dem": [
+       "Opón la excepción procesal, si la hay, en una frase clara.",
+       "Da el motivo y el fundamento.",
+       "Si no hay ninguna, dilo."
+      ]
+     },
+     "cotejo": {
+      "actor": [
+       "Fijé postura clara",
+       "Pedí continuar el procedimiento"
+      ],
+      "dem": [
+       "Nombré la excepción o dije que no había",
+       "Di el motivo en pocas palabras"
+      ]
+     },
+     "contra": {
+      "actor": "La demandada puede oponer excepciones procesales.",
+      "dem": "La actora sostiene que no hay cuestiones pendientes y pide continuar."
+     },
+     "modelo": {
+      "actor": "Su Señoría, la personalidad de ambas partes está acreditada con los poderes que obran en autos y no hay excepciones procesales pendientes. Solicito que se declare depurado el procedimiento.",
+      "dem": "Su Señoría, esta parte no tiene excepciones procesales que hacer valer. Nuestras defensas son de fondo y se harán valer en su momento."
+     },
+     "orden": [
+      "actor",
+      "dem"
+     ]
+    },
+    {
+     "id": "conc",
+     "n": "Conciliación",
+     "obj": "Proponer o valorar un arreglo sin debilitar tu posición.",
+     "juez": "Exhorto a las partes a conciliar sus intereses. ¿Tienen alguna propuesta de arreglo?",
+     "seg": 60,
+     "guia": {
+      "actor": [
+       "Expón tu propuesta: {conciliacion}.",
+       "Di por qué conviene a ambas partes.",
+       "Deja claro que, sin acuerdo, sostendrás tus prestaciones."
+      ],
+      "dem": [
+       "Responde a la propuesta: acepta, rechaza o contrapropón.",
+       "Habla de intereses, no de culpas.",
+       "Aclara que conciliar no es reconocer la demanda."
+      ]
+     },
+     "cotejo": {
+      "actor": [
+       "Hice una propuesta concreta",
+       "Mantuve un tono colaborativo",
+       "No debilité mi posición"
+      ],
+      "dem": [
+       "Respondí con claridad",
+       "Hice una contrapropuesta o di razones",
+       "Mantuve un tono colaborativo"
+      ]
+     },
+     "contra": {
+      "actor": "La demandada responde a la propuesta.",
+      "dem": "La actora propone: {conciliacion}."
+     },
+     "modelo": {
+      "actor": "Su Señoría, mi representada está dispuesta a un arreglo: que los equipos se entreguen en treinta días con una pena por el retraso, o bien que se devuelva de inmediato el anticipo. Cualquiera de las dos opciones evita a ambas partes el costo del juicio.",
+      "dem": "Su Señoría, mi representada agradece la propuesta. Puede entregar los equipos en cuarenta y cinco días, conforme a las especificaciones nuevas, pero sin pena convencional, porque el retraso se originó en el cambio que pidió la actora."
+     },
+     "orden": [
+      "actor",
+      "dem"
+     ]
+    },
+    {
+     "id": "hec",
+     "n": "Hechos no controvertidos y acuerdos probatorios",
+     "obj": "Reducir el litigio: fijar lo que nadie discute y lo que sí requiere prueba.",
+     "juez": "No habiendo arreglo, pido a las partes que señalen los hechos no controvertidos y si proponen acuerdos probatorios.",
+     "seg": 75,
+     "guia": {
+      "actor": [
+       "Enumera los hechos que ambas partes aceptan.",
+       "Propón tenerlos por probados.",
+       "Señala cuál es el punto que sí está en disputa."
+      ],
+      "dem": [
+       "Acepta o precisa los hechos propuestos.",
+       "Añade los que te convengan.",
+       "Delimita el punto en disputa: {excepciones}."
+      ]
+     },
+     "cotejo": {
+      "actor": [
+       "Enumeré hechos concretos",
+       "Delimité el punto en disputa"
+      ],
+      "dem": [
+       "Fijé postura sobre cada hecho",
+       "Delimité el punto en disputa"
+      ]
+     },
+     "contra": {
+      "actor": "La demandada acepta algunos hechos y precisa el punto en disputa: {excepciones}.",
+      "dem": "La actora propone como hechos no controvertidos los que constan en documentos firmados por ambas partes."
+     },
+     "modelo": {
+      "actor": "Su Señoría, propongo tener por no controvertidos tres hechos: la celebración del contrato, el pago del anticipo de trescientos mil pesos y que a la fecha no se ha entregado ningún equipo. Lo único en disputa es si el retraso está justificado.",
+      "dem": "Su Señoría, esta parte acepta esos tres hechos y pide añadir uno: que en febrero la actora solicitó por correo un cambio en las especificaciones. La controversia se reduce a los efectos de ese cambio sobre el plazo."
+     },
+     "orden": [
+      "actor",
+      "dem"
+     ]
+    },
+    {
+     "id": "adm",
+     "n": "Admisión de pruebas",
+     "obj": "Ofrecer tus pruebas justificando su pertinencia y objetar las impertinentes de la contraparte.",
+     "juez": "Procedo a la admisión de pruebas. Parte actora, relacione sus pruebas con los hechos controvertidos. Después, la demandada.",
+     "seg": 90,
+     "guia": {
+      "actor": [
+       "Enumera tus pruebas: {pruebas}.",
+       "Di qué hecho controvertido acredita cada una.",
+       "Objeta, si procede, alguna prueba contraria por impertinente."
+      ],
+      "dem": [
+       "Enumera tus pruebas.",
+       "Di qué hecho controvertido acredita cada una, en especial: {excepciones}.",
+       "Objeta, si procede, alguna prueba contraria."
+      ]
+     },
+     "cotejo": {
+      "actor": [
+       "Relacioné cada prueba con un hecho",
+       "Fui ordenado",
+       "Pedí su admisión"
+      ],
+      "dem": [
+       "Relacioné cada prueba con un hecho",
+       "Fui ordenado",
+       "Pedí su admisión"
+      ]
+     },
+     "contra": {
+      "actor": "La demandada ofrece sus pruebas y puede objetar las tuyas.",
+      "dem": "La actora ofrece: {pruebas}."
+     },
+     "modelo": {
+      "actor": "Su Señoría, ofrezco el contrato, para acreditar el plazo de treinta días; el comprobante de transferencia, para acreditar el pago; y los correos entre las partes, para demostrar que la demandada confirmó la fecha de entrega después del cambio. Solicito su admisión.",
+      "dem": "Su Señoría, ofrezco el correo de febrero en el que la actora cambia las especificaciones, y la pericial en informática, para acreditar que ese cambio exigía importar componentes distintos. Ambas se relacionan con la justificación del retraso. Solicito su admisión."
+     },
+     "orden": [
+      "actor",
+      "dem"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "civil-juicio",
+   "materia": "civil",
+   "n": "Audiencia de juicio",
+   "caso": "ej-civil",
+   "fund": "Juicio oral civil: Código Nacional de Procedimientos Civiles y Familiares o el código local aplicable (desahogo de pruebas y alegatos de clausura).",
+   "nota": "Guion didáctico. Coteja etapas y artículos con el texto vigente antes de usarlo en un asunto real.",
+   "etapas": [
+    {
+     "id": "int",
+     "n": "Interrogatorio a tu testigo",
+     "obj": "Que tu testigo cuente los hechos con preguntas abiertas.",
+     "juez": "Se declara abierta la audiencia de juicio. Se recibe la prueba testimonial. Tiene la palabra la parte oferente.",
+     "seg": 90,
+     "guia": {
+      "actor": [
+       "Acredita al testigo: quién es y por qué le constan los hechos.",
+       "Preguntas abiertas, una idea por pregunta.",
+       "Sigue el orden de los hechos: {hechos}."
+      ],
+      "dem": [
+       "Acredita al testigo.",
+       "Preguntas abiertas, una idea por pregunta.",
+       "Llévalo al punto de tu defensa: {excepciones}."
+      ]
+     },
+     "cotejo": {
+      "actor": [
+       "Hice preguntas abiertas",
+       "Una sola idea por pregunta",
+       "No sugerí respuestas"
+      ],
+      "dem": [
+       "Hice preguntas abiertas",
+       "Una sola idea por pregunta",
+       "No sugerí respuestas"
+      ]
+     },
+     "contra": {
+      "actor": "La demandada escucha y puede objetar.",
+      "dem": "La actora escucha y puede objetar."
+     },
+     "modelo": {
+      "actor": "Señor Vega, ¿qué cargo ocupa en la empresa? ¿Qué participación tuvo en la compra de los equipos? ¿Qué plazo de entrega se pactó? ¿Qué ocurrió al vencer ese plazo? ¿Qué respuesta dio la demandada cuando reclamaron la entrega?",
+      "dem": "Ingeniera Soto, ¿cuál es su función en la empresa? ¿Qué solicitó la actora en febrero? ¿Qué implicaba ese cambio para la fabricación? ¿Cuánto tiempo adicional se requería? ¿Cómo se le informó a la actora?"
+     },
+     "orden": [
+      "actor",
+      "dem"
+     ]
+    },
+    {
+     "id": "con",
+     "n": "Contrainterrogatorio",
+     "obj": "Controlar al testigo contrario con preguntas cerradas.",
+     "juez": "La contraparte puede contrainterrogar al testigo.",
+     "seg": 75,
+     "guia": {
+      "actor": [
+       "Preguntas cerradas, un hecho por pregunta.",
+       "Usa los documentos: confronta al testigo con lo firmado o escrito.",
+       "No preguntes «por qué»."
+      ],
+      "dem": [
+       "Preguntas cerradas, un hecho por pregunta.",
+       "Apunta a tu defensa: {excepciones}.",
+       "No preguntes «por qué»."
+      ]
+     },
+     "cotejo": {
+      "actor": [
+       "Todas mis preguntas fueron cerradas",
+       "Usé un documento",
+       "Supe cuándo parar"
+      ],
+      "dem": [
+       "Todas mis preguntas fueron cerradas",
+       "Evidencié mi punto",
+       "Supe cuándo parar"
+      ]
+     },
+     "contra": {
+      "actor": "La demandada escucha y puede objetar.",
+      "dem": "La actora escucha y puede objetar."
+     },
+     "modelo": {
+      "actor": "Ingeniera Soto, usted trabaja para la demandada, ¿cierto? El 20 de febrero su empresa respondió el correo de mi representada, ¿verdad? Y en esa respuesta escribieron «sin problema, mantenemos la fecha», ¿correcto?",
+      "dem": "Señor Vega, el 15 de febrero usted envió un correo a mi representada, ¿cierto? En ese correo pidió procesadores distintos a los del contrato, ¿verdad? Y ese cambio no estaba previsto en el contrato original, ¿correcto?"
+     },
+     "orden": [
+      "actor",
+      "dem"
+     ]
+    },
+    {
+     "id": "cla",
+     "n": "Alegatos de clausura",
+     "obj": "Argumentar con base en lo probado y pedir una resolución concreta.",
+     "juez": "Desahogadas las pruebas, se concede el uso de la voz a la parte actora para sus alegatos de clausura. Después, a la demandada.",
+     "seg": 150,
+     "guia": {
+      "actor": [
+       "Di qué reclamas: {accion}.",
+       "Señala qué quedó probado y con qué.",
+       "Responde a la defensa de la demandada.",
+       "Pide que se declare procedente la acción."
+      ],
+      "dem": [
+       "Reconoce lo que no está en disputa.",
+       "Desarrolla tu defensa: {excepciones}.",
+       "Explica por qué la acción no puede prosperar como se planteó.",
+       "Pide una resolución concreta."
+      ]
+     },
+     "cotejo": {
+      "actor": [
+       "Relacioné hechos con pruebas",
+       "Respondí a la contraparte",
+       "Usé pausas antes de las ideas clave",
+       "Terminé con una petición concreta"
+      ],
+      "dem": [
+       "Concedí lo indiscutible",
+       "Desarrollé una defensa central",
+       "Usé pausas antes de las ideas clave",
+       "Terminé con una petición concreta"
+      ]
+     },
+     "contra": {
+      "actor": "La demandada sostendrá: {excepciones}.",
+      "dem": "La actora sostendrá que procede {accion}."
+     },
+     "modelo": {
+      "actor": "Su Señoría: este caso trata de una promesa incumplida. El contrato fijó treinta días; el anticipo se pagó completo; han pasado seis meses y no hay un solo equipo. La demandada dice que el cambio de especificaciones hizo imposible cumplir, pero su propio correo dice: «sin problema, mantenemos la fecha». Quien acepta un cambio y confirma la fecha no puede invocarlo después. Solicito que se declare la rescisión, la devolución del anticipo y el pago de daños y perjuicios.",
+      "dem": "Su Señoría: nadie niega el contrato ni el anticipo. Lo que la actora omite es que ella misma cambió el objeto de la obligación en febrero, y la pericial demostró que ese cambio exigía importar componentes nuevos. Quien modifica lo pactado no puede exigir que se cumpla como si nada hubiera cambiado. Solicito que se declare improcedente la rescisión y se fije un nuevo plazo razonable de entrega."
+     },
+     "orden": [
+      "actor",
+      "dem"
+     ]
+    }
+   ]
+  }
+ ]
+}

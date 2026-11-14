@@ -1,11 +1,12 @@
 // ====== Contenido (archivos JSON en data/) ======
 let FONEMAS = {}, ORDEN_FON = [], TRABALENGUAS = [], LECTURAS = [], TEMAS = [], TIPS = [], ENTONACION = [];
+let JUR = { materias: {}, casos: [], audiencias: [] }, ARG = { metodos: [], diferencias: { filas: [] }, modelos: {} };
 
 async function cargarDatos() {
   const get = f => fetch("data/" + f).then(r => { if (!r.ok) throw new Error(f); return r.json(); });
-  const [t, l, m, c, e] = await Promise.all(["trabalenguas.json", "lecturas.json", "temas.json", "consejos.json", "entonacion.json"].map(get));
+  const [t, l, m, c, e, j, a] = await Promise.all(["trabalenguas.json", "lecturas.json", "temas.json", "consejos.json", "entonacion.json", "audiencias.json", "argumentos.json"].map(get));
   FONEMAS = t.fonemas; ORDEN_FON = t.orden; TRABALENGUAS = t.items.map((x, i) => ({ ...x, id: "W" + i }));
-  LECTURAS = l.items; TEMAS = m.items; TIPS = c.items; ENTONACION = e.items;
+  LECTURAS = l.items; TEMAS = m.items; TIPS = c.items; ENTONACION = e.items; JUR = j; ARG = a;
 }
 
 // ¿Es un grupo de sonidos real? (evita claves heredadas como "constructor")

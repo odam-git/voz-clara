@@ -210,3 +210,36 @@ test("audio: el registro central impide dos usos a la vez y se vacía al apagar"
   a.ev("AUDIO_ACTIVO.add({ cancelar() { this.x = 1; } }); apagarAudio()");
   assert.equal(a.ev("AUDIO_ACTIVO.size"), 0);
 });
+
+test("práctica jurídica: contenido completo y coherente", () => {
+  const a = cargar();
+  assert.equal(a.ev("JUR.audiencias.length"), 4);
+  assert.equal(a.ev("ARG.metodos.length"), 4);
+  // Cada etapa tiene guía, lista de cotejo y ejemplo para los mismos papeles, y solo usa campos que existen.
+  assert.equal(a.ev(`JUR.audiencias.every(x => x.etapas.every(e => Object.keys(e.guia).every(r => JUR.materias[x.materia].roles[r] && e.cotejo[r].length && e.modelo[r])))`), true);
+  assert.equal(a.ev(`JUR.audiencias.every(x => { const c = JUR.casos.find(k => k.id === x.caso); return x.etapas.every(e => [e.juez, ...Object.values(e.guia).flat(), ...Object.values(e.contra)].every(t => !rellenarTexto(t, c).includes("[falta"))); })`), true);
+  assert.equal(a.ev(`ARG.metodos.every(m => JUR.casos.every(c => m.pasos.every(p => ARG.modelos[c.id][m.id][p.id])))`), true);
+});
+
+test("práctica jurídica: el guion se adapta al asunto del usuario y marca lo que falta", () => {
+  const a = cargar();
+  a.ctx.mio = { id: "C1", materia: "penal", titulo: "Mío", campos: { imputado: "J. P.", delito: "fraude" } };
+  assert.equal(a.ev(`rellenarTexto("Formule imputación a {imputado} por {delito}.", mio)`), "Formule imputación a J. P. por fraude.");
+  assert.equal(a.ev(`rellenarTexto("Narra el hecho: {hechos}.", mio)`), "Narra el hecho: [falta: hechos (qué, cuándo, dónde y cómo)].");
+  assert.equal(a.ev(`rellenarTexto("{constructor} {__proto__} {noexiste}", mio)`), "[falta: constructor] [falta: __proto__] [falta: noexiste]");
+});
+
+test("práctica jurídica: los asuntos importados se limpian y nunca llegan como HTML", () => {
+  const malo = '<img src=x onerror=alert(1)>';
+  const a = cargar();
+  a.ctx.r = { sessions: [], casos: [
+    { id: "C1", materia: "penal", titulo: malo, campos: { imputado: malo, hechos: "x".repeat(5000), [malo]: "y", objeto: { a: 1 } } },
+    { id: malo, materia: "penal", titulo: "t", campos: {} }, { id: "C3", materia: "penal", titulo: "   " }, "texto", null ] };
+  const d = a.ev("normalizar(r)");
+  assert.equal(d.casos.length, 1);
+  assert.equal(d.casos[0].campos.hechos.length, 800);
+  assert.deepEqual(Object.keys(d.casos[0].campos).sort(), ["hechos", "imputado"]);
+  a.ctx.c = d.casos[0];
+  assert.ok(!a.ev(`rellenar("Imputado: {imputado}", c)`).includes("<img"), "el texto del asunto se escapa al mostrarse");
+  assert.equal(a.ev(`Array(30).fill(0).map((_, i) => ({ id: "C" + i, materia: "civil", titulo: "t" + i })).length && normalizar({ sessions: [], casos: Array(30).fill(0).map((_, i) => ({ id: "C" + i, materia: "civil", titulo: "t" + i })) }).casos.length`), 20);
+});

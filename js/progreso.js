@@ -65,6 +65,8 @@ const BADGES = [
   { id: "pausa", e: "⏸️", n: "El poder del silencio", d: "Haz todas las pausas clave de un texto", f: () => !!S.badges.pausa },
   { id: "canto", e: "🎶", n: "Afinado", d: "Afina 8 de 9 notas de la escala", f: () => !!S.badges.canto },
   { id: "nivel3", e: "🧗", n: "Nivel experto", d: "Llega al nivel 3 en un ejercicio", f: () => !!S.badges.nivel3 },
+  { id: "aud", e: "⚖️", n: "Con la venia", d: "Completa una audiencia con todas tus intervenciones", f: () => !!S.badges.aud },
+  { id: "arg4", e: "🧩", n: "Cuatro maneras de tener razón", d: "Expón un argumento completo con cada uno de los 4 métodos", f: () => !!S.badges.arg4 },
   { id: "reporte", e: "🔭", n: "Mirada al avance", d: "Revisa tu reporte semanal", f: () => !!S.badges.reporte }
 ];
 

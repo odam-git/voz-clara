@@ -17,7 +17,7 @@ const servidor = http.createServer((req, res) => {
     p.on("pageerror", e => errores.push(`${colorScheme}: ${e.message}`));
     p.on("console", m => { if (m.type() === "error") errores.push(`${colorScheme}: ${m.text()}`); });
     await p.goto(url); await p.waitForSelector("#bv-go"); await p.click("#bv-go");
-    for (const v of ["hoy", "ej", "breath", "voc", "art", "read", "impro", "vol", "ento", "pausa", "diag", "reporte", "prog", "logros", "ajustes"]) {
+    for (const v of ["hoy", "ej", "breath", "voc", "art", "read", "impro", "vol", "ento", "pausa", "aud", "arg", "casos", "diag", "reporte", "prog", "logros", "ajustes"]) {
       await p.evaluate(v => go(v), v); await p.waitForTimeout(120);
       if (!(await p.locator("#app").innerText()).trim()) errores.push(`${colorScheme}: la pantalla "${v}" quedó vacía`);
     }

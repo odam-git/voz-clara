@@ -24,8 +24,8 @@ const isObj = o => o && typeof o === "object" && !Array.isArray(o);
 const esFecha = k => { if (typeof k !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(k)) return false; const [y, m, d] = k.split("-").map(Number); const x = new Date(y, m - 1, d); return y >= 2000 && y < 2200 && x.getMonth() === m - 1 && x.getDate() === d; };
 const esId = s => typeof s === "string" && /^[A-Za-z0-9_:.-]{1,40}$/.test(s) && !(s in Object.prototype);
 const num = (v, min = -1e9, max = 1e13) => typeof v === "number" && Number.isFinite(v) && v >= min && v <= max ? v : undefined;
-const SES_NUM = ["acc", "wpm", "mul", "words", "secs", "hold", "cycles", "self", "level", "mejor", "rel", "sobre", "aciertos", "total", "hit", "pausas", "rango"];
-const SES_ID = ["modo", "f", "tid", "lid", "temaId", "fid"];
+const SES_NUM = ["acc", "wpm", "mul", "words", "secs", "hold", "cycles", "self", "level", "mejor", "rel", "sobre", "aciertos", "total", "hit", "pausas", "rango", "cot"];
+const SES_ID = ["modo", "f", "tid", "lid", "temaId", "fid", "aid", "eid", "rol"];
 
 function limpiarSesion(s) {
   if (!isObj(s) || !esId(s.type) || !esFecha(s.date) || num(s.ts, 0) === undefined) return null;
@@ -51,6 +51,14 @@ function limpiarLineaBase(b) {
   return c;
 }
 
+// Asuntos del usuario: solo texto plano, con límites de tamaño.
+function limpiarCaso(c) {
+  if (!isObj(c) || !esId(c.id) || !esId(c.materia) || typeof c.titulo !== "string" || !c.titulo.trim()) return null;
+  const campos = {};
+  if (isObj(c.campos)) for (const [k, v] of Object.entries(c.campos).slice(0, 16)) if (esId(k) && typeof v === "string" && v.trim()) campos[k] = v.slice(0, 800);
+  return { id: c.id, materia: c.materia, titulo: c.titulo.trim().slice(0, 80), campos };
+}
+
 // Valida y limpia cualquier objeto (guardado o importado). Lanza error si no es un respaldo de Voz Clara.
 function normalizar(o) {
   if (!isObj(o) || !Array.isArray(o.sessions)) throw new Error("formato");
@@ -68,6 +76,7 @@ function normalizar(o) {
     if (Array.isArray(st.focusList)) d.settings.focusList = st.focusList.filter(esId).slice(0, 4);
   }
   const lb = limpiarLineaBase(o.baseline); if (lb) d.baseline = lb;
+  if (Array.isArray(o.casos)) d.casos = o.casos.map(limpiarCaso).filter(Boolean).slice(0, 20);
   if (Array.isArray(o.diags)) d.diags = o.diags.map(limpiarLineaBase).filter(Boolean).slice(-50);
   if (isObj(o.levels)) d.levels = { art: mapaNum(o.levels.art, 1, 3), read: num(o.levels.read, 1, 3) ?? 1, impro: num(o.levels.impro, 1, 3) ?? 1, desde: mapaNum(o.levels.desde, 0) };
   if (isObj(o.volBase) && num(o.volBase.db, -100, 0) !== undefined) d.volBase = { db: o.volBase.db, f0: num(o.volBase.f0, 50, 1000) ?? null, fecha: esFecha(o.volBase.fecha) ? o.volBase.fecha : null };
@@ -121,6 +130,7 @@ function importarRespaldo(obj, modo) {
     for (const k of ["baseline", "levels", "volBase"]) if (!S[k] && nuevo[k]) S[k] = nuevo[k];
     if (nuevo.diags) S.diags = [...(S.diags || []), ...nuevo.diags.filter(d => !(S.diags || []).some(x => x.ts === d.ts))];
     S.bestStreak = Math.max(S.bestStreak || 0, nuevo.bestStreak || 0);
+    if (nuevo.casos) S.casos = [...(S.casos || []), ...nuevo.casos.filter(c => !(S.casos || []).some(x => x.id === c.id))].slice(0, 20);
     if (!S.settings.name && nuevo.settings.name) S.settings.name = nuevo.settings.name;
     recalcDays(S);
   }

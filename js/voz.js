@@ -59,7 +59,7 @@ function srAyuda() {
 //  mandar la app a segundo plano, y 3) mantener la pantalla encendida mientras se practica.
 const AUDIO_ACTIVO = new Set();
 const NUNCA = () => new Promise(() => {}); // promesa que no termina: el flujo que la espera queda abandonado sin errores
-function apagarAudio() { for (const x of [...AUDIO_ACTIVO]) { try { x.cancelar(); } catch (_) {} } AUDIO_ACTIVO.clear(); pantallaActiva(false, true); }
+function apagarAudio() { try { window.speechSynthesis && speechSynthesis.cancel(); } catch (_) {} for (const x of [...AUDIO_ACTIVO]) { try { x.cancelar(); } catch (_) {} } AUDIO_ACTIVO.clear(); pantallaActiva(false, true); }
 let candado = null, quieren = 0;
 async function pantallaActiva(on, forzar) {
   quieren = forzar ? 0 : Math.max(0, quieren + (on ? 1 : -1));

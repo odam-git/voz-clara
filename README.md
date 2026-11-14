@@ -27,10 +27,16 @@ PWA sin servidor ni dependencias. Funciona en GitHub Pages y, después de la pri
 | Pausas | Silencios detectados y si caen antes de las ideas clave (‖) |
 | Canto | Resonancia guiada, sirenas (rango en semitonos) y escala con afinador |
 
+## Práctica jurídica
+- **Modo audiencia**: guion etapa por etapa de la audiencia inicial y la de juicio (penal), y de la preliminar y la de juicio (civil). El tribunal te da la palabra, respondes en voz alta, mides ritmo, muletillas y tiempo, y te calificas con una lista de cotejo. Puedes practicar ambos papeles.
+- **Construcción de argumentos**: arma y expón un argumento con el método de Toulmin, Perelman, MacCormick o Atienza, y compara sus diferencias.
+- **Mis asuntos**: captura los datos básicos de tu asunto y los guiones se adaptan a él. Se guardan solo en el dispositivo; usa iniciales o nombres ficticios.
+- Son guiones didácticos, sin inteligencia artificial. Coteja etapas, artículos y autores con las fuentes vigentes.
+
 La dificultad **se adapta**: sube con 3 buenos resultados seguidos y se ajusta con 3 difíciles.
 
 ## Motivación sin culpa
-Rachas con **comodines** (1 por cada 7 días, máx. 2, cubren varios días seguidos), 19 logros y recordatorio diario por calendario (.ics) o notificación al abrir la app.
+Rachas con **comodines** (1 por cada 7 días, máx. 2, cubren varios días seguidos), 21 logros y recordatorio diario por calendario (.ics) o notificación al abrir la app.
 
 ## Datos y privacidad
 - El historial y las grabaciones se quedan **solo en el dispositivo** (localStorage). Exportar e importar respaldo (combinar o reemplazar) en Ajustes.
@@ -50,7 +56,7 @@ Instálala desde Safari con **Compartir › Agregar a pantalla de inicio**. Si e
 
 ## Estructura
 - `index.html`: estructura y estilos.
-- `js/`: lógica por módulos (estado, voz, análisis, flujo, progreso, adaptativo, vistas, módulos, diagnóstico, reporte, inicio).
-- `data/`: contenido en JSON (trabalenguas, lecturas, temas, entonación, consejos).
+- `js/`: lógica por módulos (estado, voz, análisis, flujo, progreso, adaptativo, vistas, módulos, jurídico, diagnóstico, reporte, inicio).
+- `data/`: contenido en JSON (trabalenguas, lecturas, temas, entonación, consejos, audiencias y argumentos).
 - `tests/`: pruebas automáticas.
 - `sw.js`: funcionamiento sin conexión. Sube `VERSION` si cambias la lista de archivos.

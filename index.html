@@ -149,6 +149,22 @@ body.intro header,body.intro nav{display:none}body.intro{padding-bottom:0}
 .rep-dias{display:grid;grid-template-columns:repeat(7,1fr);gap:var(--s1);margin:var(--s3) 0}
 .rep-dias div{text-align:center}.rep-dias span{display:flex;align-items:center;justify-content:center;height:36px;border-radius:10px;background:var(--line);font-weight:700}
 .rep-dias .on span{background:var(--ok);color:#fff}.rep-dias small{color:var(--muted);font-size:12px}
+/* ===== Práctica jurídica ===== */
+textarea{width:100%;padding:var(--s3);border-radius:12px;border:1px solid var(--line);font:inherit;font-size:16px;line-height:1.4;background:var(--bg);color:var(--ink);resize:vertical;-webkit-appearance:none;appearance:none}
+.voz-juez,.voz-otra{border-left:4px solid var(--acc);padding:var(--s2) 0 var(--s2) var(--s3);margin:var(--s4) 0}
+.voz-otra{border-left-color:var(--muted)}
+.voz-juez p,.voz-otra p{margin:var(--s1) 0 var(--s2);font-size:17px;line-height:1.5}
+.mini{min-height:44px;padding:0 var(--s3);border-radius:10px;border:0;box-shadow:inset 0 0 0 1.5px var(--line);background:none;color:var(--pri);font-weight:600;font-size:15px;cursor:pointer}
+.guia{padding-left:20px;margin:var(--s2) 0;display:flex;flex-direction:column;gap:var(--s1);line-height:1.45}
+.timer.chico{font-size:32px;margin:var(--s2) 0}.timer.fin{color:var(--warn)}
+.cotejo{border:0;padding:0;margin:var(--s4) 0 var(--s2)}.cotejo legend{font-weight:650;padding:0;margin-bottom:var(--s1)}
+.cotejo label{display:flex;gap:var(--s3);align-items:center;min-height:48px;margin:0;font-size:16px;font-weight:400;border-bottom:1px solid var(--line);cursor:pointer}
+.cotejo input{width:24px;height:24px;min-height:0;flex:none;padding:0;-webkit-appearance:auto;appearance:auto;accent-color:var(--ok)}
+.plegable{margin:var(--s3) 0}.plegable summary{min-height:44px;display:flex;align-items:center;color:var(--pri);font-weight:600;cursor:pointer}
+.ficha{margin:0}.ficha dt{font-size:var(--t-cap);color:var(--muted);margin-top:var(--s2)}.ficha dd{margin:0;line-height:1.45}
+.seg-4 button{font-size:14px;padding:0 2px}
+.tabla-dif{display:flex;flex-direction:column;gap:var(--s3)}.tabla-dif>div{border-left:4px solid var(--line);padding-left:var(--s3)}.tabla-dif p{margin:2px 0;font-size:15px}
+.step .mini{flex:none}
 @media (prefers-reduced-motion:reduce){.btn,.toast,.stars button,.meter div{transition:none;animation:none}}
 </style>
 </head>
@@ -165,6 +181,7 @@ body.intro header,body.intro nav{display:none}body.intro{padding-bottom:0}
 <script src="js/adaptativo.js"></script>
 <script src="js/vistas.js"></script>
 <script src="js/modulos.js"></script>
+<script src="js/juridico.js"></script>
 <script src="js/diagnostico.js"></script>
 <script src="js/reporte.js"></script>
 <script src="js/inicio.js"></script>

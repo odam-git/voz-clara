@@ -77,6 +77,7 @@ const VIEWS = {
     const sr = srEstado();
     $("#app").innerHTML = `<div class="card"><h2>Rutina base</h2>${STEPS.map(([id, t, d]) => filaPaso(id, t, d)).join("")}</div>
     <div class="card"><h2>Módulos de enfoque</h2>${ENFOQUES.map(([id, t, d]) => filaPaso(id, t, d)).join("")}</div>
+    <div class="card"><h2>Práctica jurídica</h2>${filaPaso("aud", "Modo audiencia", "penal y civil · etapa por etapa, con tu asunto")}${filaPaso("arg", "Construcción de argumentos", "Toulmin, Perelman, MacCormick y Atienza")}${filaPaso("casos", "Mis asuntos", "captura tu asunto para adaptar los guiones")}</div>
     <div class="card"><h2>Seguimiento</h2>${filaPaso("diag", "Diagnóstico", "3 min · línea base y sonidos a trabajar")}${filaPaso("reporte", "Reporte semanal", "tu avance contra la línea base")}</div>
     ${sr === "ok" ? "" : `<div class="card aviso"><b>⚠️ La medición automática no está disponible aquí.</b><div>${srAyuda()}</div></div>`}`;
   },
@@ -216,6 +217,8 @@ const VIEWS = {
     ${chartCard("📣 Proyección: mejor tramo en meta (s)", by("vol").map(s => s.mejor || 0), 0, null, [5, 30])}
     ${chartCard("🎭 Entonación: intenciones claras (de 3)", by("ento").map(s => s.aciertos), 0, 3)}
     ${chartCard("⏸️ Pausas clave logradas (%)", by("pausa").filter(s => s.total).map(s => Math.round(s.hit / s.total * 100)), 0, 100)}
+    ${chartCard("⚖️ Audiencias: lista de cotejo (%)", by("aud").filter(s => s.cot != null).map(s => s.cot), 0, 100)}
+    ${chartCard("🧩 Argumentos: lista de cotejo (%)", by("arg").filter(s => s.cot != null).map(s => s.cot), 0, 100)}
     ${chartCard("⭐ Autocalificación (1–5)", self.map(s => s.self), 1, 5)}
     <div class="card"><h3>Promedios</h3><p>Precisión: <b>${avg(art, "acc")}%</b> · Ritmo: <b>${avg(read, "wpm")} ppm</b> · Mejor exhalación: <b>${br.length ? Math.max(...br.map(s => s.hold)) : "—"} s</b></p></div>`;
     document.querySelectorAll("canvas[data-v]").forEach(drawChart);
